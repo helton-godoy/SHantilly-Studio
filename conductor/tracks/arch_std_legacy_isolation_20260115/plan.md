@@ -14,12 +14,12 @@ Este plano descreve a transição para a arquitetura definitiva do Showbox Suite
 
 **Objetivo:** Limpar a raiz do projeto e organizar o código antigo em pastas de "Quarentena" sem quebrar a funcionalidade.
 
-- [~] Task: Criar estrutura de diretórios para legado (`src/legacy/v1_monolith` e `src/legacy/v2_incomplete`)
-- [ ] Task: Mover arquivos do Parser V1 para `src/legacy/v1_monolith`
-- [ ] Task: Mover arquivos do Parser V2 para `src/legacy/v2_incomplete`
-- [ ] Task: Atualizar `showbox.pro` (Build Legado) para refletir os novos caminhos
-- [ ] Task: Validar que o binário legado (`showbox`) continua compilando via `./src/start-dev.sh`
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Saneamento e Isolamento do Legado' (Protocol in workflow.md)
+- [x] Task: Criar estrutura de diretórios para legado (`src/legacy/v1_monolith` e `src/legacy/v2_incomplete`)
+- [x] Task: Mover arquivos do Parser V1 para `src/legacy/v1_monolith`
+- [x] Task: Mover arquivos do Parser V2 para `src/legacy/v2_incomplete`
+- [x] Task: Atualizar `showbox.pro` (Build Legado) para refletir os novos caminhos
+- [x] Task: Validar que o binário legado (`showbox`) continua compilando via `./src/start-dev.sh`
+- [~] Task: Conductor - User Manual Verification 'Phase 1: Saneamento e Isolamento do Legado' (Protocol in workflow.md)
 
 ## Phase 2: Refatoração do Widget PushButton (Passive View)
 
