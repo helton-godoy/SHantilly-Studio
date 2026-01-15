@@ -39,11 +39,11 @@ Este plano descreve a transição para a arquitetura definitiva do Showbox Suite
 
 **Objetivo:** Criar a camada de abstração que o Studio e o CLI usarão para construir interfaces.
 
-- [ ] Task: Definir interface `IShowboxBuilder` em `libs/showbox-ui/include/`
-- [ ] Task: Criar classe `CLIBuilder` em `src/core/builder/` implementando a interface
-- [ ] Task: Escrever testes unitários para o `CLIBuilder` (Mocking de widgets)
-- [ ] Task: Implementar criação de `PushButton` no `CLIBuilder` consumindo a `WidgetFactory`
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Implementação do Builder Pattern' (Protocol in workflow.md)
+- [x] Task: Definir interface `IShowboxBuilder` em `libs/showbox-ui/include/`
+- [x] Task: Criar classe `CLIBuilder` em `src/core/builder/` implementando a interface
+- [x] Task: Escrever testes unitários para o `CLIBuilder` (Mocking de widgets)
+- [x] Task: Implementar criação de `PushButton` no `CLIBuilder` consumindo a `WidgetFactory`
+- [~] Task: Conductor - User Manual Verification 'Phase 3: Implementação do Builder Pattern' (Protocol in workflow.md)
 
 ## Phase 4: Novo Parser e Comando de Referência
 
