@@ -15,9 +15,7 @@ This plan outlines the steps to integrate the Showbox Core library with the Show
 
 ## Phase 3: Canvas Implementation
 
-- [ ] Task: Refactor Studio Canvas to use Core Widgets
-  - [ ] Update `Canvas.h`/`.cpp` to host widgets from the factory.
-  - [ ] Implement drag-and-drop placeholder logic for Core widgets.
+- [x] Task: Refactor Studio Canvas to use Core Widgets aef3111
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Canvas Implementation' (Protocol in workflow.md)
 
 ## Phase 4: Integration Testing and Cleanup
