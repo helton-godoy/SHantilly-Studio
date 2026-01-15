@@ -33,7 +33,7 @@ Este plano descreve a transição para a arquitetura definitiva do Showbox Suite
 - [x] Task: Revisar `libs/showbox-ui/src/push_button_widget.cpp` (ou similar) para remover qualquer lógica de shell script
 - [x] Task: Escrever testes unitários para `PushButton` validando propriedades (texto, ícone, estado) em `tests/auto/tst_pushbutton`
 - [x] Task: Implementar/Ajustar `PushButton` para passar nos testes unitários
-- [~] Task: Conductor - User Manual Verification 'Phase 2: Refatoração do Widget PushButton' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Refatoração do Widget PushButton' (Protocol in workflow.md) [checkpoint: 8aef3e7]
 
 ## Phase 3: Implementação do Builder Pattern
 
