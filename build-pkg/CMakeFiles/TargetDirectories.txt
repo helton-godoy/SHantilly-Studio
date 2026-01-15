@@ -1,0 +1,10 @@
+/workspace/showbox-studio/build-pkg/CMakeFiles/showbox-studio.dir
+/workspace/showbox-studio/build-pkg/CMakeFiles/edit_cache.dir
+/workspace/showbox-studio/build-pkg/CMakeFiles/rebuild_cache.dir
+/workspace/showbox-studio/build-pkg/CMakeFiles/showbox-studio_autogen_timestamp_deps.dir
+/workspace/showbox-studio/build-pkg/CMakeFiles/showbox-studio_autogen.dir
+/workspace/showbox-studio/build-pkg/libs/showbox-ui/CMakeFiles/showbox-ui.dir
+/workspace/showbox-studio/build-pkg/libs/showbox-ui/CMakeFiles/edit_cache.dir
+/workspace/showbox-studio/build-pkg/libs/showbox-ui/CMakeFiles/rebuild_cache.dir
+/workspace/showbox-studio/build-pkg/libs/showbox-ui/CMakeFiles/showbox-ui_autogen_timestamp_deps.dir
+/workspace/showbox-studio/build-pkg/libs/showbox-ui/CMakeFiles/showbox-ui_autogen.dir

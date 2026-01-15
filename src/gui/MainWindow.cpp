@@ -26,6 +26,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_controller, &StudioController::widgetSelected, m_inspector, &ObjectInspector::selectItemForWidget);
     connect(m_controller, &StudioController::widgetSelected, m_propEditor, &PropertyEditor::setTargetWidget);
     
+    // Conectar novos widgets do Canvas ao Controller e atualizar árvore
+    connect(m_canvas, &Canvas::widgetAdded, m_controller, &StudioController::manageWidget);
+    connect(m_canvas, &Canvas::widgetAdded, [this]() {
+        m_inspector->updateHierarchy(m_canvas);
+    });
+    
     // Atualizar hierarquia inicial
     m_inspector->updateHierarchy(m_canvas);
 }
@@ -40,7 +46,7 @@ void MainWindow::setupUI()
     statusBar()->showMessage("Pronto");
 
     // Central Widget: CANVAS
-    m_canvas = new Canvas(this);
+    m_canvas = new Canvas(m_factory, this);
     setCentralWidget(m_canvas);
 
     // Left Dock: TOOLBOX & INSPECTOR (em abas)
@@ -53,6 +59,11 @@ void MainWindow::setupUI()
 
     QDockWidget *dockToolbox = new QDockWidget("Toolbox", this);
     QListWidget *listToolbox = new QListWidget(dockToolbox);
+    
+    // Configurar Drag & Drop na Toolbox
+    listToolbox->setDragEnabled(true);
+    listToolbox->setDragDropMode(QAbstractItemView::DragOnly);
+    
     listToolbox->addItem("PushButton");
     listToolbox->addItem("Label");
     listToolbox->addItem("Chart");
@@ -70,19 +81,10 @@ void MainWindow::setupUI()
 
 void MainWindow::createSampleWidgets()
 {
-    // Teste de criação via Factory
+    // Teste de criação via Factory - Ainda útil para ver algo na tela ao iniciar
     QWidget *w1 = m_factory->createLabel("<h1>Bem-vindo ao Showbox Studio</h1>", "lbl_welcome");
-    QWidget *w2 = m_factory->createPushButton("Clique-me", "btn_test");
-    QWidget *w3 = m_factory->createChart("Gráfico de Vendas", "chart_vendas");
-
     m_canvas->addWidget(w1);
-    m_canvas->addWidget(w2);
-    m_canvas->addWidget(w3);
-
-    // Registrar no controller para seleção
     m_controller->manageWidget(w1);
-    m_controller->manageWidget(w2);
-    m_controller->manageWidget(w3);
 }
 
 

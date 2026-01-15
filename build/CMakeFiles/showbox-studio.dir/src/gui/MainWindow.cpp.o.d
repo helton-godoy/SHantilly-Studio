@@ -397,73 +397,11 @@ CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayoutitem.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qboxlayout.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgridlayout.h \
- /app/showbox-studio/src/gui/ObjectInspector.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTreeWidget \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtreewidget.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtreeview.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractitemview.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractscrollarea.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qframe.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qabstractitemmodel.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qitemselectionmodel.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractitemdelegate.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstyleoption.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qlocale.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractspinbox.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qvalidator.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qregularexpression.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qslider.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractslider.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstyle.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabbar.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qrubberband.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtreewidgetitemiterator.h \
- /app/showbox-studio/src/gui/PropertyEditor.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTableWidget \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtablewidget.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtableview.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qobject.h \
- /app/showbox-studio/src/core/StudioWidgetFactory.h \
- /app/showbox-studio/src/core/WidgetFactory.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPushButton \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qpushbutton.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLabel \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlabel.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qpicture.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevice.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qtextdocument.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qurl.h \
- /app/showbox/libs/showbox-ui/include/custom_chart_widget.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCharts/QChartView \
- /usr/include/x86_64-linux-gnu/qt6/QtCharts/qchartview.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCharts/QAbstractAxis \
- /usr/include/x86_64-linux-gnu/qt6/QtCharts/qabstractaxis.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCharts/QChartGlobal \
- /usr/include/x86_64-linux-gnu/qt6/QtCharts/qchartglobal.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCharts/qtcharts-config.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCharts/qtchartsexports.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/QPen \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/QFont \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qfont.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QVariant \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qvariant.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
- /usr/include/x86_64-linux-gnu/qt6/QtCharts/QAbstractSeries \
- /usr/include/x86_64-linux-gnu/qt6/QtCharts/qabstractseries.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCharts/QChart \
- /usr/include/x86_64-linux-gnu/qt6/QtCharts/qchart.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCharts/QLegend \
- /usr/include/x86_64-linux-gnu/qt6/QtCharts/qlegend.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsWidget \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgraphicswidget.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgraphicslayoutitem.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QDragEnterEvent \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qevent.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreevent.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevice.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qurl.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qeventpoint.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qvector2d.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qvectornd.h \
@@ -472,6 +410,8 @@ CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qscreen.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QList \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qlist.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qobject.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QRect \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qrect.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QSize \
@@ -488,7 +428,70 @@ CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qeventloop.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication_platform.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qinputmethod.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qlocale.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qguiapplication_platform.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QDropEvent \
+ /app/showbox-studio/src/gui/ObjectInspector.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTreeWidget \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtreewidget.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtreeview.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractitemview.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractscrollarea.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qframe.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qabstractitemmodel.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qitemselectionmodel.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractitemdelegate.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstyleoption.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractspinbox.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qvalidator.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qregularexpression.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qslider.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractslider.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstyle.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabbar.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qrubberband.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtreewidgetitemiterator.h \
+ /app/showbox-studio/src/gui/PropertyEditor.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTableWidget \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtablewidget.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtableview.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
+ /app/showbox-studio/src/core/StudioWidgetFactory.h \
+ /app/showbox-studio/src/core/WidgetFactory.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPushButton \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qpushbutton.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLabel \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlabel.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qpicture.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qtextdocument.h \
+ /app/showbox/libs/showbox-ui/include/custom_chart_widget.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCharts/QChartView \
+ /usr/include/x86_64-linux-gnu/qt6/QtCharts/qchartview.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCharts/QAbstractAxis \
+ /usr/include/x86_64-linux-gnu/qt6/QtCharts/qabstractaxis.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCharts/QChartGlobal \
+ /usr/include/x86_64-linux-gnu/qt6/QtCharts/qchartglobal.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCharts/qtcharts-config.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCharts/qtchartsexports.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QPen \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QFont \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qfont.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QVariant \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qvariant.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCharts/QAbstractSeries \
+ /usr/include/x86_64-linux-gnu/qt6/QtCharts/qabstractseries.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCharts/QChart \
+ /usr/include/x86_64-linux-gnu/qt6/QtCharts/qchart.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCharts/QLegend \
+ /usr/include/x86_64-linux-gnu/qt6/QtCharts/qlegend.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsWidget \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgraphicswidget.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgraphicslayoutitem.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qevent.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgraphicsitem.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpainterpath.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QBrush \
@@ -511,7 +514,6 @@ CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsSimpleTextItem \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgraphicsitem.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
- /usr/include/x86_64-linux-gnu/qt6/QtGui/qevent.h \
  /app/showbox-studio/src/core/StudioController.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QStatusBar \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstatusbar.h \

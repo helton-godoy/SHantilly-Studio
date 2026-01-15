@@ -1,0 +1,2 @@
+/usr/bin/ar qc libshowbox-ui.a "CMakeFiles/showbox-ui.dir/showbox-ui_autogen/mocs_compilation.cpp.o" "CMakeFiles/showbox-ui.dir/src/icon_helper.cpp.o" "CMakeFiles/showbox-ui.dir/src/logger.cpp.o" "CMakeFiles/showbox-ui.dir/src/custom_chart_widget.cpp.o" "CMakeFiles/showbox-ui.dir/src/theme_manager.cpp.o"
+/usr/bin/ranlib libshowbox-ui.a
