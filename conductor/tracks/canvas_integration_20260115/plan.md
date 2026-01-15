@@ -10,8 +10,7 @@ This plan outlines the steps to integrate the Showbox Core library with the Show
 ## Phase 2: Widget Factory Integration
 
 - [x] Task: Define a shared Widget Interface/Factory 768eefe
-- [ ] Task: Implement basic widget registration
-  - [ ] Register a simple widget (e.g., PushButton) in the factory.
+- [x] Task: Implement basic widget registration d16a46e
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Widget Factory Integration' (Protocol in workflow.md)
 
 ## Phase 3: Canvas Implementation
