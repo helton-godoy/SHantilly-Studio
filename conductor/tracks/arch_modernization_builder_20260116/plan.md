@@ -30,7 +30,7 @@ Migração de componentes mais avançados para o novo padrão.
 
 Garantir que o novo sistema está pronto para ser consumido e substituir o legado.
 
-- [ ] Task: Create "Modern CLI" Proof of Concept
+- [x] Task: Create "Modern CLI" Proof of Concept 688623a
   - [ ] Implement a minimal CLI entry point that uses the new Builder
   - [ ] Demonstrate a complex UI being built without the legacy parser
   - [ ] Validate stdout interaction/feedback loop for Shell Scripts
