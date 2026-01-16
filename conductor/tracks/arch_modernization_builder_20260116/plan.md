@@ -26,7 +26,7 @@ Migração de componentes mais avançados para o novo padrão.
   - [ ] Write failing tests for data-heavy widgets
   - [ ] Implement methods for List, Table and Combo creation and data population
   - [ ] Verify data binding and display performance
-- [ ] Task: Implement `ShowboxBuilder` for Advanced Visuals (Charts, ProgressBars)
+- [x] Task: Implement `ShowboxBuilder` for Advanced Visuals (Charts, ProgressBars) 5d21852
   - [ ] Write failing tests for `CustomChartWidget` and ProgressBar integration
   - [ ] Implement `createChart` and `createProgressBar` using existing Core visuals
   - [ ] Verify visual fidelity with legacy components
