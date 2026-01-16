@@ -53,10 +53,10 @@ Este plano descreve a transição para a arquitetura definitiva do Showbox Suite
 
 **Objetivo:** Implementar o novo loop de parsing minimalista e o comando `add` para o PushButton.
 
-- [ ] Task: Criar estrutura do novo loop de parsing em `src/core/parser/ParserMain.cpp`
-- [ ] Task: Escrever testes unitários para o parsing do comando `add pushbutton`
-- [ ] Task: Implementar lógica do comando `add` vinculada ao `ShowboxBuilder`
-- [ ] Task: Integrar o novo parser no binário principal `showbox` (nova versão)
+- [x] Task: Criar estrutura do novo loop de parsing em `src/core/parser/ParserMain.cpp`
+- [x] Task: Escrever testes unitários para o parsing do comando `add pushbutton`
+- [x] Task: Implementar lógica do comando `add` vinculada ao `ShowboxBuilder`
+- [~] Task: Integrar o novo parser no binário principal `showbox` (nova versão)
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Novo Parser e Comando de Referência' (Protocol in workflow.md)
 
 ## Phase 5: Validação e Documentação de Contexto
