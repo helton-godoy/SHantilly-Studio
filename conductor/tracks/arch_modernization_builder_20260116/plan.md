@@ -34,7 +34,7 @@ Garantir que o novo sistema está pronto para ser consumido e substituir o legad
   - [ ] Implement a minimal CLI entry point that uses the new Builder
   - [ ] Demonstrate a complex UI being built without the legacy parser
   - [ ] Validate stdout interaction/feedback loop for Shell Scripts
-- [ ] Task: Legacy Bridge/Cleanup Assessment
+- [~] Task: Legacy Bridge/Cleanup Assessment
   - [ ] Evaluate if a compatibility layer is needed or if we proceed with full cut-off
   - [ ] Document the new "Showbox Protocol" for Shell Users
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Integration' (Protocol in workflow.md)
