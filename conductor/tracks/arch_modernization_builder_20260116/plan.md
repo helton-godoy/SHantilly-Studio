@@ -10,19 +10,13 @@ Esta fase estabelece as bases da nova arquitetura, definindo como os widgets sã
 - [x] Task: Define `IShowboxBuilder` Interface 4fbb2e4
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Foundation' (Protocol in workflow.md)
 
-## Phase 2: Core Builder Implementation - Basic Widgets
+## Phase 2: Core Builder Implementation - Basic Widgets [checkpoint: c30b705]
 
 Implementação da lógica real de criação dos widgets fundamentais.
 
 - [x] Task: Implement `ShowboxBuilder` for Window and Basic Layouts ac2cecf
-  - [ ] Write failing tests for Window/Layout creation via Builder
-  - [ ] Implement `createWindow` and basic layout methods in `ShowboxBuilder`
-  - [ ] Verify tests and measure performance
 - [x] Task: Implement `ShowboxBuilder` for Basic Controls (Button, Label, LineEdit) bff3225
-  - [ ] Write failing tests for basic control instantiation
-  - [ ] Implement `createButton`, `createLabel`, and `createLineEdit`
-  - [ ] Verify that widgets are "Passive" (no internal shell logic)
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Core Builder Implementation' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Core Builder Implementation' (Protocol in workflow.md)
 
 ## Phase 3: Complex Widgets and Data Displays
 
