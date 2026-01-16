@@ -14,7 +14,7 @@ Esta fase estabelece as bases da nova arquitetura, definindo como os widgets sã
 
 Implementação da lógica real de criação dos widgets fundamentais.
 
-- [ ] Task: Implement `ShowboxBuilder` for Window and Basic Layouts
+- [x] Task: Implement `ShowboxBuilder` for Window and Basic Layouts ac2cecf
   - [ ] Write failing tests for Window/Layout creation via Builder
   - [ ] Implement `createWindow` and basic layout methods in `ShowboxBuilder`
   - [ ] Verify tests and measure performance
