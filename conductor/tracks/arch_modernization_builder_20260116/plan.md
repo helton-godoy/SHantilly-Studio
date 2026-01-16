@@ -26,15 +26,10 @@ Migração de componentes mais avançados para o novo padrão.
 - [x] Task: Implement `ShowboxBuilder` for Advanced Visuals (Charts, ProgressBars) 5d21852
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Complex Widgets' (Protocol in workflow.md)
 
-## Phase 4: Integration and Validation
+## Phase 4: Integration and Validation [checkpoint: d11dd83]
 
 Garantir que o novo sistema está pronto para ser consumido e substituir o legado.
 
 - [x] Task: Create "Modern CLI" Proof of Concept 688623a
-  - [ ] Implement a minimal CLI entry point that uses the new Builder
-  - [ ] Demonstrate a complex UI being built without the legacy parser
-  - [ ] Validate stdout interaction/feedback loop for Shell Scripts
-- [~] Task: Legacy Bridge/Cleanup Assessment
-  - [ ] Evaluate if a compatibility layer is needed or if we proceed with full cut-off
-  - [ ] Document the new "Showbox Protocol" for Shell Users
-- [ ] Task: Conductor - User Manual Verification 'Phase 4: Integration' (Protocol in workflow.md)
+- [x] Task: Legacy Bridge/Cleanup Assessment b32c329
+- [x] Task: Conductor - User Manual Verification 'Phase 4: Integration' (Protocol in workflow.md)
