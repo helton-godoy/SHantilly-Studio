@@ -67,7 +67,7 @@ Este plano descreve a transição para a arquitetura definitiva do Showbox Suite
 
 **Objetivo:** Provar a paridade e blindar o contexto para as próximas sessões.
 
-- [ ] Task: Criar script de teste comparativo `tests/manual/compare_v1_vs_target.sh`
-- [ ] Task: Atualizar `.gemini/GEMINI.md` com a regra de "Golden Sample" apontando para a nova arquitetura
-- [ ] Task: Remover referências obsoletas de documentação que causem confusão entre V1 e V2
-- [ ] Task: Conductor - User Manual Verification 'Phase 5: Validação e Documentação de Contexto' (Protocol in workflow.md)
+- [x] Task: Criar script de teste comparativo `tests/manual/compare_v1_vs_target.sh`
+- [x] Task: Atualizar `.gemini/GEMINI.md` com a regra de "Golden Sample" apontando para a nova arquitetura
+- [x] Task: Remover referências obsoletas de documentação que causem confusão entre V1 e V2
+- [x] Task: Conductor - User Manual Verification 'Phase 5: Validação e Documentação de Contexto' (Protocol in workflow.md) [checkpoint: pending]
