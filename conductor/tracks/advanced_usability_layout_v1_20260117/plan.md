@@ -32,8 +32,8 @@ Facilitar a criação de layouts complexos.
   - [x] Actions: "Group in Frame (HBox)", "Group in Frame (VBox)".
 - [x] Task: Implement Grouping Logic [caced0b]
 
-## Phase 4: Layout Properties & Refinement
+## Phase 4: Layout Properties & Refinement [checkpoint: f918a97]
 
-- [~] Task: Expose Layout Configuration
-  - [ ] Show `layout` property in `PropertyEditor` for containers.
-  - [ ] Allow switching between HBox/VBox dynamically.
+- [x] Task: Expose Layout Configuration [f918a97]
+  - [x] Show `layout` property in `PropertyEditor` for containers.
+  - [x] Allow switching between HBox/VBox dynamically.
