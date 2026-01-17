@@ -13,13 +13,15 @@ set(CMAKE_AUTORCC ON)
 find_package(Qt6 REQUIRED COMPONENTS Widgets Charts Svg)
 
 # Configuração do caminho do Showbox Core
-# Permite sobrescrever via linha de comando: -DSHOWBOX_ROOT=/path/to/showbox
-set(SHOWBOX_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../showbox" CACHE PATH "Path to showbox repository root")
+if(NOT SHOWBOX_ROOT)
+    get_filename_component(SHOWBOX_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../showbox" ABSOLUTE)
+endif()
+message(STATUS "Using SHOWBOX_ROOT: ${SHOWBOX_ROOT}")
 
 # Localização da Biblioteca Showbox UI
 set(SHOWBOX_UI_DIR "${SHOWBOX_ROOT}/libs/showbox-ui")
 set(SHOWBOX_UI_INCLUDE "${SHOWBOX_UI_DIR}/include")
-set(SHOWBOX_UI_LIB_DIR "${SHOWBOX_ROOT}/build/lib") # Onde o CMake do showbox gera a lib
+set(SHOWBOX_UI_LIB_DIR "${SHOWBOX_ROOT}/build/lib")
 
 # Importar a Biblioteca Showbox UI via subdiretório
 add_subdirectory("${SHOWBOX_UI_DIR}" "libs/showbox-ui")
@@ -47,3 +49,6 @@ target_link_libraries(showbox-studio PRIVATE
     Qt6::Svg
     showbox-ui
 )
+
+enable_testing()
+add_subdirectory(tests)
