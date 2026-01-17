@@ -1,6 +1,6 @@
 # Implementation Plan: Advanced Usability & Layouts
 
-## Phase 1: Undo/Redo Infrastructure
+## Phase 1: Undo/Redo Infrastructure [checkpoint: 90f2b76]
 
 Implementar a rede de segurança para edição.
 
@@ -10,7 +10,7 @@ Implementar a rede de segurança para edição.
 - [x] Task: Implement `Add/Delete` Commands [1d0a03c]
   - [ ] Refactor `MainWindow::onDeleteClicked` to push a `DeleteWidgetCommand`.
   - [ ] Refactor `Canvas::dropEvent` to push an `AddWidgetCommand`.
-- [~] Task: Implement `PropertyChange` Command
+- [x] Task: Implement `PropertyChange` Command [474293f]
   - [ ] Intercept changes in `PropertyEditor` and push commands instead of direct set.
 
 ## Phase 2: Hierarchy Reordering (Tree View)
