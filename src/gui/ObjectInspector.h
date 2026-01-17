@@ -27,6 +27,7 @@ signals:
 protected:
     void dropEvent(QDropEvent *event) override;
     void contextMenuEvent(QContextMenuEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
 
 private slots:
     void onSelectionChanged();

@@ -80,6 +80,18 @@ void ObjectInspector::contextMenuEvent(QContextMenuEvent *event)
     }
 }
 
+void ObjectInspector::mousePressEvent(QMouseEvent *event)
+{
+    if (event->button() == Qt::RightButton) {
+        QTreeWidgetItem *item = itemAt(event->pos());
+        if (item && item->isSelected()) {
+            // Preserva seleção múltipla para o menu de contexto
+            return;
+        }
+    }
+    QTreeWidget::mousePressEvent(event);
+}
+
 void ObjectInspector::dropEvent(QDropEvent *event)
 {
     QTreeWidgetItem *item = currentItem();
@@ -102,6 +114,15 @@ void ObjectInspector::dropEvent(QDropEvent *event)
     }
 
     if (widget && newParentWidget) {
+        // --- VALIDAÇÃO DE CONTAINER ---
+        QString type = newParentWidget->property("showbox_type").toString();
+        bool isContainer = (type == "window" || type == "groupbox" || type == "frame" || type == "page");
+
+        // Se soltou sobre algo que NÃO é container, movemos para o pai desse algo (sibling)
+        if (!isContainer) {
+            newParentWidget = newParentWidget->parentWidget();
+        }
+
         int index = -1;
         if (newParentItem) {
             index = newParentItem->indexOfChild(item);
@@ -113,7 +134,7 @@ void ObjectInspector::dropEvent(QDropEvent *event)
             m_controller->undoStack()->push(new MoveWidgetCommand(widget, newParentWidget, index));
         } else {
             widget->setParent(newParentWidget);
-            if (newParentWidget->layout()) {
+            if (newParentWidget && newParentWidget->layout()) {
                 newParentWidget->layout()->addWidget(widget);
             }
             widget->show();
