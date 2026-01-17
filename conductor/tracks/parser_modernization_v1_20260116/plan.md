@@ -18,38 +18,38 @@ Estabelecimento das fundações para processamento de texto e comandos.
 
 Suporte para widgets básicos e propriedades comuns.
 
-- [ ] Task: Implement Generic Property Parser
-  - [ ] Logic to parse common flags: `text`, `title`, `name`, `width`, `height`, `checked`, `enabled`, `visible`
-- [ ] Task: Implement Parsers for Basic Widgets
-  - [ ] `add label`, `add button` (pushbutton)
-  - [ ] `add window` (main window config)
-- [ ] Task: Implement Parsers for Selection Widgets
-  - [ ] `add checkbox`, `add radiobutton`
-  - [ ] `add combobox`, `add listbox` (parsing items lists)
+- [x] Task: Implement Generic Property Parser [ad4146a]
+  - [x] Logic to parse common flags: `text`, `title`, `name`, `width`, `height`, `checked`, `enabled`, `visible`
+- [x] Task: Implement Parsers for Basic Widgets [ad4146a]
+  - [x] `add label`, `add button` (pushbutton)
+  - [x] `add window` (main window config)
+- [x] Task: Implement Parsers for Selection Widgets [ad4146a]
+  - [x] `add checkbox`, `add radiobutton`
+  - [x] `add combobox`, `add listbox` (parsing items lists)
 
 ## Phase 3: Widget Creation (The 'Add' Command) - Part 2
 
 Suporte para widgets complexos e contêineres.
 
-- [ ] Task: Implement Parsers for Numerical/Text Inputs
-  - [ ] `add spinbox`, `add slider` (min/max/step)
-  - [ ] `add lineedit` (textbox), `add textedit` (textview)
-- [ ] Task: Implement Parsers for Containers
-  - [ ] `add groupbox`, `add frame`
-  - [ ] `add tabwidget`, `add page` (handling context/hierarchy)
+- [x] Task: Implement Parsers for Numerical/Text Inputs [e9e21a0]
+  - [x] `add spinbox`, `add slider` (min/max/step)
+  - [x] `add lineedit` (textbox), `add textedit` (textview)
+- [x] Task: Implement Parsers for Containers [dc666cd]
+  - [x] `add groupbox`, `add frame`
+  - [x] `add tabwidget`, `add page` (handling context/hierarchy)
 
 ## Phase 4: Runtime Interaction
 
 Suporte para modificar o estado da UI após a criação.
 
-- [ ] Task: Implement `Set` and `Unset` Commands
-  - [ ] Map property names to `IShowboxBuilder` or direct widget manipulation (TBD: Bridge pattern might be needed here or access via `StudioController`)
-- [ ] Task: Implement `Query` Command
-  - [ ] Logic to retrieve values from widgets by name
+- [x] Task: Implement `Set` and `Unset` Commands [88a7e57]
+  - [x] Map property names to `IShowboxBuilder` or direct widget manipulation (TBD: Bridge pattern might be needed here or access via `StudioController`)
+- [x] Task: Implement `Query` Command [88a7e57]
+  - [x] Logic to retrieve values from widgets by name
 
 ## Phase 5: Integration & Validation
 
-- [ ] Task: End-to-End Integration
-  - [ ] Replace `poc_modern_cli` input loop with full `ParserMain`
-  - [ ] Verify against legacy test scripts (e.g., `examples/showbox_demo.sh`)
-- [ ] Task: Conductor - User Manual Verification 'Phase 5: Parser Validation'
+- [x] Task: End-to-End Integration [88a7e57]
+  - [x] Replace `poc_modern_cli` input loop with full `ParserMain`
+  - [x] Verify against legacy test scripts (e.g., `examples/showbox_demo.sh`)
+- [x] Task: Conductor - User Manual Verification 'Phase 5: Parser Validation' [checkpoint: 524b2c8]
