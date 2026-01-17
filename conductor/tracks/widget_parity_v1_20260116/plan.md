@@ -35,12 +35,12 @@ Implementação dos controles de seleção e utilitários visuais simples.
 
 Implementação de controles de entrada de dados mais complexos.
 
-- [ ] Task: Implement `ShowboxBuilder` for Numerical Inputs
-  - [ ] Write failing tests for SpinBox and Slider (Min/Max/Step validation)
-  - [ ] Implement `buildSpinBox` and `buildSlider`
-- [ ] Task: Implement `ShowboxBuilder` for Multiline Text
-  - [ ] Write failing tests for TextEdit (Rich Text support)
-  - [ ] Implement `buildTextEdit`
+- [x] Task: Implement `ShowboxBuilder` for Numerical Inputs [0fa06f2]
+  - [x] Write failing tests for SpinBox and Slider (Min/Max/Step validation)
+  - [x] Implement `buildSpinBox` and `buildSlider`
+- [x] Task: Implement `ShowboxBuilder` for Multiline Text [0fa06f2]
+  - [x] Write failing tests for TextEdit (Rich Text support)
+  - [x] Implement `buildTextEdit`
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Inputs' (Protocol in workflow.md)
 
 ## Phase 4: Container and Hierarchical Implementation
