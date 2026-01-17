@@ -25,6 +25,13 @@ bool StudioController::eventFilter(QObject *watched, QEvent *event)
         QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
         QWidget *widget = qobject_cast<QWidget*>(watched);
         if (widget) {
+            // Se for clique com botão direito em um item já selecionado,
+            // não alteramos a seleção para permitir que o menu de contexto
+            // atue sobre o grupo atual.
+            if (mouseEvent->button() == Qt::RightButton && m_selectedWidgets.contains(widget)) {
+                return false; // Deixa o evento propagar para disparar o ContextMenu
+            }
+
             if (mouseEvent->modifiers() & Qt::ControlModifier) {
                 multiSelectWidget(widget);
             } else {
