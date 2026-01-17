@@ -29,7 +29,7 @@ Implementação dos controles de seleção e utilitários visuais simples.
 - [x] Task: Implement `ShowboxBuilder` for Utility Widgets [9207547]
   - [x] Write failing tests for Separator and Calendar
   - [x] Implement `buildSeparator` and `buildCalendar`
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Selection and Utilities' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Selection and Utilities' (Protocol in workflow.md) [checkpoint: 2a3587a]
 
 ## Phase 3: Numerical and Text Input Implementation
 
