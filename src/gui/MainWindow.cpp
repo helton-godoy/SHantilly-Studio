@@ -39,6 +39,7 @@ MainWindow::MainWindow(QWidget *parent)
         if (m_controller->selectedWidget()) {
             m_propEditor->setTargetWidget(m_controller->selectedWidget());
         }
+        m_inspector->updateHierarchy(m_canvas);
     });
     
     // Sincronizar seleção: Canvas -> Inspector & Property Editor

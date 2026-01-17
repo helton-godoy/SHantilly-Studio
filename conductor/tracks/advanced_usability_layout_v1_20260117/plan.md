@@ -17,10 +17,10 @@ Implementar a rede de segurança para edição.
 
 Permitir organizar a estrutura via Drag & Drop na árvore.
 
-- [~] Task: Enable Drag & Drop in `ObjectInspector`
+- [x] Task: Enable Drag & Drop in `ObjectInspector` [22051a4]
   - [ ] Set `dragDropMode` to `InternalMove`.
   - [ ] Override `dropEvent` to handle reparenting logic.
-- [ ] Task: Synchronize with Canvas
+- [~] Task: Synchronize with Canvas
   - [ ] Implement logic to move the actual QWidget when the TreeItem is moved.
   - [ ] Ensure `layout()->insertWidget(index, w)` is used.
 
