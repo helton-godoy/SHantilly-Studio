@@ -9,6 +9,7 @@
 #include <QHBoxLayout>
 #include <QDockWidget>
 #include <QListWidget>
+#include <QLabel>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -28,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
     
     // Conectar novos widgets do Canvas ao Controller e atualizar árvore
     connect(m_canvas, &Canvas::widgetAdded, m_controller, &StudioController::manageWidget);
+    connect(m_canvas, &Canvas::widgetSelected, m_controller, &StudioController::selectWidget); // Novo
     connect(m_canvas, &Canvas::widgetAdded, [this]() {
         m_inspector->updateHierarchy(m_canvas);
     });
@@ -64,9 +66,14 @@ void MainWindow::setupUI()
     listToolbox->setDragEnabled(true);
     listToolbox->setDragDropMode(QAbstractItemView::DragOnly);
     
-    listToolbox->addItem("PushButton");
-    listToolbox->addItem("Label");
-    listToolbox->addItem("Chart");
+    QStringList widgets = {
+        "PushButton", "Label", "CheckBox", "RadioButton", 
+        "SpinBox", "Slider", "LineEdit", "TextEdit",
+        "ComboBox", "ListBox", "ProgressBar", "Chart",
+        "GroupBox", "Frame", "TabWidget", "Calendar", "Separator"
+    };
+    listToolbox->addItems(widgets);
+
     dockToolbox->setWidget(listToolbox);
     addDockWidget(Qt::LeftDockWidgetArea, dockToolbox);
     
@@ -82,7 +89,10 @@ void MainWindow::setupUI()
 void MainWindow::createSampleWidgets()
 {
     // Teste de criação via Factory - Ainda útil para ver algo na tela ao iniciar
-    QWidget *w1 = m_factory->createLabel("<h1>Bem-vindo ao Showbox Studio</h1>", "lbl_welcome");
+    QWidget *w1 = m_factory->createWidget("Label", "lbl_welcome");
+    if (auto *lbl = qobject_cast<QLabel*>(w1)) {
+        lbl->setText("<h1>Bem-vindo ao Showbox Studio</h1>");
+    }
     m_canvas->addWidget(w1);
     m_controller->manageWidget(w1);
 }

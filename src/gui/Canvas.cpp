@@ -1,5 +1,6 @@
 #include "Canvas.h"
 #include "../core/IStudioWidgetFactory.h"
+#include "DesignerEventFilter.h"
 #include <QMimeData>
 #include <QDebug>
 #include <QListWidget>
@@ -14,11 +15,33 @@ Canvas::Canvas(IStudioWidgetFactory *factory, QWidget *parent)
     setStyleSheet("Canvas { background-color: #f0f0f0; border: 1px solid #ccc; }");
     
     setAcceptDrops(true);
+
+    m_selectionFilter = new DesignerEventFilter(this);
+    connect(m_selectionFilter, &DesignerEventFilter::widgetClicked, this, [this](QWidget *w) {
+        emit widgetSelected(w);
+        setSelectedWidget(w);
+    });
 }
 
 void Canvas::addWidget(QWidget *widget)
 {
     m_layout->addWidget(widget);
+    widget->installEventFilter(m_selectionFilter);
+}
+
+void Canvas::setSelectedWidget(QWidget *widget)
+{
+    if (m_currentSelection) {
+        // Restaurar estilo anterior (simplificado: remove borda azul)
+        m_currentSelection->setStyleSheet(""); 
+    }
+    
+    m_currentSelection = widget;
+    
+    if (m_currentSelection) {
+        // Aplicar highlight
+        m_currentSelection->setStyleSheet("outline: 2px dashed blue; border: 1px solid blue;");
+    }
 }
 
 void Canvas::dragEnterEvent(QDragEnterEvent *event)
@@ -49,25 +72,14 @@ void Canvas::dropEvent(QDropEvent *event)
 
     if (type.isEmpty()) return;
 
-    QWidget *newWidget = nullptr;
-    
     // Gerar um nome único simples
     QString name = QString("%1_%2").arg(type.toLower()).arg(m_layout->count() + 1);
 
-    if (type == "PushButton") {
-        newWidget = m_factory->createPushButton("Novo Botão", name);
-    } else if (type == "Label") {
-        newWidget = m_factory->createLabel("Texto", name);
-    } else if (type == "Chart") {
-        newWidget = m_factory->createChart("Gráfico", name);
-    }
+    QWidget *newWidget = m_factory->createWidget(type, name);
 
     if (newWidget) {
         addWidget(newWidget);
         emit widgetAdded(newWidget);
         event->acceptProposedAction();
-        
-        // Notificar o mundo (via parent/controller) que algo mudou seria ideal aqui,
-        // mas o StudioController pega via EventFilter depois.
     }
 }

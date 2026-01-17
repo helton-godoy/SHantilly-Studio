@@ -27,9 +27,22 @@ set(SHOWBOX_UI_LIB_DIR "${SHOWBOX_ROOT}/build/lib")
 add_subdirectory("${SHOWBOX_UI_DIR}" "libs/showbox-ui")
 
 # Fontes do Studio
-file(GLOB_RECURSE STUDIO_SOURCES 
-    "src/*.cpp" 
-    "src/*.h"
+set(STUDIO_SOURCES 
+    src/main.cpp
+    src/gui/MainWindow.cpp
+    src/gui/MainWindow.h
+    src/gui/Canvas.cpp
+    src/gui/Canvas.h
+    src/gui/ObjectInspector.cpp
+    src/gui/ObjectInspector.h
+    src/gui/PropertyEditor.cpp
+    src/gui/PropertyEditor.h
+    src/gui/DesignerEventFilter.cpp
+    src/gui/DesignerEventFilter.h
+    src/core/StudioController.cpp
+    src/core/StudioController.h
+    src/core/StudioWidgetFactory.h
+    src/core/IStudioWidgetFactory.h
 )
 
 add_executable(showbox-studio 

@@ -13,6 +13,7 @@ public:
 
     // Adiciona um widget ao controle do editor
     void manageWidget(QWidget *widget);
+    void selectWidget(QWidget *widget);
 
 signals:
     void widgetSelected(QWidget *widget);
@@ -22,7 +23,6 @@ protected:
 
 private:
     QWidget *m_selectedWidget = nullptr;
-    void selectWidget(QWidget *widget);
 };
 
 #endif // STUDIOCONTROLLER_H

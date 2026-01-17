@@ -2,41 +2,95 @@
 #define STUDIOWIDGETFACTORY_H
 
 #include "IStudioWidgetFactory.h"
-#include <QPushButton>
-#include <QLabel>
-#include <widget_factory.h> // Core Showbox UI Library
+#include <ShowboxBuilder.h>
+#include <WidgetConfigs.h>
 
 class StudioWidgetFactory : public IStudioWidgetFactory {
 public:
-    QWidget* createPushButton(const QString &title, const QString &name) override {
-        // Agora usamos a biblioteca Core para criar o widget real
-        QWidget *w = WidgetFactory::create("button");
-        if (auto *btn = qobject_cast<QPushButton*>(w)) {
-            btn->setText(title);
-        }
-        w->setObjectName(name);
-        setupStudioWidget(w);
-        return w;
-    }
+    QWidget* createWidget(const QString &type, const QString &name) override {
+        ShowboxBuilder builder;
+        QString t = type.toLower();
+        QWidget *w = nullptr;
 
-    QWidget* createLabel(const QString &text, const QString &name) override {
-        // Agora usamos a biblioteca Core para criar o widget real
-        QWidget *w = WidgetFactory::create("label");
-        if (auto *lbl = qobject_cast<QLabel*>(w)) {
-            lbl->setText(text);
+        if (t == "pushbutton" || t == "button") {
+            Showbox::Models::ButtonConfig cfg;
+            cfg.name = name;
+            cfg.text = "Button";
+            w = builder.buildButton(cfg);
+        } else if (t == "label") {
+            Showbox::Models::LabelConfig cfg;
+            cfg.name = name;
+            cfg.text = "Label";
+            w = builder.buildLabel(cfg);
+        } else if (t == "checkbox") {
+            Showbox::Models::CheckBoxConfig cfg;
+            cfg.name = name;
+            cfg.text = "CheckBox";
+            w = builder.buildCheckBox(cfg);
+        } else if (t == "radiobutton") {
+            Showbox::Models::RadioButtonConfig cfg;
+            cfg.name = name;
+            cfg.text = "RadioButton";
+            w = builder.buildRadioButton(cfg);
+        } else if (t == "spinbox") {
+            Showbox::Models::SpinBoxConfig cfg;
+            cfg.name = name;
+            w = builder.buildSpinBox(cfg);
+        } else if (t == "slider") {
+            Showbox::Models::SliderConfig cfg;
+            cfg.name = name;
+            w = builder.buildSlider(cfg);
+        } else if (t == "lineedit" || t == "textbox") {
+            Showbox::Models::LineEditConfig cfg;
+            cfg.name = name;
+            cfg.placeholder = "Type here...";
+            w = builder.buildLineEdit(cfg);
+        } else if (t == "textedit" || t == "textview") {
+            Showbox::Models::TextEditConfig cfg;
+            cfg.name = name;
+            cfg.text = "Edit me";
+            w = builder.buildTextEdit(cfg);
+        } else if (t == "groupbox") {
+            Showbox::Models::GroupBoxConfig cfg;
+            cfg.name = name;
+            cfg.title = "Group";
+            w = builder.buildGroupBox(cfg);
+        } else if (t == "frame") {
+            Showbox::Models::FrameConfig cfg;
+            cfg.name = name;
+            w = builder.buildFrame(cfg);
+        } else if (t == "tabwidget" || t == "tabs") {
+            Showbox::Models::TabWidgetConfig cfg;
+            cfg.name = name;
+            w = builder.buildTabWidget(cfg);
+        } else if (t == "combobox") {
+            Showbox::Models::ComboBoxConfig cfg;
+            cfg.name = name;
+            w = builder.buildComboBox(cfg);
+        } else if (t == "listbox") {
+            Showbox::Models::ListConfig cfg;
+            cfg.name = name;
+            w = builder.buildList(cfg);
+        } else if (t == "calendar") {
+            Showbox::Models::CalendarConfig cfg;
+            cfg.name = name;
+            w = builder.buildCalendar(cfg);
+        } else if (t == "progressbar") {
+            Showbox::Models::ProgressBarConfig cfg;
+            cfg.name = name;
+            w = builder.buildProgressBar(cfg);
+        } else if (t == "chart") {
+            Showbox::Models::ChartConfig cfg;
+            cfg.name = name;
+            cfg.title = "Chart";
+            w = builder.buildChart(cfg);
+        } else if (t == "separator") {
+            Showbox::Models::SeparatorConfig cfg;
+            cfg.name = name;
+            w = builder.buildSeparator(cfg);
         }
-        w->setObjectName(name);
-        setupStudioWidget(w);
-        return w;
-    }
 
-    QWidget* createChart(const QString &title, const QString &name) override {
-        // Agora usamos a biblioteca Core para criar o widget real
-        QWidget *w = WidgetFactory::create("chart");
-        
-        // Se retornar nulo, algo está errado na Core, não devemos mascarar.
         if (w) {
-            w->setObjectName(name);
             setupStudioWidget(w);
         }
         return w;

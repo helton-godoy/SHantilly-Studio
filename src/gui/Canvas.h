@@ -7,6 +7,7 @@
 #include <QDropEvent>
 
 class IStudioWidgetFactory;
+class DesignerEventFilter;
 
 class Canvas : public QWidget
 {
@@ -15,9 +16,11 @@ public:
     explicit Canvas(IStudioWidgetFactory *factory, QWidget *parent = nullptr);
     
     void addWidget(QWidget *widget);
+    void setSelectedWidget(QWidget *widget);
 
 signals:
     void widgetAdded(QWidget *widget);
+    void widgetSelected(QWidget *widget);
 
 protected:
     void dragEnterEvent(QDragEnterEvent *event) override;
@@ -27,6 +30,8 @@ protected:
 private:
     QVBoxLayout *m_layout;
     IStudioWidgetFactory *m_factory;
+    DesignerEventFilter *m_selectionFilter;
+    QWidget *m_currentSelection = nullptr;
 };
 
 #endif // CANVAS_H
