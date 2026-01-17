@@ -6,13 +6,13 @@ Este plano detalha a implementação do novo sistema de parsing para conectar a 
 
 Estabelecimento das fundações para processamento de texto e comandos.
 
-- [ ] Task: Implement `Tokenizer` Class
-  - [ ] Write tests for splitting strings with quotes, spaces, and escapes
-  - [ ] Implement `Tokenizer` class (replaces naive split)
-- [ ] Task: Implement `CommandParser` Skeleton
-  - [ ] Define `ICommand` interface or Command structure
-  - [ ] Implement dispatch logic (Map<String, Handler>)
-  - [ ] Connect `ParserMain` to use `CommandParser`
+- [x] Task: Implement `Tokenizer` Class [60f5559]
+  - [x] Write tests for splitting strings with quotes, spaces, and escapes
+  - [x] Implement `Tokenizer` class (replaces naive split)
+- [x] Task: Implement `CommandParser` Skeleton [dc666cd]
+  - [x] Define `ICommand` interface or Command structure
+  - [x] Implement dispatch logic (Map<String, Handler>)
+  - [x] Connect `ParserMain` to use `CommandParser` [checkpoint: e7f1b89]
 
 ## Phase 2: Widget Creation (The 'Add' Command) - Part 1
 
