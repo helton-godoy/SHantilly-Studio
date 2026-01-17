@@ -10,6 +10,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "" "showbox-studio_autogen/timestamp" "custom" "showbox-studio_autogen/deps"
   "/workspace/showbox-studio/build/showbox-studio_autogen/mocs_compilation.cpp" "CMakeFiles/showbox-studio.dir/showbox-studio_autogen/mocs_compilation.cpp.o" "gcc" "CMakeFiles/showbox-studio.dir/showbox-studio_autogen/mocs_compilation.cpp.o.d"
+  "/workspace/showbox-studio/src/core/ProjectSerializer.cpp" "CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.o" "gcc" "CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.o.d"
+  "/workspace/showbox-studio/src/core/ScriptGenerator.cpp" "CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.o" "gcc" "CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.o.d"
   "/workspace/showbox-studio/src/core/StudioController.cpp" "CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o" "gcc" "CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o.d"
   "/workspace/showbox-studio/src/gui/Canvas.cpp" "CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o" "gcc" "CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o.d"
   "/workspace/showbox-studio/src/gui/MainWindow.cpp" "CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.o" "gcc" "CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.o.d"

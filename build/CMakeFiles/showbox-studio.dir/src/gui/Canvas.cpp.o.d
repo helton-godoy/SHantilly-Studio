@@ -429,6 +429,14 @@ CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o: \
  /workspace/showbox-studio/src/gui/../core/IStudioWidgetFactory.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
+ /workspace/showbox-studio/src/gui/../core/StudioCommands.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QUndoCommand \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qundostack.h \
+ /workspace/showbox-studio/src/gui/Canvas.h \
+ /workspace/showbox-studio/src/gui/../core/StudioController.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QUndoStack \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QMimeData \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qmimedata.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QDebug \

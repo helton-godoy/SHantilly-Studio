@@ -274,6 +274,18 @@
 			null
 		],
 		[
+			"/workspace/showbox-studio/src/core/ProjectSerializer.h",
+			"MU",
+			"PRMOGMWJPH/moc_ProjectSerializer.cpp",
+			null
+		],
+		[
+			"/workspace/showbox-studio/src/core/ScriptGenerator.h",
+			"MU",
+			"PRMOGMWJPH/moc_ScriptGenerator.cpp",
+			null
+		],
+		[
 			"/workspace/showbox-studio/src/core/StudioController.h",
 			"MU",
 			"PRMOGMWJPH/moc_StudioController.cpp",
@@ -376,7 +388,7 @@
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
-	"PARALLEL" : 8,
+	"PARALLEL" : 4,
 	"PARSE_CACHE_FILE" : "/workspace/showbox-studio/build/CMakeFiles/showbox-studio_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/usr/lib/qt6/libexec/moc",
 	"QT_UIC_EXECUTABLE" : "/usr/lib/qt6/libexec/uic",
@@ -385,6 +397,12 @@
 	"SETTINGS_FILE" : "/workspace/showbox-studio/build/CMakeFiles/showbox-studio_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[
+			"/workspace/showbox-studio/src/core/ProjectSerializer.cpp",
+			"MU",
+			null
+		],
+		[ "/workspace/showbox-studio/src/core/ScriptGenerator.cpp", "MU", null ],
 		[ "/workspace/showbox-studio/src/core/StudioController.cpp", "MU", null ],
 		[ "/workspace/showbox-studio/src/gui/Canvas.cpp", "MU", null ],
 		[ "/workspace/showbox-studio/src/gui/MainWindow.cpp", "MU", null ],

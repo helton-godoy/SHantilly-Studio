@@ -1,6 +1,7 @@
 #include "Canvas.h"
 #include "../core/IStudioWidgetFactory.h"
-#include "DesignerEventFilter.h"
+#include "../core/StudioCommands.h"
+#include "../core/StudioController.h"
 #include <QMimeData>
 #include <QDebug>
 #include <QListWidget>
@@ -15,33 +16,40 @@ Canvas::Canvas(IStudioWidgetFactory *factory, QWidget *parent)
     setStyleSheet("Canvas { background-color: #f0f0f0; border: 1px solid #ccc; }");
     
     setAcceptDrops(true);
-
-    m_selectionFilter = new DesignerEventFilter(this);
-    connect(m_selectionFilter, &DesignerEventFilter::widgetClicked, this, [this](QWidget *w) {
-        emit widgetSelected(w);
-        setSelectedWidget(w);
-    });
 }
 
 void Canvas::addWidget(QWidget *widget)
 {
+    if (!widget) return;
+    widget->setParent(this);
     m_layout->addWidget(widget);
-    widget->installEventFilter(m_selectionFilter);
+    widget->show();
+}
+
+void Canvas::removeWidget(QWidget *widget)
+{
+    if (!widget) return;
+    m_layout->removeWidget(widget);
+    widget->hide();
+    widget->setParent(nullptr); // Desvincular para não aparecer no children() se o teste checar o pai
+}
+
+void Canvas::clear()
+{
+    setSelectedWidget(nullptr);
+    QLayoutItem *item;
+    while ((item = m_layout->takeAt(0)) != nullptr) {
+        if (QWidget *w = item->widget()) {
+            delete w;
+        }
+        delete item;
+    }
 }
 
 void Canvas::setSelectedWidget(QWidget *widget)
 {
-    if (m_currentSelection) {
-        // Restaurar estilo anterior (simplificado: remove borda azul)
-        m_currentSelection->setStyleSheet(""); 
-    }
-    
     m_currentSelection = widget;
-    
-    if (m_currentSelection) {
-        // Aplicar highlight
-        m_currentSelection->setStyleSheet("outline: 2px dashed blue; border: 1px solid blue;");
-    }
+    // A lógica visual de seleção agora é tratada pelo StudioController
 }
 
 void Canvas::dragEnterEvent(QDragEnterEvent *event)
@@ -78,7 +86,11 @@ void Canvas::dropEvent(QDropEvent *event)
     QWidget *newWidget = m_factory->createWidget(type, name);
 
     if (newWidget) {
-        addWidget(newWidget);
+        if (m_controller) {
+            m_controller->undoStack()->push(new AddWidgetCommand(this, newWidget));
+        } else {
+            addWidget(newWidget);
+        }
         emit widgetAdded(newWidget);
         event->acceptProposedAction();
     }

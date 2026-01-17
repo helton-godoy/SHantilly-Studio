@@ -1,0 +1,60 @@
+{
+    "version": "1.0",
+    "widgets": [
+        {
+            "name": "lbl_welcome",
+            "properties": {
+                "enabled": true,
+                "height": 28,
+                "text": "<h1>Bem-vindo ao Showbox Studio</h1>",
+                "visible": true,
+                "width": 441,
+                "x": 9,
+                "y": 9
+            },
+            "type": "label"
+        },
+        {
+            "name": "pushbutton_2",
+            "properties": {
+                "checked": false,
+                "enabled": true,
+                "height": 18,
+                "text": "Button",
+                "visible": true,
+                "width": 441,
+                "x": 9,
+                "y": 43
+            },
+            "type": "pushbutton"
+        },
+        {
+            "name": "checkbox_3",
+            "properties": {
+                "checked": false,
+                "enabled": true,
+                "height": 20,
+                "text": "CheckBox",
+                "visible": true,
+                "width": 441,
+                "x": 9,
+                "y": 67
+            },
+            "type": "checkbox"
+        },
+        {
+            "name": "radiobutton_4",
+            "properties": {
+                "checked": false,
+                "enabled": true,
+                "height": 20,
+                "text": "RadioButton",
+                "visible": true,
+                "width": 441,
+                "x": 9,
+                "y": 93
+            },
+            "type": "radiobutton"
+        }
+    ]
+}

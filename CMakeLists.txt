@@ -37,10 +37,12 @@ set(STUDIO_SOURCES
     src/gui/ObjectInspector.h
     src/gui/PropertyEditor.cpp
     src/gui/PropertyEditor.h
-    src/gui/DesignerEventFilter.cpp
-    src/gui/DesignerEventFilter.h
     src/core/StudioController.cpp
     src/core/StudioController.h
+    src/core/ScriptGenerator.cpp
+    src/core/ScriptGenerator.h
+    src/core/ProjectSerializer.cpp
+    src/core/ProjectSerializer.h
     src/core/StudioWidgetFactory.h
     src/core/IStudioWidgetFactory.h
 )

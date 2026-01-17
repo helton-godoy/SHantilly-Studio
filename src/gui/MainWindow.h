@@ -6,16 +6,22 @@
 class Canvas;
 class IStudioWidgetFactory;
 class ObjectInspector;
-class StudioController;
 class PropertyEditor;
+class StudioController;
+class ScriptGenerator;
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+private slots:
+    void onRunClicked();
+    void onSaveClicked();
+    void onOpenClicked();
+    void onDeleteClicked();
 
 private:
     void setupUI();

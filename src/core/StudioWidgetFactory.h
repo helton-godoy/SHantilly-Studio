@@ -71,6 +71,12 @@ public:
             Showbox::Models::ListConfig cfg;
             cfg.name = name;
             w = builder.buildList(cfg);
+        } else if (t == "table") {
+            Showbox::Models::TableConfig cfg;
+            cfg.name = name;
+            cfg.headers = {"Col 1", "Col 2"};
+            cfg.rows = {{"Data 1", "Data 2"}};
+            w = builder.buildTable(cfg);
         } else if (t == "calendar") {
             Showbox::Models::CalendarConfig cfg;
             cfg.name = name;
@@ -91,16 +97,18 @@ public:
         }
 
         if (w) {
-            setupStudioWidget(w);
+            setupStudioWidget(w, t);
         }
         return w;
     }
 
 private:
-    void setupStudioWidget(QWidget *widget) {
+    void setupStudioWidget(QWidget *widget, const QString &type) {
         if (!widget) return;
         // Atributo para garantir que o widget aceite eventos mas possa ser "gerenciado" pelo Studio
         widget->setAttribute(Qt::WA_TransparentForMouseEvents, false); 
+        // Anotar o tipo para o ScriptGenerator
+        widget->setProperty("showbox_type", type.toLower());
     }
 };
 

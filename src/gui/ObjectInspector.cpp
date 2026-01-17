@@ -1,4 +1,5 @@
 #include "ObjectInspector.h"
+#include <QTabWidget>
 
 ObjectInspector::ObjectInspector(QWidget *parent) : QTreeWidget(parent)
 {
@@ -32,11 +33,34 @@ void ObjectInspector::addWidgetToTree(QWidget *widget, QTreeWidgetItem *parentIt
     
     m_widgetToItem[widget] = item;
 
-    for (QObject *child : widget->children()) {
-        if (QWidget *w = qobject_cast<QWidget*>(child)) {
-            // Ignorar widgets internos do Qt (como layouts ou barras)
-            if (!w->objectName().startsWith("qt_")) {
-                addWidgetToTree(w, item);
+    // Verificar se deve recursar: Apenas containers devem expor seus filhos na árvore.
+    // Widgets atômicos (Button, ComboBox) têm filhos internos (Qt implementation details) que devem ser ocultados.
+    QVariant typeVar = widget->property("showbox_type");
+    bool isContainer = true; // Por padrão, assumimos container (útil para o Canvas/Root)
+
+    if (typeVar.isValid()) {
+        QString type = typeVar.toString();
+        // Lista explícita de containers
+        isContainer = (type == "window" || type == "groupbox" || type == "frame" || 
+                       type == "tabwidget" || type == "page");
+    }
+
+    if (!isContainer) return;
+
+    // Caso Especial: QTabWidget
+    if (QTabWidget *tab = qobject_cast<QTabWidget*>(widget)) {
+        for (int i = 0; i < tab->count(); ++i) {
+            addWidgetToTree(tab->widget(i), item);
+        }
+    }
+    // Caso Padrão: Iterar filhos diretos (filtrando internos do Qt)
+    else {
+        for (QObject *child : widget->children()) {
+            if (QWidget *w = qobject_cast<QWidget*>(child)) {
+                // Ignorar widgets internos do Qt (como layouts ou barras)
+                if (!w->objectName().startsWith("qt_")) {
+                    addWidgetToTree(w, item);
+                }
             }
         }
     }

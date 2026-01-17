@@ -261,6 +261,7 @@ showbox-studio_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
 	/usr/include/x86_64-linux-gnu/gnu/stubs.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QList \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QMetaProperty \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QRect \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QSize \
@@ -332,6 +333,7 @@ showbox-studio_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qmargins.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qmath.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qmetacontainer.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qmetaobject.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qmetatype.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qminmax.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qnamespace.h \
@@ -402,6 +404,7 @@ showbox-studio_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/QDropEvent \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/QTransform \
+	/usr/include/x86_64-linux-gnu/qt6/QtGui/QUndoStack \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qaction.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qbitmap.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qbrush.h \
@@ -434,6 +437,7 @@ showbox-studio_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiexports.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiglobal.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtGui/qundostack.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qvalidator.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qvector2d.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qvectornd.h \
@@ -665,6 +669,10 @@ showbox-studio_autogen/timestamp: \
 	/workspace/showbox-studio/build/CMakeFiles/3.31.6/CMakeSystem.cmake \
 	/workspace/showbox-studio/build/showbox-studio_autogen/moc_predefs.h \
 	/workspace/showbox-studio/src/core/IStudioWidgetFactory.h \
+	/workspace/showbox-studio/src/core/ProjectSerializer.cpp \
+	/workspace/showbox-studio/src/core/ProjectSerializer.h \
+	/workspace/showbox-studio/src/core/ScriptGenerator.cpp \
+	/workspace/showbox-studio/src/core/ScriptGenerator.h \
 	/workspace/showbox-studio/src/core/StudioController.cpp \
 	/workspace/showbox-studio/src/core/StudioController.h \
 	/workspace/showbox-studio/src/core/StudioWidgetFactory.h \

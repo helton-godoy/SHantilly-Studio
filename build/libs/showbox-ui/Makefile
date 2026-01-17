@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /workspace/showbox-studio/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
@@ -182,6 +192,30 @@ showbox-ui_autogen/mocs_compilation.cpp.s:
 	cd /workspace/showbox-studio/build && $(MAKE) $(MAKESILENT) -f libs/showbox-ui/CMakeFiles/showbox-ui.dir/build.make libs/showbox-ui/CMakeFiles/showbox-ui.dir/showbox-ui_autogen/mocs_compilation.cpp.s
 .PHONY : showbox-ui_autogen/mocs_compilation.cpp.s
 
+src/ShowboxBuilder.o: src/ShowboxBuilder.cpp.o
+.PHONY : src/ShowboxBuilder.o
+
+# target to build an object file
+src/ShowboxBuilder.cpp.o:
+	cd /workspace/showbox-studio/build && $(MAKE) $(MAKESILENT) -f libs/showbox-ui/CMakeFiles/showbox-ui.dir/build.make libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.o
+.PHONY : src/ShowboxBuilder.cpp.o
+
+src/ShowboxBuilder.i: src/ShowboxBuilder.cpp.i
+.PHONY : src/ShowboxBuilder.i
+
+# target to preprocess a source file
+src/ShowboxBuilder.cpp.i:
+	cd /workspace/showbox-studio/build && $(MAKE) $(MAKESILENT) -f libs/showbox-ui/CMakeFiles/showbox-ui.dir/build.make libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.i
+.PHONY : src/ShowboxBuilder.cpp.i
+
+src/ShowboxBuilder.s: src/ShowboxBuilder.cpp.s
+.PHONY : src/ShowboxBuilder.s
+
+# target to generate assembly for a file
+src/ShowboxBuilder.cpp.s:
+	cd /workspace/showbox-studio/build && $(MAKE) $(MAKESILENT) -f libs/showbox-ui/CMakeFiles/showbox-ui.dir/build.make libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.s
+.PHONY : src/ShowboxBuilder.cpp.s
+
 src/custom_chart_widget.o: src/custom_chart_widget.cpp.o
 .PHONY : src/custom_chart_widget.o
 
@@ -254,6 +288,30 @@ src/logger.cpp.s:
 	cd /workspace/showbox-studio/build && $(MAKE) $(MAKESILENT) -f libs/showbox-ui/CMakeFiles/showbox-ui.dir/build.make libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/logger.cpp.s
 .PHONY : src/logger.cpp.s
 
+src/push_button_widget.o: src/push_button_widget.cpp.o
+.PHONY : src/push_button_widget.o
+
+# target to build an object file
+src/push_button_widget.cpp.o:
+	cd /workspace/showbox-studio/build && $(MAKE) $(MAKESILENT) -f libs/showbox-ui/CMakeFiles/showbox-ui.dir/build.make libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.o
+.PHONY : src/push_button_widget.cpp.o
+
+src/push_button_widget.i: src/push_button_widget.cpp.i
+.PHONY : src/push_button_widget.i
+
+# target to preprocess a source file
+src/push_button_widget.cpp.i:
+	cd /workspace/showbox-studio/build && $(MAKE) $(MAKESILENT) -f libs/showbox-ui/CMakeFiles/showbox-ui.dir/build.make libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.i
+.PHONY : src/push_button_widget.cpp.i
+
+src/push_button_widget.s: src/push_button_widget.cpp.s
+.PHONY : src/push_button_widget.s
+
+# target to generate assembly for a file
+src/push_button_widget.cpp.s:
+	cd /workspace/showbox-studio/build && $(MAKE) $(MAKESILENT) -f libs/showbox-ui/CMakeFiles/showbox-ui.dir/build.make libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.s
+.PHONY : src/push_button_widget.cpp.s
+
 src/theme_manager.o: src/theme_manager.cpp.o
 .PHONY : src/theme_manager.o
 
@@ -310,12 +368,16 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test"
 	@echo "... showbox-ui_autogen"
 	@echo "... showbox-ui_autogen_timestamp_deps"
 	@echo "... showbox-ui"
 	@echo "... showbox-ui_autogen/mocs_compilation.o"
 	@echo "... showbox-ui_autogen/mocs_compilation.i"
 	@echo "... showbox-ui_autogen/mocs_compilation.s"
+	@echo "... src/ShowboxBuilder.o"
+	@echo "... src/ShowboxBuilder.i"
+	@echo "... src/ShowboxBuilder.s"
 	@echo "... src/custom_chart_widget.o"
 	@echo "... src/custom_chart_widget.i"
 	@echo "... src/custom_chart_widget.s"
@@ -325,6 +387,9 @@ help:
 	@echo "... src/logger.o"
 	@echo "... src/logger.i"
 	@echo "... src/logger.s"
+	@echo "... src/push_button_widget.o"
+	@echo "... src/push_button_widget.i"
+	@echo "... src/push_button_widget.s"
 	@echo "... src/theme_manager.o"
 	@echo "... src/theme_manager.i"
 	@echo "... src/theme_manager.s"

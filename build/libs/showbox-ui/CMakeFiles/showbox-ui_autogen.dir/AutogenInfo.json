@@ -29,6 +29,18 @@
 	"HEADERS" : 
 	[
 		[
+			"/workspace/showbox/libs/showbox-ui/include/ShowboxBuilder.h",
+			"MU",
+			"6YEA5652QU/moc_ShowboxBuilder.cpp",
+			null
+		],
+		[
+			"/workspace/showbox/libs/showbox-ui/include/WidgetConfigs.h",
+			"MU",
+			"6YEA5652QU/moc_WidgetConfigs.cpp",
+			null
+		],
+		[
 			"/workspace/showbox/libs/showbox-ui/include/custom_chart_widget.h",
 			"MU",
 			"6YEA5652QU/moc_custom_chart_widget.cpp",
@@ -50,6 +62,12 @@
 			"/workspace/showbox/libs/showbox-ui/include/logger.h",
 			"MU",
 			"6YEA5652QU/moc_logger.cpp",
+			null
+		],
+		[
+			"/workspace/showbox/libs/showbox-ui/include/push_button_widget.h",
+			"MU",
+			"6YEA5652QU/moc_push_button_widget.cpp",
 			null
 		],
 		[
@@ -130,7 +148,7 @@
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
-	"PARALLEL" : 8,
+	"PARALLEL" : 4,
 	"PARSE_CACHE_FILE" : "/workspace/showbox-studio/build/libs/showbox-ui/CMakeFiles/showbox-ui_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/usr/lib/qt6/libexec/moc",
 	"QT_UIC_EXECUTABLE" : "/usr/lib/qt6/libexec/uic",
@@ -140,12 +158,22 @@
 	"SOURCES" : 
 	[
 		[
+			"/workspace/showbox/libs/showbox-ui/src/ShowboxBuilder.cpp",
+			"MU",
+			null
+		],
+		[
 			"/workspace/showbox/libs/showbox-ui/src/custom_chart_widget.cpp",
 			"MU",
 			null
 		],
 		[ "/workspace/showbox/libs/showbox-ui/src/icon_helper.cpp", "MU", null ],
 		[ "/workspace/showbox/libs/showbox-ui/src/logger.cpp", "MU", null ],
+		[
+			"/workspace/showbox/libs/showbox-ui/src/push_button_widget.cpp",
+			"MU",
+			null
+		],
 		[
 			"/workspace/showbox/libs/showbox-ui/src/theme_manager.cpp",
 			"MU",

@@ -93,38 +93,24 @@ CMakeFiles/showbox-studio.dir/showbox-studio_autogen/mocs_compilation.cpp.s: cma
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/showbox-studio.dir/showbox-studio_autogen/mocs_compilation.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/showbox-studio/build/showbox-studio_autogen/mocs_compilation.cpp -o CMakeFiles/showbox-studio.dir/showbox-studio_autogen/mocs_compilation.cpp.s
 
-CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o: CMakeFiles/showbox-studio.dir/flags.make
-CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o: /workspace/showbox-studio/src/core/StudioController.cpp
-CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o: CMakeFiles/showbox-studio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/showbox-studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o -MF CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o.d -o CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o -c /workspace/showbox-studio/src/core/StudioController.cpp
+CMakeFiles/showbox-studio.dir/src/main.cpp.o: CMakeFiles/showbox-studio.dir/flags.make
+CMakeFiles/showbox-studio.dir/src/main.cpp.o: /workspace/showbox-studio/src/main.cpp
+CMakeFiles/showbox-studio.dir/src/main.cpp.o: CMakeFiles/showbox-studio.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/showbox-studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/showbox-studio.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/showbox-studio.dir/src/main.cpp.o -MF CMakeFiles/showbox-studio.dir/src/main.cpp.o.d -o CMakeFiles/showbox-studio.dir/src/main.cpp.o -c /workspace/showbox-studio/src/main.cpp
 
-CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspace/showbox-studio/src/core/StudioController.cpp > CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.i
+CMakeFiles/showbox-studio.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/showbox-studio.dir/src/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspace/showbox-studio/src/main.cpp > CMakeFiles/showbox-studio.dir/src/main.cpp.i
 
-CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/showbox-studio/src/core/StudioController.cpp -o CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.s
-
-CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o: CMakeFiles/showbox-studio.dir/flags.make
-CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o: /workspace/showbox-studio/src/gui/Canvas.cpp
-CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o: CMakeFiles/showbox-studio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/showbox-studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o -MF CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o.d -o CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o -c /workspace/showbox-studio/src/gui/Canvas.cpp
-
-CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspace/showbox-studio/src/gui/Canvas.cpp > CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.i
-
-CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/showbox-studio/src/gui/Canvas.cpp -o CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.s
+CMakeFiles/showbox-studio.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/showbox-studio.dir/src/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/showbox-studio/src/main.cpp -o CMakeFiles/showbox-studio.dir/src/main.cpp.s
 
 CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.o: CMakeFiles/showbox-studio.dir/flags.make
 CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.o: /workspace/showbox-studio/src/gui/MainWindow.cpp
 CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.o: CMakeFiles/showbox-studio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/showbox-studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/showbox-studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.o -MF CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.o.d -o CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.o -c /workspace/showbox-studio/src/gui/MainWindow.cpp
 
 CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.i: cmake_force
@@ -134,6 +120,20 @@ CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.i: cmake_force
 CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/showbox-studio/src/gui/MainWindow.cpp -o CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.s
+
+CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o: CMakeFiles/showbox-studio.dir/flags.make
+CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o: /workspace/showbox-studio/src/gui/Canvas.cpp
+CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o: CMakeFiles/showbox-studio.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/showbox-studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o -MF CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o.d -o CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o -c /workspace/showbox-studio/src/gui/Canvas.cpp
+
+CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspace/showbox-studio/src/gui/Canvas.cpp > CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.i
+
+CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/showbox-studio/src/gui/Canvas.cpp -o CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.s
 
 CMakeFiles/showbox-studio.dir/src/gui/ObjectInspector.cpp.o: CMakeFiles/showbox-studio.dir/flags.make
 CMakeFiles/showbox-studio.dir/src/gui/ObjectInspector.cpp.o: /workspace/showbox-studio/src/gui/ObjectInspector.cpp
@@ -163,40 +163,72 @@ CMakeFiles/showbox-studio.dir/src/gui/PropertyEditor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/showbox-studio.dir/src/gui/PropertyEditor.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/showbox-studio/src/gui/PropertyEditor.cpp -o CMakeFiles/showbox-studio.dir/src/gui/PropertyEditor.cpp.s
 
-CMakeFiles/showbox-studio.dir/src/main.cpp.o: CMakeFiles/showbox-studio.dir/flags.make
-CMakeFiles/showbox-studio.dir/src/main.cpp.o: /workspace/showbox-studio/src/main.cpp
-CMakeFiles/showbox-studio.dir/src/main.cpp.o: CMakeFiles/showbox-studio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/showbox-studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/showbox-studio.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/showbox-studio.dir/src/main.cpp.o -MF CMakeFiles/showbox-studio.dir/src/main.cpp.o.d -o CMakeFiles/showbox-studio.dir/src/main.cpp.o -c /workspace/showbox-studio/src/main.cpp
+CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o: CMakeFiles/showbox-studio.dir/flags.make
+CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o: /workspace/showbox-studio/src/core/StudioController.cpp
+CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o: CMakeFiles/showbox-studio.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/showbox-studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o -MF CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o.d -o CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o -c /workspace/showbox-studio/src/core/StudioController.cpp
 
-CMakeFiles/showbox-studio.dir/src/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/showbox-studio.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspace/showbox-studio/src/main.cpp > CMakeFiles/showbox-studio.dir/src/main.cpp.i
+CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspace/showbox-studio/src/core/StudioController.cpp > CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.i
 
-CMakeFiles/showbox-studio.dir/src/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/showbox-studio.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/showbox-studio/src/main.cpp -o CMakeFiles/showbox-studio.dir/src/main.cpp.s
+CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/showbox-studio/src/core/StudioController.cpp -o CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.s
+
+CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.o: CMakeFiles/showbox-studio.dir/flags.make
+CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.o: /workspace/showbox-studio/src/core/ScriptGenerator.cpp
+CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.o: CMakeFiles/showbox-studio.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/showbox-studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.o -MF CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.o.d -o CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.o -c /workspace/showbox-studio/src/core/ScriptGenerator.cpp
+
+CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspace/showbox-studio/src/core/ScriptGenerator.cpp > CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.i
+
+CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/showbox-studio/src/core/ScriptGenerator.cpp -o CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.s
+
+CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.o: CMakeFiles/showbox-studio.dir/flags.make
+CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.o: /workspace/showbox-studio/src/core/ProjectSerializer.cpp
+CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.o: CMakeFiles/showbox-studio.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/showbox-studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.o -MF CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.o.d -o CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.o -c /workspace/showbox-studio/src/core/ProjectSerializer.cpp
+
+CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspace/showbox-studio/src/core/ProjectSerializer.cpp > CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.i
+
+CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/showbox-studio/src/core/ProjectSerializer.cpp -o CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.s
 
 # Object files for target showbox-studio
 showbox__studio_OBJECTS = \
 "CMakeFiles/showbox-studio.dir/showbox-studio_autogen/mocs_compilation.cpp.o" \
-"CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o" \
-"CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o" \
+"CMakeFiles/showbox-studio.dir/src/main.cpp.o" \
 "CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.o" \
+"CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o" \
 "CMakeFiles/showbox-studio.dir/src/gui/ObjectInspector.cpp.o" \
 "CMakeFiles/showbox-studio.dir/src/gui/PropertyEditor.cpp.o" \
-"CMakeFiles/showbox-studio.dir/src/main.cpp.o"
+"CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o" \
+"CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.o" \
+"CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.o"
 
 # External object files for target showbox-studio
 showbox__studio_EXTERNAL_OBJECTS =
 
 showbox-studio: CMakeFiles/showbox-studio.dir/showbox-studio_autogen/mocs_compilation.cpp.o
-showbox-studio: CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o
-showbox-studio: CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o
+showbox-studio: CMakeFiles/showbox-studio.dir/src/main.cpp.o
 showbox-studio: CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.o
+showbox-studio: CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o
 showbox-studio: CMakeFiles/showbox-studio.dir/src/gui/ObjectInspector.cpp.o
 showbox-studio: CMakeFiles/showbox-studio.dir/src/gui/PropertyEditor.cpp.o
-showbox-studio: CMakeFiles/showbox-studio.dir/src/main.cpp.o
+showbox-studio: CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o
+showbox-studio: CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.o
+showbox-studio: CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.o
 showbox-studio: CMakeFiles/showbox-studio.dir/build.make
 showbox-studio: CMakeFiles/showbox-studio.dir/compiler_depend.ts
 showbox-studio: libs/showbox-ui/libshowbox-ui.a
@@ -210,7 +242,7 @@ showbox-studio: /usr/lib/x86_64-linux-gnu/libGLX.so
 showbox-studio: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 showbox-studio: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.8.2
 showbox-studio: CMakeFiles/showbox-studio.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspace/showbox-studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable showbox-studio"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspace/showbox-studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable showbox-studio"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/showbox-studio.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /workspace/showbox-studio/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
@@ -194,6 +204,201 @@ showbox-ui_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f libs/showbox-ui/CMakeFiles/showbox-ui_autogen.dir/build.make libs/showbox-ui/CMakeFiles/showbox-ui_autogen.dir/build
 .PHONY : showbox-ui_autogen/fast
 
+#=============================================================================
+# Target rules for targets named tst_WidgetConfigs
+
+# Build rule for target.
+tst_WidgetConfigs: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tst_WidgetConfigs
+.PHONY : tst_WidgetConfigs
+
+# fast build rule for target.
+tst_WidgetConfigs/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/tst_WidgetConfigs.dir/build.make tests/CMakeFiles/tst_WidgetConfigs.dir/build
+.PHONY : tst_WidgetConfigs/fast
+
+#=============================================================================
+# Target rules for targets named tst_StudioIntegration
+
+# Build rule for target.
+tst_StudioIntegration: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tst_StudioIntegration
+.PHONY : tst_StudioIntegration
+
+# fast build rule for target.
+tst_StudioIntegration/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/tst_StudioIntegration.dir/build.make tests/CMakeFiles/tst_StudioIntegration.dir/build
+.PHONY : tst_StudioIntegration/fast
+
+#=============================================================================
+# Target rules for targets named tst_ScriptGenerator
+
+# Build rule for target.
+tst_ScriptGenerator: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tst_ScriptGenerator
+.PHONY : tst_ScriptGenerator
+
+# fast build rule for target.
+tst_ScriptGenerator/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/tst_ScriptGenerator.dir/build.make tests/CMakeFiles/tst_ScriptGenerator.dir/build
+.PHONY : tst_ScriptGenerator/fast
+
+#=============================================================================
+# Target rules for targets named tst_ProjectSerializer
+
+# Build rule for target.
+tst_ProjectSerializer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tst_ProjectSerializer
+.PHONY : tst_ProjectSerializer
+
+# fast build rule for target.
+tst_ProjectSerializer/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/tst_ProjectSerializer.dir/build.make tests/CMakeFiles/tst_ProjectSerializer.dir/build
+.PHONY : tst_ProjectSerializer/fast
+
+#=============================================================================
+# Target rules for targets named tst_UndoRedo
+
+# Build rule for target.
+tst_UndoRedo: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tst_UndoRedo
+.PHONY : tst_UndoRedo
+
+# fast build rule for target.
+tst_UndoRedo/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/tst_UndoRedo.dir/build.make tests/CMakeFiles/tst_UndoRedo.dir/build
+.PHONY : tst_UndoRedo/fast
+
+#=============================================================================
+# Target rules for targets named tst_WidgetConfigs_autogen_timestamp_deps
+
+# Build rule for target.
+tst_WidgetConfigs_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tst_WidgetConfigs_autogen_timestamp_deps
+.PHONY : tst_WidgetConfigs_autogen_timestamp_deps
+
+# fast build rule for target.
+tst_WidgetConfigs_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/tst_WidgetConfigs_autogen_timestamp_deps.dir/build.make tests/CMakeFiles/tst_WidgetConfigs_autogen_timestamp_deps.dir/build
+.PHONY : tst_WidgetConfigs_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named tst_WidgetConfigs_autogen
+
+# Build rule for target.
+tst_WidgetConfigs_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tst_WidgetConfigs_autogen
+.PHONY : tst_WidgetConfigs_autogen
+
+# fast build rule for target.
+tst_WidgetConfigs_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/tst_WidgetConfigs_autogen.dir/build.make tests/CMakeFiles/tst_WidgetConfigs_autogen.dir/build
+.PHONY : tst_WidgetConfigs_autogen/fast
+
+#=============================================================================
+# Target rules for targets named tst_StudioIntegration_autogen_timestamp_deps
+
+# Build rule for target.
+tst_StudioIntegration_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tst_StudioIntegration_autogen_timestamp_deps
+.PHONY : tst_StudioIntegration_autogen_timestamp_deps
+
+# fast build rule for target.
+tst_StudioIntegration_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/tst_StudioIntegration_autogen_timestamp_deps.dir/build.make tests/CMakeFiles/tst_StudioIntegration_autogen_timestamp_deps.dir/build
+.PHONY : tst_StudioIntegration_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named tst_StudioIntegration_autogen
+
+# Build rule for target.
+tst_StudioIntegration_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tst_StudioIntegration_autogen
+.PHONY : tst_StudioIntegration_autogen
+
+# fast build rule for target.
+tst_StudioIntegration_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/tst_StudioIntegration_autogen.dir/build.make tests/CMakeFiles/tst_StudioIntegration_autogen.dir/build
+.PHONY : tst_StudioIntegration_autogen/fast
+
+#=============================================================================
+# Target rules for targets named tst_ScriptGenerator_autogen_timestamp_deps
+
+# Build rule for target.
+tst_ScriptGenerator_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tst_ScriptGenerator_autogen_timestamp_deps
+.PHONY : tst_ScriptGenerator_autogen_timestamp_deps
+
+# fast build rule for target.
+tst_ScriptGenerator_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/tst_ScriptGenerator_autogen_timestamp_deps.dir/build.make tests/CMakeFiles/tst_ScriptGenerator_autogen_timestamp_deps.dir/build
+.PHONY : tst_ScriptGenerator_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named tst_ScriptGenerator_autogen
+
+# Build rule for target.
+tst_ScriptGenerator_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tst_ScriptGenerator_autogen
+.PHONY : tst_ScriptGenerator_autogen
+
+# fast build rule for target.
+tst_ScriptGenerator_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/tst_ScriptGenerator_autogen.dir/build.make tests/CMakeFiles/tst_ScriptGenerator_autogen.dir/build
+.PHONY : tst_ScriptGenerator_autogen/fast
+
+#=============================================================================
+# Target rules for targets named tst_ProjectSerializer_autogen_timestamp_deps
+
+# Build rule for target.
+tst_ProjectSerializer_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tst_ProjectSerializer_autogen_timestamp_deps
+.PHONY : tst_ProjectSerializer_autogen_timestamp_deps
+
+# fast build rule for target.
+tst_ProjectSerializer_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/tst_ProjectSerializer_autogen_timestamp_deps.dir/build.make tests/CMakeFiles/tst_ProjectSerializer_autogen_timestamp_deps.dir/build
+.PHONY : tst_ProjectSerializer_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named tst_ProjectSerializer_autogen
+
+# Build rule for target.
+tst_ProjectSerializer_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tst_ProjectSerializer_autogen
+.PHONY : tst_ProjectSerializer_autogen
+
+# fast build rule for target.
+tst_ProjectSerializer_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/tst_ProjectSerializer_autogen.dir/build.make tests/CMakeFiles/tst_ProjectSerializer_autogen.dir/build
+.PHONY : tst_ProjectSerializer_autogen/fast
+
+#=============================================================================
+# Target rules for targets named tst_UndoRedo_autogen_timestamp_deps
+
+# Build rule for target.
+tst_UndoRedo_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tst_UndoRedo_autogen_timestamp_deps
+.PHONY : tst_UndoRedo_autogen_timestamp_deps
+
+# fast build rule for target.
+tst_UndoRedo_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/tst_UndoRedo_autogen_timestamp_deps.dir/build.make tests/CMakeFiles/tst_UndoRedo_autogen_timestamp_deps.dir/build
+.PHONY : tst_UndoRedo_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named tst_UndoRedo_autogen
+
+# Build rule for target.
+tst_UndoRedo_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tst_UndoRedo_autogen
+.PHONY : tst_UndoRedo_autogen
+
+# fast build rule for target.
+tst_UndoRedo_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/tst_UndoRedo_autogen.dir/build.make tests/CMakeFiles/tst_UndoRedo_autogen.dir/build
+.PHONY : tst_UndoRedo_autogen/fast
+
 showbox-studio_autogen/mocs_compilation.o: showbox-studio_autogen/mocs_compilation.cpp.o
 .PHONY : showbox-studio_autogen/mocs_compilation.o
 
@@ -217,6 +422,54 @@ showbox-studio_autogen/mocs_compilation.s: showbox-studio_autogen/mocs_compilati
 showbox-studio_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/showbox-studio.dir/build.make CMakeFiles/showbox-studio.dir/showbox-studio_autogen/mocs_compilation.cpp.s
 .PHONY : showbox-studio_autogen/mocs_compilation.cpp.s
+
+src/core/ProjectSerializer.o: src/core/ProjectSerializer.cpp.o
+.PHONY : src/core/ProjectSerializer.o
+
+# target to build an object file
+src/core/ProjectSerializer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/showbox-studio.dir/build.make CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.o
+.PHONY : src/core/ProjectSerializer.cpp.o
+
+src/core/ProjectSerializer.i: src/core/ProjectSerializer.cpp.i
+.PHONY : src/core/ProjectSerializer.i
+
+# target to preprocess a source file
+src/core/ProjectSerializer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/showbox-studio.dir/build.make CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.i
+.PHONY : src/core/ProjectSerializer.cpp.i
+
+src/core/ProjectSerializer.s: src/core/ProjectSerializer.cpp.s
+.PHONY : src/core/ProjectSerializer.s
+
+# target to generate assembly for a file
+src/core/ProjectSerializer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/showbox-studio.dir/build.make CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.s
+.PHONY : src/core/ProjectSerializer.cpp.s
+
+src/core/ScriptGenerator.o: src/core/ScriptGenerator.cpp.o
+.PHONY : src/core/ScriptGenerator.o
+
+# target to build an object file
+src/core/ScriptGenerator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/showbox-studio.dir/build.make CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.o
+.PHONY : src/core/ScriptGenerator.cpp.o
+
+src/core/ScriptGenerator.i: src/core/ScriptGenerator.cpp.i
+.PHONY : src/core/ScriptGenerator.i
+
+# target to preprocess a source file
+src/core/ScriptGenerator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/showbox-studio.dir/build.make CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.i
+.PHONY : src/core/ScriptGenerator.cpp.i
+
+src/core/ScriptGenerator.s: src/core/ScriptGenerator.cpp.s
+.PHONY : src/core/ScriptGenerator.s
+
+# target to generate assembly for a file
+src/core/ScriptGenerator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/showbox-studio.dir/build.make CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.s
+.PHONY : src/core/ScriptGenerator.cpp.s
 
 src/core/StudioController.o: src/core/StudioController.cpp.o
 .PHONY : src/core/StudioController.o
@@ -370,15 +623,37 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test"
 	@echo "... showbox-studio_autogen"
 	@echo "... showbox-studio_autogen_timestamp_deps"
 	@echo "... showbox-ui_autogen"
 	@echo "... showbox-ui_autogen_timestamp_deps"
+	@echo "... tst_ProjectSerializer_autogen"
+	@echo "... tst_ProjectSerializer_autogen_timestamp_deps"
+	@echo "... tst_ScriptGenerator_autogen"
+	@echo "... tst_ScriptGenerator_autogen_timestamp_deps"
+	@echo "... tst_StudioIntegration_autogen"
+	@echo "... tst_StudioIntegration_autogen_timestamp_deps"
+	@echo "... tst_UndoRedo_autogen"
+	@echo "... tst_UndoRedo_autogen_timestamp_deps"
+	@echo "... tst_WidgetConfigs_autogen"
+	@echo "... tst_WidgetConfigs_autogen_timestamp_deps"
 	@echo "... showbox-studio"
 	@echo "... showbox-ui"
+	@echo "... tst_ProjectSerializer"
+	@echo "... tst_ScriptGenerator"
+	@echo "... tst_StudioIntegration"
+	@echo "... tst_UndoRedo"
+	@echo "... tst_WidgetConfigs"
 	@echo "... showbox-studio_autogen/mocs_compilation.o"
 	@echo "... showbox-studio_autogen/mocs_compilation.i"
 	@echo "... showbox-studio_autogen/mocs_compilation.s"
+	@echo "... src/core/ProjectSerializer.o"
+	@echo "... src/core/ProjectSerializer.i"
+	@echo "... src/core/ProjectSerializer.s"
+	@echo "... src/core/ScriptGenerator.o"
+	@echo "... src/core/ScriptGenerator.i"
+	@echo "... src/core/ScriptGenerator.s"
 	@echo "... src/core/StudioController.o"
 	@echo "... src/core/StudioController.i"
 	@echo "... src/core/StudioController.s"

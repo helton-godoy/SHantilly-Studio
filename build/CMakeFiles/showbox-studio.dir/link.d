@@ -3,12 +3,14 @@ showbox-studio: \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o \
   /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o \
   CMakeFiles/showbox-studio.dir/showbox-studio_autogen/mocs_compilation.cpp.o \
-  CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o \
-  CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o \
+  CMakeFiles/showbox-studio.dir/src/main.cpp.o \
   CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.o \
+  CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o \
   CMakeFiles/showbox-studio.dir/src/gui/ObjectInspector.cpp.o \
   CMakeFiles/showbox-studio.dir/src/gui/PropertyEditor.cpp.o \
-  CMakeFiles/showbox-studio.dir/src/main.cpp.o \
+  CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o \
+  CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.o \
+  CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.o \
   libs/showbox-ui/libshowbox-ui.a \
   /usr/lib/x86_64-linux-gnu/libQt6Charts.so.6.8.2 \
   /usr/lib/x86_64-linux-gnu/libQt6OpenGLWidgets.so.6.8.2 \
@@ -93,17 +95,21 @@ showbox-studio: \
 
 CMakeFiles/showbox-studio.dir/showbox-studio_autogen/mocs_compilation.cpp.o:
 
-CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o:
-
-CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o:
+CMakeFiles/showbox-studio.dir/src/main.cpp.o:
 
 CMakeFiles/showbox-studio.dir/src/gui/MainWindow.cpp.o:
+
+CMakeFiles/showbox-studio.dir/src/gui/Canvas.cpp.o:
 
 CMakeFiles/showbox-studio.dir/src/gui/ObjectInspector.cpp.o:
 
 CMakeFiles/showbox-studio.dir/src/gui/PropertyEditor.cpp.o:
 
-CMakeFiles/showbox-studio.dir/src/main.cpp.o:
+CMakeFiles/showbox-studio.dir/src/core/StudioController.cpp.o:
+
+CMakeFiles/showbox-studio.dir/src/core/ScriptGenerator.cpp.o:
+
+CMakeFiles/showbox-studio.dir/src/core/ProjectSerializer.cpp.o:
 
 libs/showbox-ui/libshowbox-ui.a:
 

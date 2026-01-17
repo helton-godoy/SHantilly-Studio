@@ -3,6 +3,7 @@
 
 StudioController::StudioController(QObject *parent) : QObject(parent)
 {
+    m_undoStack = new QUndoStack(this);
 }
 
 void StudioController::manageWidget(QWidget *widget)

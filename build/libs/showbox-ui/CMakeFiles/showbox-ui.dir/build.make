@@ -163,6 +163,34 @@ libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/widget_factory.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/showbox-ui.dir/src/widget_factory.cpp.s"
 	cd /workspace/showbox-studio/build/libs/showbox-ui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/showbox/libs/showbox-ui/src/widget_factory.cpp -o CMakeFiles/showbox-ui.dir/src/widget_factory.cpp.s
 
+libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.o: libs/showbox-ui/CMakeFiles/showbox-ui.dir/flags.make
+libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.o: /workspace/showbox/libs/showbox-ui/src/push_button_widget.cpp
+libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.o: libs/showbox-ui/CMakeFiles/showbox-ui.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/showbox-studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.o"
+	cd /workspace/showbox-studio/build/libs/showbox-ui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.o -MF CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.o.d -o CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.o -c /workspace/showbox/libs/showbox-ui/src/push_button_widget.cpp
+
+libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.i"
+	cd /workspace/showbox-studio/build/libs/showbox-ui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspace/showbox/libs/showbox-ui/src/push_button_widget.cpp > CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.i
+
+libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.s"
+	cd /workspace/showbox-studio/build/libs/showbox-ui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/showbox/libs/showbox-ui/src/push_button_widget.cpp -o CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.s
+
+libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.o: libs/showbox-ui/CMakeFiles/showbox-ui.dir/flags.make
+libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.o: /workspace/showbox/libs/showbox-ui/src/ShowboxBuilder.cpp
+libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.o: libs/showbox-ui/CMakeFiles/showbox-ui.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/showbox-studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.o"
+	cd /workspace/showbox-studio/build/libs/showbox-ui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.o -MF CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.o.d -o CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.o -c /workspace/showbox/libs/showbox-ui/src/ShowboxBuilder.cpp
+
+libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.i"
+	cd /workspace/showbox-studio/build/libs/showbox-ui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspace/showbox/libs/showbox-ui/src/ShowboxBuilder.cpp > CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.i
+
+libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.s"
+	cd /workspace/showbox-studio/build/libs/showbox-ui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/showbox/libs/showbox-ui/src/ShowboxBuilder.cpp -o CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.s
+
 # Object files for target showbox-ui
 showbox__ui_OBJECTS = \
 "CMakeFiles/showbox-ui.dir/showbox-ui_autogen/mocs_compilation.cpp.o" \
@@ -170,7 +198,9 @@ showbox__ui_OBJECTS = \
 "CMakeFiles/showbox-ui.dir/src/logger.cpp.o" \
 "CMakeFiles/showbox-ui.dir/src/custom_chart_widget.cpp.o" \
 "CMakeFiles/showbox-ui.dir/src/theme_manager.cpp.o" \
-"CMakeFiles/showbox-ui.dir/src/widget_factory.cpp.o"
+"CMakeFiles/showbox-ui.dir/src/widget_factory.cpp.o" \
+"CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.o" \
+"CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.o"
 
 # External object files for target showbox-ui
 showbox__ui_EXTERNAL_OBJECTS =
@@ -181,9 +211,11 @@ libs/showbox-ui/libshowbox-ui.a: libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/l
 libs/showbox-ui/libshowbox-ui.a: libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/custom_chart_widget.cpp.o
 libs/showbox-ui/libshowbox-ui.a: libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/theme_manager.cpp.o
 libs/showbox-ui/libshowbox-ui.a: libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/widget_factory.cpp.o
+libs/showbox-ui/libshowbox-ui.a: libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.o
+libs/showbox-ui/libshowbox-ui.a: libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.o
 libs/showbox-ui/libshowbox-ui.a: libs/showbox-ui/CMakeFiles/showbox-ui.dir/build.make
 libs/showbox-ui/libshowbox-ui.a: libs/showbox-ui/CMakeFiles/showbox-ui.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspace/showbox-studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX static library libshowbox-ui.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspace/showbox-studio/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX static library libshowbox-ui.a"
 	cd /workspace/showbox-studio/build/libs/showbox-ui && $(CMAKE_COMMAND) -P CMakeFiles/showbox-ui.dir/cmake_clean_target.cmake
 	cd /workspace/showbox-studio/build/libs/showbox-ui && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/showbox-ui.dir/link.txt --verbose=$(VERBOSE)
 

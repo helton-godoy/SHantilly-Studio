@@ -422,6 +422,8 @@ CMakeFiles/showbox-studio.dir/showbox-studio_autogen/mocs_compilation.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qinputmethod.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qlocale.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qguiapplication_platform.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QUndoStack \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qundostack.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qtmochelpers.h \
  /workspace/showbox-studio/build/showbox-studio_autogen/MXUWEOXILK/moc_Canvas.cpp \
  /workspace/showbox-studio/build/showbox-studio_autogen/MXUWEOXILK/../../../src/gui/Canvas.h \
@@ -464,4 +466,6 @@ CMakeFiles/showbox-studio.dir/showbox-studio_autogen/mocs_compilation.cpp.o: \
  /workspace/showbox-studio/build/showbox-studio_autogen/MXUWEOXILK/../../../src/gui/PropertyEditor.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTableWidget \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtablewidget.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtableview.h
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtableview.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QMetaProperty \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qmetaobject.h

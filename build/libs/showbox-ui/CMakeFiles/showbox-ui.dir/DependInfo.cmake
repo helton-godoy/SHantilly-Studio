@@ -10,9 +10,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "" "libs/showbox-ui/showbox-ui_autogen/timestamp" "custom" "libs/showbox-ui/showbox-ui_autogen/deps"
   "/workspace/showbox-studio/build/libs/showbox-ui/showbox-ui_autogen/mocs_compilation.cpp" "libs/showbox-ui/CMakeFiles/showbox-ui.dir/showbox-ui_autogen/mocs_compilation.cpp.o" "gcc" "libs/showbox-ui/CMakeFiles/showbox-ui.dir/showbox-ui_autogen/mocs_compilation.cpp.o.d"
+  "/workspace/showbox/libs/showbox-ui/src/ShowboxBuilder.cpp" "libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.o" "gcc" "libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/ShowboxBuilder.cpp.o.d"
   "/workspace/showbox/libs/showbox-ui/src/custom_chart_widget.cpp" "libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/custom_chart_widget.cpp.o" "gcc" "libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/custom_chart_widget.cpp.o.d"
   "/workspace/showbox/libs/showbox-ui/src/icon_helper.cpp" "libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/icon_helper.cpp.o" "gcc" "libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/icon_helper.cpp.o.d"
   "/workspace/showbox/libs/showbox-ui/src/logger.cpp" "libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/logger.cpp.o" "gcc" "libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/logger.cpp.o.d"
+  "/workspace/showbox/libs/showbox-ui/src/push_button_widget.cpp" "libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.o" "gcc" "libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/push_button_widget.cpp.o.d"
   "/workspace/showbox/libs/showbox-ui/src/theme_manager.cpp" "libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/theme_manager.cpp.o" "gcc" "libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/theme_manager.cpp.o.d"
   "/workspace/showbox/libs/showbox-ui/src/widget_factory.cpp" "libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/widget_factory.cpp.o" "gcc" "libs/showbox-ui/CMakeFiles/showbox-ui.dir/src/widget_factory.cpp.o.d"
   )
