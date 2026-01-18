@@ -43,6 +43,8 @@ RUN apt-get update -qq && apt-get install -qqy --no-install-recommends \
     curl \
     wget \
     file \
+    clang-format \
+    doxygen \
     && rm -rf /var/lib/apt/lists/*
 
 # Gerar locale
