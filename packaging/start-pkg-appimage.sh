@@ -7,7 +7,7 @@ WORKSPACE_ROOT="$(cd "${STUDIO_ROOT}/.." && pwd)"
 
 IMAGE_NAME="SHantilly-Studio-dev:latest"
 
-echo "=== Showbox Studio Packaging Orchestrator ==="
+echo "=== SHantilly Studio Packaging Orchestrator ==="
 echo "Workspace: ${WORKSPACE_ROOT}"
 
 # Garantir que a imagem existe (constrói se não existir)

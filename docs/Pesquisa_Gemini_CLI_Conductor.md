@@ -15,12 +15,12 @@ O **Gemini CLI** é uma ferramenta de linha de comando open-source desenvolvida 
 
 ### Sistema Conductor
 
-O **Conductor** é um framework de gerenciamento de projetos integrado ao Showbox Studio, projetado para profissionais de TI que necessitam criar interfaces visuais sem expertise avançada em desenvolvimento. Opera em conjunto com o Showbox (CLI/Engine) e Showbox-Studio (IDE Visual), seguindo princípios de desenvolvimento orientado a testes (TDD) e workflows estruturados.
+O **Conductor** é um framework de gerenciamento de projetos integrado ao SHantilly Studio, projetado para profissionais de TI que necessitam criar interfaces visuais sem expertise avançada em desenvolvimento. Opera em conjunto com o SHantilly (CLI/Engine) e SHantilly-Studio (IDE Visual), seguindo princípios de desenvolvimento orientado a testes (TDD) e workflows estruturados.
 
 **Pilares do Ecossistema:**
 
-- **Showbox (Core):** Biblioteca C++17/Qt6 para widgets de alta fidelidade
-- **Showbox-Studio:** IDE visual para construção drag-and-drop de interfaces
+- **SHantilly (Core):** Biblioteca C++17/Qt6 para widgets de alta fidelidade
+- **SHantilly-Studio:** IDE visual para construção drag-and-drop de interfaces
 - **Conductor:** Sistema de workflow com tracking rigoroso de tarefas, checkpoints e verificações de qualidade
 
 ## Exemplos Práticos
@@ -51,7 +51,7 @@ gemini generate tests --file src/core/StudioController.cpp --framework gtest
 #!/bin/bash
 
 # Fase 1: Análise de requisitos com Gemini
-gemini "Analise os requisitos para implementar undo/redo no Showbox-Studio"
+gemini "Analise os requisitos para implementar undo/redo no SHantilly-Studio"
 
 # Fase 2: Geração de código de teste (TDD)
 gemini generate tests --feature "undo_redo_system" --output tests/tst_UndoRedo.cpp
@@ -113,7 +113,7 @@ gemini "Analise as mudanças no último commit" --context git
 
 ### Conductor + Ferramentas de Desenvolvimento
 
-- **CMake + Qt6:** Build system modular para Showbox Core
+- **CMake + Qt6:** Build system modular para SHantilly Core
 - **CTest:** Framework de testes integrado
 - **Git Flow:** Controle de versão com branches feature/hotfix
 - **Docker:** Ambiente de desenvolvimento containerizado
@@ -164,10 +164,10 @@ sudo apt install nodejs npm cmake qt6-base-dev
 git clone https://github.com/google-gemini/gemini-cli.git
 cd gemini-cli && npm install -g .
 
-# Setup Showbox-Studio
+# Setup SHantilly-Studio
 cd /home/helton/git/SHantilly-studio
 mkdir build && cd build
-cmake .. -DSHOWBOX_ROOT=../SHantilly
+cmake .. -DSHANTILLY_ROOT=../SHantilly
 make -j$(nproc)
 ```
 
@@ -222,7 +222,7 @@ git notes add -m "Task: Real-time preview\\nTests: Generated with Gemini CLI\\nC
      run: ./conductor/scripts/checkpoint.sh
    ```
 
-4. **Templates de Prompt:** Crie templates específicos para o ecossistema Showbox:
+4. **Templates de Prompt:** Crie templates específicos para o ecossistema SHantilly:
 
    ```bash
    gemini --template SHantilly-widget "Crie um widget QPushButton personalizado seguindo padrões Qt6"
@@ -250,4 +250,4 @@ git notes add -m "Task: Real-time preview\\nTests: Generated with Gemini CLI\\nC
 - **Parallel Execution:** Execute análises em paralelo para projetos grandes
 - **Incremental Analysis:** Analise apenas arquivos modificados desde o último commit
 
-Esta consolidação demonstra como o Gemini CLI pode potencializar os workflows rigorosos do Conductor, criando um ecossistema de desenvolvimento mais eficiente e inteligente para o Showbox Studio.
+Esta consolidação demonstra como o Gemini CLI pode potencializar os workflows rigorosos do Conductor, criando um ecossistema de desenvolvimento mais eficiente e inteligente para o SHantilly Studio.

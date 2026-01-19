@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Showbox Studio
-Comment=Visual Editor for Showbox Dialogs
-Exec=SHantilly-Studio
-Icon=SHantilly-Studio
-Categories=Development;IDE;GUIDesigner;
-Terminal=false

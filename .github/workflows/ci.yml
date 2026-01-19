@@ -1,0 +1,89 @@
+name: CI - Studio Build and Test
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    env:
+      VCPKG_BINARY_SOURCES: 'clear;nuget,GitHub,readwrite'
+    steps:
+      - name: Checkout Studio
+        uses: actions/checkout@v4
+        with:
+          path: SHantilly-Studio
+          fetch-depth: 0
+
+      - name: Checkout Core (Dependency)
+        uses: actions/checkout@v4
+        with:
+          repository: helton-godoy/SHantilly
+          path: SHantilly
+          fetch-depth: 0
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgl1-mesa-dev libx11-dev libxkbcommon-dev libfontconfig1-dev libdbus-1-dev libicu-dev xvfb clang-format clang-tidy cppcheck lcov
+
+      - name: Cache vcpkg
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ github.workspace }}/SHantilly-Studio/vcpkg
+            ${{ github.workspace }}/SHantilly-Studio/vcpkg_installed
+          key: ${{ runner.os }}-studio-vcpkg-${{ hashFiles('SHantilly-Studio/vcpkg.json') }}
+          restore-keys: |
+            ${{ runner.os }}-studio-vcpkg-
+
+      - name: Setup vcpkg
+        uses: lukka/run-vcpkg@v11
+        with:
+          vcpkgJsonGlob: 'SHantilly-Studio/vcpkg.json'
+
+      - name: Run Trunk Check
+        uses: trunk-io/trunk-action@v1
+        with:
+          arguments: --working-directory SHantilly-Studio
+
+      - name: Build, Test and Generate Coverage
+        working-directory: SHantilly-Studio
+        run: |
+          xvfb-run make coverage_internal
+
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: studio-coverage-report
+          path: SHantilly-Studio/coverage_report/
+
+      - name: Run Clang-Tidy
+        working-directory: SHantilly-Studio
+        run: make tidy_internal
+
+      - name: Run Cppcheck
+        working-directory: SHantilly-Studio
+        run: make cppcheck_internal
+
+      - name: Run Trivy Vulnerability Scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: 'SHantilly-Studio'
+          hide-progress: false
+          format: 'table'
+          exit-code: '0'
+          ignore-unfixed: true
+          severity: 'CRITICAL,HIGH'
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          projectBaseDir: SHantilly-Studio
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

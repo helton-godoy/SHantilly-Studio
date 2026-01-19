@@ -3,7 +3,7 @@ find_package(Qt6 REQUIRED COMPONENTS Test Widgets Charts Svg)
 # --- Teste de Configurações (Existente) ---
 add_executable(tst_WidgetConfigs tst_WidgetConfigs.cpp)
 target_link_libraries(tst_WidgetConfigs PRIVATE Qt6::Test SHantilly-ui)
-target_include_directories(tst_WidgetConfigs PRIVATE "${SHOWBOX_UI_INCLUDE}")
+target_include_directories(tst_WidgetConfigs PRIVATE "${SHANTILLY_UI_INCLUDE}")
 add_test(NAME tst_WidgetConfigs COMMAND tst_WidgetConfigs)
 
 # --- Teste de Integração do Studio (Existente) ---
@@ -28,7 +28,7 @@ target_link_libraries(tst_StudioIntegration PRIVATE
 
 target_include_directories(tst_StudioIntegration PRIVATE 
     "${CMAKE_CURRENT_SOURCE_DIR}/../src"
-    "${SHOWBOX_UI_INCLUDE}"
+    "${SHANTILLY_UI_INCLUDE}"
 )
 
 add_test(NAME tst_StudioIntegration COMMAND tst_StudioIntegration)
@@ -54,7 +54,7 @@ target_link_libraries(tst_ScriptGenerator PRIVATE
 
 target_include_directories(tst_ScriptGenerator PRIVATE 
     "${CMAKE_CURRENT_SOURCE_DIR}/../src"
-    "${SHOWBOX_UI_INCLUDE}"
+    "${SHANTILLY_UI_INCLUDE}"
 )
 
 add_test(NAME tst_ScriptGenerator COMMAND tst_ScriptGenerator)
@@ -78,7 +78,7 @@ target_link_libraries(tst_ProjectSerializer PRIVATE
 
 target_include_directories(tst_ProjectSerializer PRIVATE 
     "${CMAKE_CURRENT_SOURCE_DIR}/../src"
-    "${SHOWBOX_UI_INCLUDE}"
+    "${SHANTILLY_UI_INCLUDE}"
 )
 
 add_test(NAME tst_ProjectSerializer COMMAND tst_ProjectSerializer)
@@ -104,7 +104,7 @@ target_link_libraries(tst_UndoRedo PRIVATE
 
 target_include_directories(tst_UndoRedo PRIVATE 
     "${CMAKE_CURRENT_SOURCE_DIR}/../src"
-    "${SHOWBOX_UI_INCLUDE}"
+    "${SHANTILLY_UI_INCLUDE}"
 )
 
 # --- Teste de Hierarquia (Novo) ---
@@ -126,7 +126,7 @@ target_link_libraries(tst_Hierarchy PRIVATE
 
 target_include_directories(tst_Hierarchy PRIVATE 
     "${CMAKE_CURRENT_SOURCE_DIR}/../src"
-    "${SHOWBOX_UI_INCLUDE}"
+    "${SHANTILLY_UI_INCLUDE}"
 )
 
 add_test(NAME tst_Hierarchy COMMAND tst_Hierarchy)
@@ -150,7 +150,7 @@ target_link_libraries(tst_StylePerformance PRIVATE
 
 target_include_directories(tst_StylePerformance PRIVATE 
     "${CMAKE_CURRENT_SOURCE_DIR}/../src"
-    "${SHOWBOX_UI_INCLUDE}"
+    "${SHANTILLY_UI_INCLUDE}"
 )
 
 add_test(NAME tst_StylePerformance COMMAND tst_StylePerformance)

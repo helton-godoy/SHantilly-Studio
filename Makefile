@@ -1,28 +1,43 @@
-# ShowBox Studio Makefile
-# IDE for ShowBox - Build and Development Automation
+# SHantilly Studio Makefile
+# IDE for SHantilly - Build and Development Automation
 
 .PHONY: all build clean install run test help
 .PHONY: dev start-dev start-dev-build
-.PHONY: lint format docs check-deps
+.PHONY: lint format tidy cppcheck security docs check-deps setup coverage
 .PHONY: pkg-appimage
 
 # Variables
 CMAKE := cmake
 MAKE := make
 NPROC := $(shell nproc)
-BUILD_DIR := .
-BIN_DIR := build
+BUILD_DIR := build
 TARGET_BIN := SHantilly-studio
+VCPKG_TOOLCHAIN := $(HOME)/vcpkg/scripts/buildsystems/vcpkg.cmake
+
+# Check for vcpkg toolchain
+ifdef VCPKG_ROOT
+    VCPKG_TOOLCHAIN := $(VCPKG_ROOT)/scripts/buildsystems/vcpkg.cmake
+else
+    VCPKG_TOOLCHAIN := $(HOME)/vcpkg/scripts/buildsystems/vcpkg.cmake
+endif
+
+ifneq ($(wildcard $(VCPKG_TOOLCHAIN)),)
+    CMAKE_ARGS := -DCMAKE_TOOLCHAIN_FILE=$(VCPKG_TOOLCHAIN)
+    USE_VCPKG := 1
+else
+    CMAKE_ARGS :=
+    USE_VCPKG := 0
+endif
 
 # Default target
-all: docker-check-deps build
+all: setup build
 
 # ============================================================================
 # Docker Integration
 # ============================================================================
 
 DOCKER_SCRIPT := ../SHantilly/src/start-dev.sh
-DOCKER_IMAGE := SHantilly-dev:latest
+DOCKER_IMAGE := shantilly-dev:latest
 
 # Check if we are running inside docker
 IN_DOCKER := $(shell [ -f /.dockerenv ] && echo 1 || echo 0)
@@ -45,20 +60,28 @@ docker-shell:  ## Open a shell in the Docker container
 # Development
 # ============================================================================
 
-build:  ## Compile ShowBox Studio (runs inside Docker)
+setup: ## Initialize build directory
+	$(call IN_DOCKER_WRAPPER,setup)
+
+setup_internal:
+	@echo "Setting up Studio build environment..."
+	mkdir -p $(BUILD_DIR)
+
+build:  ## Compile SHantilly Studio (runs inside Docker)
 	$(call IN_DOCKER_WRAPPER,build)
 
 build_internal: check-deps ## Internal build target
-	@echo "Building ShowBox Studio (Inside Docker)..."
-	mkdir -p $(BIN_DIR)
-	cd $(BIN_DIR) && $(CMAKE) .. -DSHOWBOX_ROOT=../SHantilly && $(MAKE) -j$(NPROC)
+	@echo "Building SHantilly Studio (Inside Docker)..."
+	@if [ "$(USE_VCPKG)" = "1" ]; then echo "Using vcpkg toolchain..."; fi
+	mkdir -p $(BUILD_DIR)
+	cd $(BUILD_DIR) && $(CMAKE) .. $(CMAKE_ARGS) -DSHANTILLY_ROOT=../SHantilly && $(MAKE) -j$(NPROC)
 
 clean:  ## Clean build artifacts (runs inside Docker)
 	$(call IN_DOCKER_WRAPPER,clean)
 
 clean_internal: ## Internal clean target
 	@echo "Cleaning build artifacts..."
-	rm -rf $(BIN_DIR)
+	rm -rf $(BUILD_DIR)
 	find . -name "*.o" -delete
 	find . -name "moc_*" -delete
 
@@ -66,15 +89,15 @@ install: build  ## Install Studio (Desktop File)
 	$(call IN_DOCKER_WRAPPER,install)
 
 install_internal: build_internal
-	@echo "Installing ShowBox Studio..."
-	# Logic to install desktop file or copy binary
+	@echo "Installing SHantilly Studio..."
+	cd $(BUILD_DIR) && sudo $(MAKE) install
 
-run: build  ## Run ShowBox Studio
+run: build  ## Run SHantilly Studio
 	$(call IN_DOCKER_WRAPPER,run)
 
 run_internal: build_internal
-	@echo "Running ShowBox Studio..."
-	./$(BIN_DIR)/$(TARGET_BIN)
+	@echo "Running SHantilly Studio..."
+	./$(BUILD_DIR)/$(TARGET_BIN)
 
 dev: docker-shell  ## Alias for docker-shell
 
@@ -98,6 +121,9 @@ check-deps:  ## Check for required development tools (Internal)
 	@$(call CHECK_DEP,cmake,cmake)
 	@$(call CHECK_DEP,$(MAKE),build-essential)
 	@$(call CHECK_DEP,g++,build-essential)
+	@if [ "$(USE_VCPKG)" = "0" ] && [ "$(IN_DOCKER)" = "0" ]; then \
+		echo "Warning: vcpkg not found. Falling back to system libraries."; \
+	fi
 
 check-lint:
 	@$(call CHECK_DEP,clang-format,clang-format)
@@ -130,6 +156,31 @@ format_internal: check-lint check-trunk ## Internal format target
 	fi
 	find src -name "*.h" -o -name "*.cpp" | xargs clang-format -i -verbose -style=file
 
+tidy:  ## Run clang-tidy static analysis (runs inside Docker)
+	$(call IN_DOCKER_WRAPPER,tidy)
+
+tidy_internal: ## Internal tidy target
+	@echo "Running clang-tidy analysis..."
+	@if [ ! -f $(BUILD_DIR)/compile_commands.json ]; then \
+		echo "Error: compile_commands.json not found. Run 'make setup' first."; \
+		exit 1; \
+	fi
+	find src -name "*.cpp" | xargs clang-tidy -p $(BUILD_DIR) --quiet
+
+cppcheck: ## Run cppcheck static analysis (runs inside Docker)
+	$(call IN_DOCKER_WRAPPER,cppcheck)
+
+cppcheck_internal: ## Internal cppcheck target
+	@echo "Running cppcheck analysis..."
+	cppcheck --enable=all --suppress=missingIncludeSystem --inconclusive --std=c++17 --language=c++ src -i build -i vcpkg_installed
+
+security: ## Scan Docker image for vulnerabilities using Trivy
+	@echo "Running Trivy security scan on $(DOCKER_IMAGE)..."
+	docker run --rm \
+		-v /var/run/docker.sock:/var/run/docker.sock \
+		-v $(HOME)/.cache/trivy:/root/.cache/trivy \
+		aquasec/trivy:latest image --severity HIGH,CRITICAL $(DOCKER_IMAGE)
+
 docs:  ## Generate documentation (runs inside Docker)
 	$(call IN_DOCKER_WRAPPER,docs)
 
@@ -138,7 +189,12 @@ docs_internal: check-docs ## Internal docs target
 	@if [ -f Doxyfile ]; then \
 		doxygen Doxyfile; \
 	else \
-		echo "Warning: Doxyfile not found. Skipping docs generation."; \
+		echo "Warning: Doxyfile not found. Skipping Doxygen generation."; \
+	fi
+	@if [ -f mkdocs.yml ]; then \
+		mkdocs build --site-dir public; \
+	else \
+		echo "Warning: mkdocs.yml not found. Skipping MkDocs generation."; \
 	fi
 
 # ============================================================================
@@ -150,7 +206,24 @@ test:  ## Run tests (runs inside Docker)
 
 test_internal: ## Internal test target
 	@echo "Running tests..."
-	cd $(BIN_DIR) && ctest || echo "No tests configured or build dir missing."
+	cd $(BUILD_DIR) && ctest --output-on-failure || echo "No tests configured or build dir missing."
+
+coverage: ## Generate code coverage report (runs inside Docker)
+	$(call IN_DOCKER_WRAPPER,coverage)
+
+coverage_internal: check-deps ## Internal coverage target
+	@echo "Generating code coverage report..."
+	mkdir -p coverage_report
+	mkdir -p $(BUILD_DIR)
+	cd $(BUILD_DIR) && $(CMAKE) .. $(CMAKE_ARGS) -DENABLE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug -DSHANTILLY_ROOT=../SHantilly && $(MAKE) -j$(NPROC)
+	cd $(BUILD_DIR) && ctest --output-on-failure
+	lcov --capture --directory . --output-file coverage.info --ignore-errors empty,unused \
+		--exclude '/usr/*' \
+		--exclude '*/vcpkg_installed/*' \
+		--exclude '*/build/*' \
+		--exclude '*/tests/*' || true
+	genhtml coverage.info --output-directory coverage_report --ignore-errors empty,unused || true
+	@echo "Coverage report generated in coverage_report/index.html"
 
 # ============================================================================
 # Packaging
@@ -165,7 +238,7 @@ pkg-appimage:  ## Build AppImage
 # ============================================================================
 
 help:  ## Show this help
-	@echo "ShowBox Studio Makefile"
+	@echo "SHantilly Studio Makefile"
 	@echo "===================================================================="
 	@echo "Usage: make [target]"
 	@echo ""
