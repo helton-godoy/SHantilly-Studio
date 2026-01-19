@@ -6,43 +6,40 @@
 class StudioController;
 
 class ObjectInspector : public QTreeWidget {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit ObjectInspector(QWidget *parent = nullptr);
+    explicit ObjectInspector(QWidget* parent = nullptr);
 
-  void setController(StudioController *controller) {
-    m_controller = controller;
-  }
+    void setController(StudioController* controller) { m_controller = controller; }
 
-  // Atualiza a árvore baseada no widget raiz do canvas
-  void updateHierarchy(QWidget *root);
+    // Atualiza a árvore baseada no widget raiz do canvas
+    void updateHierarchy(QWidget* root);
 
-  // Métodos incrementais para evitar reconstrução total
-  void onWidgetAdded(QWidget *widget);
-  void onWidgetRemoved(QWidget *widget);
+    // Métodos incrementais para evitar reconstrução total
+    void onWidgetAdded(QWidget* widget);
+    void onWidgetRemoved(QWidget* widget);
 
-  // Sincroniza a seleção quando clicado no canvas
-  void selectItemForWidget(QWidget *widget);
+    // Sincroniza a seleção quando clicado no canvas
+    void selectItemForWidget(QWidget* widget);
 
 signals:
-  void itemSelected(QWidget *widget);
-  void requestGrouping(const QString &containerType);
-  void requestDelete();
+    void itemSelected(QWidget* widget);
+    void requestGrouping(const QString& containerType);
+    void requestDelete();
 
 protected:
-  void dropEvent(QDropEvent *event) override;
-  void contextMenuEvent(QContextMenuEvent *event) override;
-  void mousePressEvent(QMouseEvent *event) override;
+    void dropEvent(QDropEvent* event) override;
+    void contextMenuEvent(QContextMenuEvent* event) override;
+    void mousePressEvent(QMouseEvent* event) override;
 
 private slots:
-  void onSelectionChanged();
-  void onCurrentItemChanged(QTreeWidgetItem *current,
-                            QTreeWidgetItem *previous);
+    void onSelectionChanged();
+    void onCurrentItemChanged(QTreeWidgetItem* current, QTreeWidgetItem* previous);
 
 private:
-  void addWidgetToTree(QWidget *widget, QTreeWidgetItem *parentItem);
-  QMap<QWidget *, QTreeWidgetItem *> m_widgetToItem;
-  StudioController *m_controller = nullptr;
+    void addWidgetToTree(QWidget* widget, QTreeWidgetItem* parentItem);
+    QMap<QWidget*, QTreeWidgetItem*> m_widgetToItem;
+    StudioController* m_controller = nullptr;
 };
 
 #endif // OBJECTINSPECTOR_H

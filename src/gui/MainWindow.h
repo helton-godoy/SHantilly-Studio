@@ -18,43 +18,42 @@ class QActionGroup;
 class QTabWidget;
 
 class MainWindow : public QMainWindow {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit MainWindow(QWidget *parent = nullptr);
-  ~MainWindow();
+    explicit MainWindow(QWidget* parent = nullptr);
+    ~MainWindow();
 
 private slots:
-  void onRunClicked();
-  void onSaveClicked();
-  void onOpenClicked();
-  void onDeleteClicked();
-  void onGroupRequested(const QString &containerType);
-  void onToolboxStyleChanged(int style);
-  void onAddPageRequested(QWidget *tabs);
-  void onRemovePageRequested(QWidget *tabs);
-
+    void onRunClicked();
+    void onSaveClicked();
+    void onOpenClicked();
+    void onDeleteClicked();
+    void onGroupRequested(const QString& containerType);
+    void onToolboxStyleChanged(int style);
+    void onAddPageRequested(QWidget* tabs);
+    void onRemovePageRequested(QWidget* tabs);
 
 private:
-  void setupUI();
-  void createSampleWidgets();
-  void createToolbox(int style);
-  void populateToolbox(AbstractToolbox *toolbox);
+    void setupUI();
+    void createSampleWidgets();
+    void createToolbox(int style);
+    void populateToolbox(AbstractToolbox* toolbox);
 
-  Canvas *m_canvas;
-  IStudioWidgetFactory *m_factory;
-  ObjectInspector *m_inspector;
-  StudioController *m_controller;
-  PropertyEditor *m_propEditor;
-  ActionEditor *m_actionEditor;
+    Canvas* m_canvas;
+    IStudioWidgetFactory* m_factory;
+    ObjectInspector* m_inspector;
+    StudioController* m_controller;
+    PropertyEditor* m_propEditor;
+    ActionEditor* m_actionEditor;
 
-  // Toolbox
-  QDockWidget *m_dockToolbox;
-  AbstractToolbox *m_toolbox;
-  int m_toolboxStyle; // 0 = Classic, 1 = Tree
+    // Toolbox
+    QDockWidget* m_dockToolbox;
+    AbstractToolbox* m_toolbox;
+    int m_toolboxStyle; // 0 = Classic, 1 = Tree
 
-  // Live Preview
-  PreviewManager *m_previewManager;
-  QTextEdit *m_previewLog;
+    // Live Preview
+    PreviewManager* m_previewManager;
+    QTextEdit* m_previewLog;
 };
 
 #endif // MAINWINDOW_H

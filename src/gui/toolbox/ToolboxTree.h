@@ -1,10 +1,11 @@
 #ifndef TOOLBOXTREE_H
 #define TOOLBOXTREE_H
 
-#include "AbstractToolbox.h"
 #include <QHeaderView>
 #include <QTreeWidget>
 #include <QVBoxLayout>
+
+#include "AbstractToolbox.h"
 
 /**
  * @brief Toolbox estilo árvore usando QTreeWidget
@@ -14,25 +15,25 @@
  * independentemente.
  */
 class ToolboxTree : public AbstractToolbox {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit ToolboxTree(QWidget *parent = nullptr) : AbstractToolbox(parent) {
-    QVBoxLayout *layout = new QVBoxLayout(this);
-    layout->setContentsMargins(0, 0, 0, 0);
+    explicit ToolboxTree(QWidget* parent = nullptr) : AbstractToolbox(parent) {
+        QVBoxLayout* layout = new QVBoxLayout(this);
+        layout->setContentsMargins(0, 0, 0, 0);
 
-    m_tree = new QTreeWidget(this);
-    m_tree->setHeaderHidden(true);
-    m_tree->setDragEnabled(true);
-    m_tree->setDragDropMode(QAbstractItemView::DragOnly);
-    m_tree->setSelectionMode(QAbstractItemView::SingleSelection);
-    m_tree->setIndentation(16);
-    m_tree->setAnimated(true);
-    m_tree->setRootIsDecorated(true);
-    m_tree->setExpandsOnDoubleClick(true);
+        m_tree = new QTreeWidget(this);
+        m_tree->setHeaderHidden(true);
+        m_tree->setDragEnabled(true);
+        m_tree->setDragDropMode(QAbstractItemView::DragOnly);
+        m_tree->setSelectionMode(QAbstractItemView::SingleSelection);
+        m_tree->setIndentation(16);
+        m_tree->setAnimated(true);
+        m_tree->setRootIsDecorated(true);
+        m_tree->setExpandsOnDoubleClick(true);
 
-    // Estilização limpa sem dependência de ícones externos
-    m_tree->setStyleSheet(R"(
+        // Estilização limpa sem dependência de ícones externos
+        m_tree->setStyleSheet(R"(
             QTreeWidget {
                 background-color: #2d2d2d;
                 border: none;
@@ -70,47 +71,44 @@ public:
             }
         )");
 
-    // Emitir sinal quando item folha é clicado
-    connect(m_tree, &QTreeWidget::itemClicked, this,
-            [this](QTreeWidgetItem *item, int) {
-              // Só emite para itens folha (widgets), não categorias
-              if (item->childCount() == 0) {
+        // Emitir sinal quando item folha é clicado
+        connect(m_tree, &QTreeWidget::itemClicked, this, [this](QTreeWidgetItem* item, int) {
+            // Só emite para itens folha (widgets), não categorias
+            if (item->childCount() == 0) {
                 emit widgetSelected(item->text(0));
-              }
-            });
+            }
+        });
 
-    layout->addWidget(m_tree);
-  }
-
-  void addCategory(const QString &categoryName,
-                   const QStringList &items) override {
-    QTreeWidgetItem *category = new QTreeWidgetItem(m_tree);
-    category->setText(0, categoryName);
-    category->setFlags(category->flags() &
-                       ~Qt::ItemIsDragEnabled); // Categoria não arrastável
-    category->setExpanded(true);                // Expandido por padrão
-
-    for (const QString &item : items) {
-      QTreeWidgetItem *child = new QTreeWidgetItem(category);
-      child->setText(0, item);
-      child->setFlags(child->flags() | Qt::ItemIsDragEnabled);
+        layout->addWidget(m_tree);
     }
-  }
 
-  QString styleName() const override { return "Tree (Expandable)"; }
+    void addCategory(const QString& categoryName, const QStringList& items) override {
+        QTreeWidgetItem* category = new QTreeWidgetItem(m_tree);
+        category->setText(0, categoryName);
+        category->setFlags(category->flags() & ~Qt::ItemIsDragEnabled); // Categoria não arrastável
+        category->setExpanded(true);                                    // Expandido por padrão
 
-  /**
-   * @brief Expande todas as categorias
-   */
-  void expandAll() { m_tree->expandAll(); }
+        for (const QString& item : items) {
+            QTreeWidgetItem* child = new QTreeWidgetItem(category);
+            child->setText(0, item);
+            child->setFlags(child->flags() | Qt::ItemIsDragEnabled);
+        }
+    }
 
-  /**
-   * @brief Colapsa todas as categorias
-   */
-  void collapseAll() { m_tree->collapseAll(); }
+    QString styleName() const override { return "Tree (Expandable)"; }
+
+    /**
+     * @brief Expande todas as categorias
+     */
+    void expandAll() { m_tree->expandAll(); }
+
+    /**
+     * @brief Colapsa todas as categorias
+     */
+    void collapseAll() { m_tree->collapseAll(); }
 
 private:
-  QTreeWidget *m_tree;
+    QTreeWidget* m_tree;
 };
 
 #endif // TOOLBOXTREE_H

@@ -54,7 +54,20 @@ ui_*.h
 # Trunk
 .trunk/out/
 .trunk/logs/
+.trunk/actions/
+.trunk/notifications/
+.trunk/tools/
 
 # Local setup
 /template/bootstrap.sh.done
 build-pkg/
+
+# Generated documentation (CI builds these)
+site/
+public/
+coverage_report/
+dist/
+
+# Core dumps
+core
+core.*
