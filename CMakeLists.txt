@@ -8,7 +8,7 @@ if(NOT DEFINED CMAKE_TOOLCHAIN_FILE
       CACHE STRING "")
 endif()
 
-project(SHantilly-studio LANGUAGES CXX)
+project(shantilly-studio LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -79,14 +79,14 @@ set(STUDIO_SOURCES
     src/core/PreviewManager.cpp
     src/core/PreviewManager.h)
 
-add_executable(SHantilly-studio ${STUDIO_SOURCES})
+add_executable(shantilly-studio ${STUDIO_SOURCES})
 
 # Includes
-target_include_directories(SHantilly-studio
+target_include_directories(shantilly-studio
                            PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # Linkagem
-target_link_libraries(SHantilly-studio PRIVATE Qt6::Widgets Qt6::Charts
+target_link_libraries(shantilly-studio PRIVATE Qt6::Widgets Qt6::Charts
                                                Qt6::Svg SHantilly-ui)
 
 enable_testing()
@@ -99,7 +99,7 @@ include(GNUInstallDirs)
 
 # Instala o binário em usr/bin
 install(
-  TARGETS SHantilly-studio
+  TARGETS shantilly-studio
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   BUNDLE DESTINATION .)
 
@@ -108,10 +108,10 @@ install(
 install(
   FILES packaging/icon/shantilly-studio.svg
   DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/scalable/apps
-  RENAME SHantilly-studio.svg)
+  RENAME shantilly-studio.svg)
 
 # Instala o arquivo .desktop
-install(FILES packaging/appimage/SHantilly-studio.desktop
+install(FILES packaging/appimage/shantilly-studio.desktop
         DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
 # ============================================================================
 # CPack - Empacotamento DEB

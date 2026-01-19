@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 STUDIO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 WORKSPACE_ROOT="$(cd "${STUDIO_ROOT}/.." && pwd)"
 
-IMAGE_NAME="SHantilly-Studio-dev:latest"
+IMAGE_NAME="shantilly-studio-dev:latest"
 
 echo "=== SHantilly Studio Packaging Orchestrator ==="
 echo "Workspace: ${WORKSPACE_ROOT}"

@@ -2,7 +2,7 @@
 set -e
 
 # Configurações da Imagem
-IMAGE_NAME="SHantilly-Studio-dev:latest"
+IMAGE_NAME="shantilly-studio-dev:latest"
 DOCKERFILE_PATH="src/dev.Dockerfile"
 
 # Diretórios

@@ -33,10 +33,10 @@ make install DESTDIR="${APPDIR}"
 echo "[3/6] Downloading deployment tools..."
 cd "${BUILD_DIR}"
 WGET_OPTS="--no-check-certificate -q -nc"
-wget "${WGET_OPTS}" https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
-wget "${WGET_OPTS}" https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage
-wget "${WGET_OPTS}" https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
-wget "${WGET_OPTS}" https://github.com/AppImage/type2-runtime/releases/download/continuous/runtime-x86_64
+wget ${WGET_OPTS} https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
+wget ${WGET_OPTS} https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage
+wget ${WGET_OPTS} https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
+wget ${WGET_OPTS} https://github.com/AppImage/type2-runtime/releases/download/continuous/runtime-x86_64
 chmod +x *.AppImage
 
 # 5. Configurar Ambiente para Temas e Portais
@@ -53,16 +53,16 @@ echo "[4/6] Running linuxdeploy (bundling dependencies)..."
 	--appdir "${APPDIR}" \
 	--plugin qt \
 	--custom-apprun "${PROJECT_ROOT}/packaging/appimage/AppRun" \
-	--icon-file "${APPDIR}/usr/share/icons/hicolor/scalable/apps/SHantilly-Studio.svg" \
-	--desktop-file "${APPDIR}/usr/share/applications/SHantilly-Studio.desktop"
+	--icon-file "${APPDIR}/usr/share/icons/hicolor/scalable/apps/shantilly-studio.svg" \
+	--desktop-file "${APPDIR}/usr/share/applications/shantilly-studio.desktop"
 
 echo "[5/6] Packaging with appimagetool manually..."
 # Forçamos o uso do runtime local
 ./appimagetool-x86_64.AppImage "${APPDIR}" \
 	--runtime-file runtime-x86_64 \
-	"SHantilly_Studio-${LINUXDEPLOY_OUTPUT_VERSION}-x86_64.AppImage"
+	"shantilly-studio-${LINUXDEPLOY_OUTPUT_VERSION}-x86_64.AppImage"
 
 # 6. Mover resultado para pasta dist
-mv SHantilly_Studio*.AppImage "${DIST_DIR}/"
+mv shantilly-studio*.AppImage "${DIST_DIR}/"
 
 echo "=== Success! Professional Package available in dist/ ==="

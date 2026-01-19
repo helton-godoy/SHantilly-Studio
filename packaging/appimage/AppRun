@@ -13,4 +13,4 @@ fi
 export LD_LIBRARY_PATH="$HERE/usr/lib:$LD_LIBRARY_PATH"
 export QT_PLUGIN_PATH="$HERE/usr/plugins"
 
-exec "$HERE/usr/bin/SHantilly-Studio" "$@"
+exec "$HERE/usr/bin/shantilly-studio" "$@"
