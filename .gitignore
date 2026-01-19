@@ -59,6 +59,7 @@ ui_*.h
 .trunk/tools/
 
 # Local setup
+.env
 /template/bootstrap.sh.done
 build-pkg/
 

@@ -1,5 +1,6 @@
-# SHantilly Studio Makefile
-# IDE for SHantilly - Build and Development Automation
+# SHantilly Studio Makefile# Load optional .env file (for local secrets like SONAR_TOKEN)
+-include .env
+export# IDE for SHantilly - Build and Development Automation
 
 .PHONY: all build clean install run test help
 .PHONY: dev start-dev start-dev-build
