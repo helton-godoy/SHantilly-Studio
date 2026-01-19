@@ -1,12 +1,12 @@
-#include <QtTest>
 #include <QUndoStack>
-#include "core/StudioController.h"
+#include <QtTest>
+
 #include "core/StudioCommands.h"
+#include "core/StudioController.h"
 #include "core/StudioWidgetFactory.h"
 #include "gui/Canvas.h"
 
-class tst_UndoRedo : public QObject
-{
+class tst_UndoRedo : public QObject {
     Q_OBJECT
 
 private slots:
@@ -14,23 +14,21 @@ private slots:
     void testAddDeleteCommands();
 };
 
-void tst_UndoRedo::testUndoStackInitialization()
-{
+void tst_UndoRedo::testUndoStackInitialization() {
     StudioController controller;
-    QUndoStack *stack = controller.undoStack();
+    QUndoStack* stack = controller.undoStack();
     QVERIFY(stack != nullptr);
     QCOMPARE(stack->count(), 0);
 }
 
-void tst_UndoRedo::testAddDeleteCommands()
-{
+void tst_UndoRedo::testAddDeleteCommands() {
     StudioWidgetFactory factory;
     Canvas canvas(&factory);
     StudioController controller;
-    QUndoStack *stack = controller.undoStack();
+    QUndoStack* stack = controller.undoStack();
 
-    QWidget *btn = factory.createWidget("PushButton", "test_btn");
-    
+    QWidget* btn = factory.createWidget("PushButton", "test_btn");
+
     // 1. Testar Add
     stack->push(new AddWidgetCommand(&canvas, btn));
     QCOMPARE(stack->count(), 1);

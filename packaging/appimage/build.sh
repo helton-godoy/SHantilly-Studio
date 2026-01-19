@@ -33,10 +33,10 @@ make install DESTDIR="${APPDIR}"
 echo "[3/6] Downloading deployment tools..."
 cd "${BUILD_DIR}"
 WGET_OPTS="--no-check-certificate -q -nc"
-wget ${WGET_OPTS} https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
-wget ${WGET_OPTS} https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage
-wget ${WGET_OPTS} https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
-wget ${WGET_OPTS} https://github.com/AppImage/type2-runtime/releases/download/continuous/runtime-x86_64
+wget "${WGET_OPTS}" https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
+wget "${WGET_OPTS}" https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage
+wget "${WGET_OPTS}" https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
+wget "${WGET_OPTS}" https://github.com/AppImage/type2-runtime/releases/download/continuous/runtime-x86_64
 chmod +x *.AppImage
 
 # 5. Configurar Ambiente para Temas e Portais

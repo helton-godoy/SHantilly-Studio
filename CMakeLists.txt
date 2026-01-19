@@ -1,8 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
 
 # Integração automática com vcpkg (Manifest Mode)
-if(NOT DEFINED CMAKE_TOOLCHAIN_FILE AND EXISTS "$ENV{HOME}/vcpkg/scripts/buildsystems/vcpkg.cmake")
-    set(CMAKE_TOOLCHAIN_FILE "$ENV{HOME}/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
+if(NOT DEFINED CMAKE_TOOLCHAIN_FILE
+   AND EXISTS "$ENV{HOME}/vcpkg/scripts/buildsystems/vcpkg.cmake")
+  set(CMAKE_TOOLCHAIN_FILE
+      "$ENV{HOME}/vcpkg/scripts/buildsystems/vcpkg.cmake"
+      CACHE STRING "")
 endif()
 
 project(SHantilly-studio LANGUAGES CXX)
@@ -16,10 +19,11 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # ============================================================================
 option(ENABLE_COVERAGE "Enable coverage reporting" OFF)
 if(ENABLE_COVERAGE)
-    if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-        add_compile_options(--coverage -O0 -g)
-        add_link_options(--coverage)
-    endif()
+  if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL
+                                             "Clang")
+    add_compile_options(--coverage -O0 -g)
+    add_link_options(--coverage)
+  endif()
 endif()
 
 # 1. Localizar pacotes do Qt6 (via vcpkg)
@@ -32,7 +36,8 @@ set(CMAKE_AUTORCC ON)
 
 # Configuração do caminho do SHantilly Core
 if(NOT SHANTILLY_ROOT)
-    get_filename_component(SHANTILLY_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../SHantilly" ABSOLUTE)
+  get_filename_component(SHANTILLY_ROOT
+                         "${CMAKE_CURRENT_SOURCE_DIR}/../SHantilly" ABSOLUTE)
 endif()
 message(STATUS "Using SHANTILLY_ROOT: ${SHANTILLY_ROOT}")
 
@@ -45,7 +50,7 @@ set(SHANTILLY_UI_LIB_DIR "${SHANTILLY_ROOT}/build/lib")
 add_subdirectory("${SHANTILLY_UI_DIR}" "libs/SHantilly-ui")
 
 # Fontes do Studio
-set(STUDIO_SOURCES 
+set(STUDIO_SOURCES
     src/main.cpp
     src/gui/MainWindow.cpp
     src/gui/MainWindow.h
@@ -72,25 +77,17 @@ set(STUDIO_SOURCES
     src/core/StudioWidgetFactory.h
     src/core/IStudioWidgetFactory.h
     src/core/PreviewManager.cpp
-    src/core/PreviewManager.h
-)
+    src/core/PreviewManager.h)
 
-add_executable(SHantilly-studio 
-    ${STUDIO_SOURCES}
-)
+add_executable(SHantilly-studio ${STUDIO_SOURCES})
 
 # Includes
-target_include_directories(SHantilly-studio PRIVATE 
-    ${CMAKE_CURRENT_SOURCE_DIR}/src
-)
+target_include_directories(SHantilly-studio
+                           PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # Linkagem
-target_link_libraries(SHantilly-studio PRIVATE 
-    Qt6::Widgets 
-    Qt6::Charts
-    Qt6::Svg
-    SHantilly-ui
-)
+target_link_libraries(SHantilly-studio PRIVATE Qt6::Widgets Qt6::Charts
+                                               Qt6::Svg SHantilly-ui)
 
 enable_testing()
 add_subdirectory(tests)
@@ -101,31 +98,32 @@ add_subdirectory(tests)
 include(GNUInstallDirs)
 
 # Instala o binário em usr/bin
-install(TARGETS SHantilly-studio
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-    BUNDLE DESTINATION .
-)
+install(
+  TARGETS SHantilly-studio
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  BUNDLE DESTINATION .)
 
-# Instala o ícone SVG (Scalable) para garantir alta definição
-# O comando RENAME garante que o ícone tenha o nome esperado pelo .desktop
-install(FILES packaging/icon/shantilly-studio.svg 
-    DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/scalable/apps
-    RENAME SHantilly-studio.svg
-)
+# Instala o ícone SVG (Scalable) para garantir alta definição O comando RENAME
+# garante que o ícone tenha o nome esperado pelo .desktop
+install(
+  FILES packaging/icon/shantilly-studio.svg
+  DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/scalable/apps
+  RENAME SHantilly-studio.svg)
 
 # Instala o arquivo .desktop
-install(FILES packaging/appimage/SHantilly-studio.desktop 
-    DESTINATION ${CMAKE_INSTALL_DATADIR}/applications
-)
+install(FILES packaging/appimage/SHantilly-studio.desktop
+        DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
 # ============================================================================
 # CPack - Empacotamento DEB
 # ============================================================================
 set(CPACK_PACKAGE_NAME "shantilly-studio")
 set(CPACK_PACKAGE_VENDOR "helton-godoy")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "SHantilly Studio - Visual IDE for SHantilly")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY
+    "SHantilly Studio - Visual IDE for SHantilly")
 set(CPACK_PACKAGE_VERSION "1.0.0")
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Helton Godoy <helton@example.com>")
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "libqt6widgets6, libqt6charts6, libqt6svg6, shantilly")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS
+    "libqt6widgets6, libqt6charts6, libqt6svg6, shantilly")
 set(CPACK_GENERATOR "DEB")
 
 include(CPack)

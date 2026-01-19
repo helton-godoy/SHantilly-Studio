@@ -59,6 +59,9 @@ ui_*.h
 .trunk/tools/
 
 # Local setup
+# SonarQube
+.scannerwork/
+.sonar/
 .env
 /template/bootstrap.sh.done
 build-pkg/

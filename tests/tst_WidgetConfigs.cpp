@@ -1,4 +1,5 @@
 #include <QtTest>
+
 #include "WidgetConfigs.h"
 
 using namespace Sbx::Models;
@@ -24,7 +25,7 @@ void TestWidgetConfigs::testCheckBoxConfig() {
     config.name = "chk";
     config.text = "Option";
     config.checked = true;
-    
+
     QCOMPARE(config.name, QString("chk"));
     QCOMPARE(config.text, QString("Option"));
     QCOMPARE(config.checked, true);
@@ -36,7 +37,7 @@ void TestWidgetConfigs::testRadioButtonConfig() {
     config.name = "radio";
     config.text = "Choice";
     config.checked = true;
-    
+
     QCOMPARE(config.name, QString("radio"));
     QCOMPARE(config.text, QString("Choice"));
     QCOMPARE(config.checked, true);
@@ -52,7 +53,7 @@ void TestWidgetConfigs::testSpinBoxConfig() {
     config.value = 10;
     config.prefix = "$";
     config.suffix = " USD";
-    
+
     QCOMPARE(config.min, 0);
     QCOMPARE(config.max, 100);
     QCOMPARE(config.step, 5);
@@ -68,7 +69,7 @@ void TestWidgetConfigs::testSliderConfig() {
     config.min = 0;
     config.max = 10;
     config.orientation = Qt::Horizontal;
-    
+
     QCOMPARE(config.min, 0);
     QCOMPARE(config.max, 10);
     QCOMPARE(config.orientation, Qt::Horizontal);
@@ -87,7 +88,7 @@ void TestWidgetConfigs::testTextEditConfig() {
     config.text = "Content";
     config.readOnly = true;
     config.richText = true;
-    
+
     QCOMPARE(config.text, QString("Content"));
     QCOMPARE(config.readOnly, true);
     QCOMPARE(config.richText, true);
@@ -107,7 +108,7 @@ void TestWidgetConfigs::testGroupBoxConfig() {
     config.name = "group";
     config.title = "Settings";
     config.layout.type = SbxLayoutConfig::Grid;
-    
+
     QCOMPARE(config.title, QString("Settings"));
     QCOMPARE(config.layout.type, SbxLayoutConfig::Grid);
     QVERIFY(config.isValid());
@@ -124,18 +125,18 @@ void TestWidgetConfigs::testFrameConfig() {
 void TestWidgetConfigs::testTabWidgetConfig() {
     TabWidgetConfig config;
     config.name = "tabs";
-    
+
     PageConfig p1;
     p1.name = "page1";
     p1.title = "General";
-    
+
     PageConfig p2;
     p2.name = "page2";
     p2.title = "Advanced";
-    
+
     config.pages.append(p1);
     config.pages.append(p2);
-    
+
     QCOMPARE(config.pages.size(), 2);
     QCOMPARE(config.pages[0].title, QString("General"));
     QCOMPARE(config.pages[1].title, QString("Advanced"));
