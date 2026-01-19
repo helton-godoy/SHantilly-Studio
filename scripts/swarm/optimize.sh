@@ -7,21 +7,21 @@
 FILE="$1"
 MODEL="opencode/minimax-m2.1-free" # Optimization-friendly model
 
-if [ -z "$FILE" ]; then
-  echo "Usage: $0 <file_path>"
-  exit 1
+if [[ -z ${FILE} ]]; then
+	echo "Usage: $0 <file_path>"
+	exit 1
 fi
 
-echo "[Optimize] Optimizing: $FILE using $MODEL"
+echo "[Optimize] Optimizing: ${FILE} using ${MODEL}"
 
-opencode run "Analyze $FILE. Improve performance and readability. Apply Qt6 best practices. Return the full optimized code." --model "$MODEL" > "${FILE}.optimized"
+opencode run "Analyze ${FILE}. Improve performance and readability. Apply Qt6 best practices. Return the full optimized code." --model "${MODEL}" >"${FILE}.optimized"
 EXIT_CODE=$?
 
-if [ $EXIT_CODE -eq 0 ]; then
-    echo "Optimization saved to ${FILE}.optimized"
-    gemini --prompt "/conductor:notify 'Optimize Agent finished: $FILE'" > /dev/null 2>&1 || true
+if [[ ${EXIT_CODE} -eq 0 ]]; then
+	echo "Optimization saved to ${FILE}.optimized"
+	gemini --prompt "/conductor:notify 'Optimize Agent finished: ${FILE}'" >/dev/null 2>&1 || true
 else
-    gemini --prompt "/conductor:notify 'Optimize Agent FAILED: $FILE'" > /dev/null 2>&1 || true
+	gemini --prompt "/conductor:notify 'Optimize Agent FAILED: ${FILE}'" >/dev/null 2>&1 || true
 fi
 
-exit $EXIT_CODE
+exit "${EXIT_CODE}"

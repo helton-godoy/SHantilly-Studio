@@ -57,6 +57,11 @@ void PropertyEditor::setTargetWidget(QWidget *widget) {
   // --- Propriedades Virtuais: ESTILO (Cores) ---
   addStylePropertyRows(widget);
 
+  // --- Propriedade Virtual: TITULO/TEXTO (para widgets que não têm via Meta) ---
+  if (type == "page") {
+    addDynamicPropertyRow(widget, "title", "Title");
+  }
+
   m_isLoading = false;
 }
 
@@ -313,4 +318,17 @@ void PropertyEditor::onCellValueChanged(int row, int col) {
       m_target->setProperty(propName.toUtf8().constData(), newValue);
     }
   }
+}
+
+void PropertyEditor::addDynamicPropertyRow(QWidget *widget, const QString &name,
+                                           const QString &label) {
+  int row = rowCount();
+  insertRow(row);
+  setItem(row, 0, new QTableWidgetItem(label));
+  item(row, 0)->setFlags(item(row, 0)->flags() ^ Qt::ItemIsEditable);
+
+  QTableWidgetItem *valueItem =
+      new QTableWidgetItem(widget->property(name.toUtf8().constData()).toString());
+  valueItem->setData(Qt::UserRole, name);
+  setItem(row, 1, valueItem);
 }

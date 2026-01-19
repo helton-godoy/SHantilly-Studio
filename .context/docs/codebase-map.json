@@ -3,11 +3,7 @@
   "generated": "2026-01-17T18:47:59.165Z",
   "stack": {
     "primaryLanguage": "typescript",
-    "languages": [
-      "cpp",
-      "c",
-      "typescript"
-    ],
+    "languages": ["cpp", "c", "typescript"],
     "frameworks": [],
     "buildTools": [],
     "testFrameworks": [],

@@ -22,14 +22,16 @@ USER_ID=$(id -u)
 GROUP_ID=$(id -g)
 
 # Configuração de GUI (X11)
-DOCKER_ARGS=""
+DOCKER_ARGS=()
 if [[ -n ${DISPLAY} ]]; then
 	echo "Enabling GUI support (X11)..."
-	DOCKER_ARGS="${DOCKER_ARGS} -e DISPLAY=${DISPLAY} -v /tmp/.X11-unix:/tmp/.X11-unix"
+	DOCKER_ARGS+=(-e "DISPLAY=${DISPLAY}")
+	DOCKER_ARGS+=(-v "/tmp/.X11-unix:/tmp/.X11-unix")
 
 	# Tenta configurar cookies XAuth se necessário (opcional, mas ajuda em alguns sistemas)
 	if [[ -f "${HOME}/.Xauthority" ]]; then
-		DOCKER_ARGS="${DOCKER_ARGS} -v ${HOME}/.Xauthority:/tmp/.Xauthority -e XAUTHORITY=/tmp/.Xauthority"
+		DOCKER_ARGS+=(-v "${HOME}/.Xauthority:/tmp/.Xauthority")
+		DOCKER_ARGS+=(-e "XAUTHORITY=/tmp/.Xauthority")
 	fi
 fi
 
@@ -51,6 +53,6 @@ docker run --rm "${INTERACTIVE_FLAGS}" \
 	-u "${USER_ID}:${GROUP_ID}" \
 	-e HOME=/tmp \
 	-w "/workspace/${PROJECT_DIR_NAME}" \
-	${DOCKER_ARGS} \
+	"${DOCKER_ARGS[@]}" \
 	"${IMAGE_NAME}" \
 	bash -c "${CMD}"

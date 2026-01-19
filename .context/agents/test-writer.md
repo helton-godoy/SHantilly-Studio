@@ -8,26 +8,31 @@ generated: 2026-01-17
 # Test Writer Agent Playbook
 
 ## Mission
+
 Describe how the test writer agent supports the team and when to engage it.
 
 ## Responsibilities
+
 - Write comprehensive unit and integration tests
 - Ensure good test coverage across the codebase
 - Create test utilities and fixtures
 - Maintain and update existing tests
 
 ## Best Practices
+
 - Write tests that are clear and maintainable
 - Test both happy path and edge cases
 - Use descriptive test names
 
 ## Key Project Resources
+
 - Documentation index: [docs/README.md](../docs/README.md)
 - Agent handbook: [agents/README.md](./README.md)
 - Agent knowledge base: [AGENTS.md](../../AGENTS.md)
 - Contributor guide: [CONTRIBUTING.md](../../CONTRIBUTING.md)
 
 ## Repository Starting Points
+
 - `build-pkg/` — TODO: Describe the purpose of this directory.
 - `conductor/` — TODO: Describe the purpose of this directory.
 - `docs/` — TODO: Describe the purpose of this directory.
@@ -37,12 +42,15 @@ Describe how the test writer agent supports the team and when to engage it.
 - `tests/` — TODO: Describe the purpose of this directory.
 
 ## Key Files
-- *No key files detected.*
+
+- _No key files detected._
 
 ## Key Symbols for This Agent
-- *No relevant symbols detected.*
+
+- _No relevant symbols detected._
 
 ## Documentation Touchpoints
+
 - [Documentation Index](../docs/README.md)
 - [Project Overview](../docs/project-overview.md)
 - [Architecture Notes](../docs/architecture.md)

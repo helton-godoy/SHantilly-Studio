@@ -44,6 +44,7 @@ QString ScriptGenerator::generate(QWidget *root) {
 
   script += "show\n";
   script += "EOD\n";
+
   return script;
 }
 
@@ -94,14 +95,17 @@ void ScriptGenerator::processWidget(QWidget *widget, QString &script) {
   }
 
   // Formato: add type "title" name options...
-  script += QString("add %1 %2 %3 %4\n").arg(type, title, name, options);
+  QString line = QString("add %1 %2 %3").arg(type, title, name);
+  if (!options.isEmpty())
+    line += " " + options;
+  script += line + "\n";
 
   // Recursão APENAS para containers conhecidos
   // Isso evita entrar em widgets complexos como ComboBox e listar seus
   // componentes internos
   bool isContainer =
       (type == "window" || type == "groupbox" || type == "frame" ||
-       type == "tabwidget" || type == "page" || type == "hboxlayout" ||
+       type == "tabs" || type == "page" || type == "hboxlayout" ||
        type == "vboxlayout" || type == "gridlayout" || type == "formlayout" ||
        type == "scrollarea");
 
@@ -137,7 +141,7 @@ void ScriptGenerator::processWidget(QWidget *widget, QString &script) {
   }
 
   // Fechamento de contexto para containers
-  if (type == "groupbox" || type == "frame" || type == "tabwidget" ||
+  if (type == "groupbox" || type == "frame" || type == "tabs" ||
       type == "page" || type == "hboxlayout" || type == "vboxlayout" ||
       type == "gridlayout" || type == "formlayout" || type == "scrollarea") {
     script += QString("end %1\n").arg(type);
@@ -182,7 +186,7 @@ QString ScriptGenerator::getShowboxType(QWidget *widget) {
   if (cls.contains("GroupBox"))
     return "groupbox";
   if (cls.contains("TabWidget"))
-    return "tabwidget";
+    return "tabs";
   if (cls.contains("Frame"))
     return "frame";
   if (cls.contains("Table"))

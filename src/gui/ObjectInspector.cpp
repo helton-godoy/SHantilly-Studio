@@ -236,7 +236,7 @@ void ObjectInspector::addWidgetToTree(QWidget *widget,
     QString type = typeVar.toString();
     // Lista explícita de containers
     isContainer = (type == "window" || type == "groupbox" || type == "frame" ||
-                   type == "tabwidget" || type == "page");
+                   type == "tabs" || type == "page");
   }
 
   if (!isContainer)

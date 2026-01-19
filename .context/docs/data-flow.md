@@ -8,10 +8,12 @@ generated: 2026-01-17
 Explain how data enters, moves through, and exits the system, including interactions with external services.
 
 ## Module Dependencies
-- *No cross-module dependencies detected.*
+
+- _No cross-module dependencies detected._
 
 ## Service Layer
-- *No service classes detected.*
+
+- _No service classes detected._
 
 ## High-level Flow
 

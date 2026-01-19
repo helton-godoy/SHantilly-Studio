@@ -12,16 +12,20 @@ Describe how the system is assembled and why the current design exists.
 Summarize the top-level topology (monolith, modular service, microservices) and deployment model. Highlight how requests traverse the system and where control pivots between layers.
 
 ## Architectural Layers
-- *No architectural layers detected.*
+
+- _No architectural layers detected._
 
 ## Detected Design Patterns
-- *No design patterns detected yet.*
+
+- _No design patterns detected yet._
 
 ## Entry Points
-- *No entry points detected.*
+
+- _No entry points detected._
 
 ## Public API
-- *No public API detected.*
+
+- _No public API detected._
 
 ## Internal System Boundaries
 
@@ -44,6 +48,7 @@ Link architectural diagrams or add mermaid definitions here.
 Document performance constraints, scaling considerations, or external system assumptions.
 
 ## Top Directories Snapshot
+
 - `AGENT_GUIDE.md/` — approximately 1 files
 - `build-pkg/` — approximately 129 files
 - `CMakeLists.txt/` — approximately 1 files

@@ -30,6 +30,9 @@ private slots:
   void onDeleteClicked();
   void onGroupRequested(const QString &containerType);
   void onToolboxStyleChanged(int style);
+  void onAddPageRequested(QWidget *tabs);
+  void onRemovePageRequested(QWidget *tabs);
+
 
 private:
   void setupUI();

@@ -5,12 +5,13 @@ project(showbox-studio LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# 1. Localizar pacotes do Qt6
+find_package(Qt6 REQUIRED COMPONENTS Widgets Charts Svg)
+
 # Configuração Automática do Qt
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
-
-find_package(Qt6 REQUIRED COMPONENTS Widgets Charts Svg)
 
 # Configuração do caminho do Showbox Core
 if(NOT SHOWBOX_ROOT)
@@ -67,7 +68,6 @@ target_include_directories(showbox-studio PRIVATE
 )
 
 # Linkagem
-# Agora linkamos o TARGET da biblioteca, o que resolve as dependências do Qt automaticamente
 target_link_libraries(showbox-studio PRIVATE 
     Qt6::Widgets 
     Qt6::Charts
@@ -77,3 +77,26 @@ target_link_libraries(showbox-studio PRIVATE
 
 enable_testing()
 add_subdirectory(tests)
+
+# ============================================================================
+# Instalação Profissional (GNUInstallDirs e AppImage)
+# ============================================================================
+include(GNUInstallDirs)
+
+# Instala o binário em usr/bin
+install(TARGETS showbox-studio
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    BUNDLE DESTINATION .
+)
+
+# Instala o ícone SVG (Scalable) para garantir alta definição
+# O comando RENAME garante que o ícone tenha o nome esperado pelo .desktop
+install(FILES packaging/icon/showbox-studio.svg 
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/scalable/apps
+    RENAME showbox-studio.svg
+)
+
+# Instala o arquivo .desktop
+install(FILES packaging/appimage/showbox-studio.desktop 
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/applications
+)

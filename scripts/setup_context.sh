@@ -5,9 +5,9 @@
 echo "Initializing AI-Coders Context..."
 
 # Check for npm
-if ! command -v npm &> /dev/null; then
-    echo "Error: npm is not installed."
-    exit 1
+if ! command -v npm &>/dev/null; then
+	echo "Error: npm is not installed."
+	exit 1
 fi
 
 # Run the initialization wizard/command

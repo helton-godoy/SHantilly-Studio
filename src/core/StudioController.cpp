@@ -34,6 +34,43 @@ bool StudioController::eventFilter(QObject *watched, QEvent *event) {
     QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
     QWidget *widget = qobject_cast<QWidget *>(watched);
     if (widget) {
+      // NÃO interceptar cliques em widgets internos do Qt
+      // Isso permite que componentes como TabWidget, ComboBox, SpinBox, Calendar
+      // funcionem corretamente processando seus próprios eventos
+      QString objName = widget->objectName();
+      QString className = QString::fromLatin1(widget->metaObject()->className());
+      
+      // Lista de widgets internos que DEVEM processar seus próprios cliques:
+      // - Widgets com nome começando com "qt_" (internos do Qt)
+      // - TabBar: botões de troca de aba
+      // - ScrollBar: barras de rolagem
+      // - StackedWidget: container interno de TabWidget
+      // - SpinBox/LineEdit internos: entrada de números
+      // - ComboBox: dropdown de seleção
+      // - Calendar: navegação e seleção de datas
+      // - ItemView: seleção em listas e tabelas
+      // - Header: cabeçalhos de tabelas
+      // - Menu: menus popup
+      // - ToolButton: botões em toolbars
+      if (objName.startsWith("qt_") ||
+          className.contains("TabBar") ||
+          className.contains("ScrollBar") ||
+          className.contains("StackedWidget") ||
+          className.contains("SpinBox") ||
+          className.contains("ComboBox") ||
+          className.contains("LineEdit") ||
+          className.contains("Calendar") ||
+          className.contains("ItemView") ||
+          className.contains("ListView") ||
+          className.contains("TableView") ||
+          className.contains("TreeView") ||
+          className.contains("HeaderView") ||
+          className.contains("Menu") ||
+          className.contains("ToolButton") ||
+          className.contains("AbstractButton")) {
+        return false; // Deixa o evento propagar normalmente
+      }
+
       // Se for clique com botão direito em um item já selecionado,
       // não alteramos a seleção para permitir que o menu de contexto
       // atue sobre o grupo atual.

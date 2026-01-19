@@ -22,7 +22,7 @@ public:
     QString t = type.toLower();
     QWidget *w = nullptr;
 
-    if (t == "pushbutton" || t == "button") {
+    if (t == "button" || t == "pushbutton") {
       Showbox::Models::ButtonConfig cfg;
       cfg.name = name;
       cfg.text = "Button";
@@ -50,12 +50,12 @@ public:
       Showbox::Models::SliderConfig cfg;
       cfg.name = name;
       w = builder.buildSlider(cfg);
-    } else if (t == "lineedit" || t == "textbox") {
+    } else if (t == "textbox" || t == "lineedit") {
       Showbox::Models::LineEditConfig cfg;
       cfg.name = name;
       cfg.placeholder = "Type here...";
       w = builder.buildLineEdit(cfg);
-    } else if (t == "textedit" || t == "textview") {
+    } else if (t == "textview" || t == "textedit") {
       Showbox::Models::TextEditConfig cfg;
       cfg.name = name;
       cfg.text = "Edit me";
@@ -69,10 +69,29 @@ public:
       Showbox::Models::FrameConfig cfg;
       cfg.name = name;
       w = builder.buildFrame(cfg);
-    } else if (t == "tabwidget" || t == "tabs") {
+    } else if (t == "tabs" || t == "tabwidget") {
       Showbox::Models::TabWidgetConfig cfg;
       cfg.name = name;
       w = builder.buildTabWidget(cfg);
+      
+      // Adicionar uma página inicial padrão para novos TabWidgets criados visualmente
+      if (auto *tabs = qobject_cast<QTabWidget *>(w)) {
+        if (tabs->count() == 0) {
+          QWidget *firstPage = createWidget("page", name + "_page1");
+          firstPage->setProperty("title", "Tab 1");
+          tabs->addTab(firstPage, "Tab 1");
+        }
+      }
+    } else if (t == "page") {
+      // Uma página é um container simples com layout vertical para abas
+      w = new QWidget();
+      w->setObjectName(name);
+      w->setLayout(new QVBoxLayout(w));
+      w->layout()->setContentsMargins(5, 5, 5, 5);
+      w->layout()->setSpacing(2);
+      // Garantir que a página se identifique corretamente
+      w->setProperty("showbox_type", "page");
+      w->setProperty("title", "New Page"); // Propriedade para o nome da aba
     } else if (t == "combobox") {
       Showbox::Models::ComboBoxConfig cfg;
       cfg.name = name;
@@ -242,8 +261,18 @@ private:
     // Atributo para garantir que o widget aceite eventos mas possa ser
     // "gerenciado" pelo Studio
     widget->setAttribute(Qt::WA_TransparentForMouseEvents, false);
-    // Anotar o tipo para o ScriptGenerator
-    widget->setProperty("showbox_type", type.toLower());
+    
+    // Anotar o tipo para o ScriptGenerator usando nomes CLI
+    QString cliName = type.toLower();
+    // Normalizar para CLI names
+    if (cliName == "pushbutton") cliName = "button";
+    else if (cliName == "lineedit") cliName = "textbox";
+    else if (cliName == "textedit") cliName = "textview";
+    else if (cliName == "tabwidget") cliName = "tabs";
+    else if (cliName == "dropdownlist") cliName = "combobox";
+    else if (cliName == "line") cliName = "separator";
+    
+    widget->setProperty("showbox_type", cliName);
   }
 };
 

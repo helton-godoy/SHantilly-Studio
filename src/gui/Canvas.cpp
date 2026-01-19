@@ -7,6 +7,7 @@
 #include <QMenu>
 #include <QMimeData>
 #include <QStyle>
+#include <QTabWidget>
 #include <QTreeWidget>
 
 Canvas::Canvas(IStudioWidgetFactory *factory, QWidget *parent)
@@ -39,6 +40,17 @@ void Canvas::contextMenuEvent(QContextMenuEvent *event) {
   auto selected = m_controller->selectedWidgets();
 
   if (!selected.isEmpty()) {
+    if (selected.size() == 1) {
+      QWidget *w = selected.first();
+      QString showboxType = w->property("showbox_type").toString();
+      if (showboxType == "tabwidget") {
+        menu.addAction("Add Tab Page", [this, w]() { emit requestAddPage(w); });
+        menu.addAction("Remove Current Page",
+                       [this, w]() { emit requestRemovePage(w); });
+        menu.addSeparator();
+      }
+    }
+
     QAction *groupFrame = menu.addAction("Group in Frame (HBox)");
     QAction *groupGroupBox = menu.addAction("Group in GroupBox (VBox)");
     menu.addSeparator();
@@ -51,8 +63,6 @@ void Canvas::contextMenuEvent(QContextMenuEvent *event) {
     } else if (res == groupGroupBox) {
       emit requestGrouping("GroupBox");
     } else if (res == deleteAction) {
-      // Reaproveitar lógica de delete da MainWindow (ou mover para Controller)
-      // Por enquanto, sinalizamos
       emit requestDelete();
     }
   } else {
@@ -72,10 +82,25 @@ void Canvas::addWidget(QWidget *widget) {
 void Canvas::removeWidget(QWidget *widget) {
   if (!widget)
     return;
-  m_layout->removeWidget(widget);
+
+  // Remover do layout do Canvas se for filho direto
+  if (widget->parentWidget() == this) {
+    m_layout->removeWidget(widget);
+  } else if (auto *parent = widget->parentWidget()) {
+    // Remover de um TabWidget
+    if (auto *tabs = qobject_cast<QTabWidget *>(parent)) {
+      int idx = tabs->indexOf(widget);
+      if (idx >= 0)
+        tabs->removeTab(idx);
+    }
+    // Remover de um layout genérico
+    else if (parent->layout()) {
+      parent->layout()->removeWidget(widget);
+    }
+  }
+
   widget->hide();
-  widget->setParent(nullptr); // Desvincular para não aparecer no children() se
-                              // o teste checar o pai
+  widget->setParent(nullptr);
 }
 
 void Canvas::clear() {
@@ -104,8 +129,37 @@ void Canvas::dragEnterEvent(QDragEnterEvent *event) {
 }
 
 void Canvas::dragMoveEvent(QDragMoveEvent *event) {
+  QString dragType;
+  if (event->mimeData()->hasText()) {
+    dragType = event->mimeData()->text();
+  }
+
   // Highlight container quando arrasta sobre ele
   QWidget *container = findContainerAtPos(event->position().toPoint());
+
+  bool isPageDrag = (dragType.toLower() == "page");
+
+  // SE estiver arrastando uma Page e o alvo for uma Page existente,
+  // tenta encontrar o TabWidget pai para redirecionar o alvo.
+  // NOTA: A Page é filha de QStackedWidget (interno do Qt), não diretamente do
+  // QTabWidget.
+  if (isPageDrag && container) {
+    QString cType = container->property("showbox_type").toString();
+    if (cType == "page") {
+      // Usar qobject_cast para encontrar o QTabWidget ancestral
+      QWidget *foundTabs = nullptr;
+      QWidget *p = container->parentWidget();
+      while (p && p != this) {
+        if (qobject_cast<QTabWidget *>(p)) {
+          foundTabs = p;
+          break;
+        }
+        p = p->parentWidget();
+      }
+      // Se encontrou TabWidget, redireciona; caso contrário, invalida o container
+      container = foundTabs; // Será nullptr se não encontrou, indicando drop inválido
+    }
+  }
 
   // Remover highlight do container anterior se houver
   static QWidget *lastHighlighted = nullptr;
@@ -114,8 +168,26 @@ void Canvas::dragMoveEvent(QDragMoveEvent *event) {
   }
 
   if (container && container != this) {
-    highlightContainer(container, true);
-    lastHighlighted = container;
+    QString containerType = container->property("showbox_type").toString();
+
+    // Se for Page: SÓ aceita se o container final for TabWidget
+    if (isPageDrag) {
+      if (containerType == "tabs") {
+        // Highlight AZUL para indicar que vai adicionar uma nova aba
+        highlightContainer(container, true, true);
+        lastHighlighted = container;
+      } else {
+        // Se for Page mas o container não for TabWidget, não destaca (operação
+        // inválida)
+        highlightContainer(container, false); // Garante que não fique verde
+        lastHighlighted = nullptr;
+      }
+    } else {
+      // Comportamento normal para outros widgets (Verde)
+      highlightContainer(container, true, false);
+      lastHighlighted = container;
+    }
+
   } else {
     lastHighlighted = nullptr;
   }
@@ -159,26 +231,87 @@ void Canvas::dropEvent(QDropEvent *event) {
   if (newWidget) {
     // Detectar se o drop foi sobre um container que aceita filhos
     QWidget *targetContainer = findContainerAtPos(event->position().toPoint());
+    qDebug() << "[DROP] Initial targetContainer:" 
+             << (targetContainer ? targetContainer->objectName() : "nullptr")
+             << "type:" << (targetContainer ? targetContainer->property("showbox_type").toString() : "");
 
-    if (targetContainer && targetContainer != this) {
-      // Adicionar ao layout do container
-      if (QLayout *containerLayout = targetContainer->layout()) {
-        newWidget->setParent(targetContainer);
-        containerLayout->addWidget(newWidget);
-        newWidget->show();
+    // Regra específica para Page:
+    // Se soltar em cima de uma 'page' existente (conteúdo da aba),
+    // redirecionar para o TabWidget pai.
+    // NOTA: A Page é filha de QStackedWidget (interno do Qt), não diretamente do
+    // QTabWidget. Usar qobject_cast para confiabilidade.
+    if (type.toLower() == "page" && targetContainer &&
+        targetContainer->property("showbox_type").toString() == "page") {
+      QWidget *p = targetContainer->parentWidget();
+      while (p && p != this) {
+        if (qobject_cast<QTabWidget *>(p)) {
+          targetContainer = p;
+          break;
+        }
+        p = p->parentWidget();
+      }
+    }
 
-        // Feedback visual
-        highlightContainer(targetContainer, false);
-      } else {
-        // Container sem layout, adicionar ao canvas normalmente
-        addWidget(newWidget);
+    // Restrição: Page só pode ser solta em TabWidget
+    if (type.toLower() == "page") {
+      QString targetType = targetContainer
+                               ? targetContainer->property("showbox_type").toString()
+                               : "";
+      if (targetType != "tabs") {
+        // Page fora de TabWidget: cancelar o drop e destruir o widget criado
+        delete newWidget;
+        return;
       }
     } else {
-      // Drop no canvas principal
-      if (m_controller) {
-        m_controller->undoStack()->push(new AddWidgetCommand(this, newWidget));
-      } else {
+      // Outros widgets NÃO podem ser soltos diretamente no TabWidget (devem ir na
+      // Page atual)
+      if (targetContainer &&
+          targetContainer->property("showbox_type").toString() == "tabs") {
+        if (auto *tabs = qobject_cast<QTabWidget *>(targetContainer)) {
+          qDebug() << "[DROP] Target is TabWidget, currentIndex:" << tabs->currentIndex()
+                   << "currentWidget:" << tabs->currentWidget();
+          targetContainer = tabs->currentWidget();
+        }
+      }
+      // Se o target é uma Page, verificar se é a aba ativa do TabWidget pai
+      // Isso corrige o bug onde childAt() pode retornar uma Page invisível
+      else if (targetContainer &&
+               targetContainer->property("showbox_type").toString() == "page") {
+        qDebug() << "[DROP] Target is Page:" << targetContainer->objectName();
+        QWidget *p = targetContainer->parentWidget();
+        while (p && p != this) {
+          if (auto *tabs = qobject_cast<QTabWidget *>(p)) {
+            qDebug() << "[DROP] Found TabWidget, currentIndex:" << tabs->currentIndex()
+                     << "currentWidget:" << tabs->currentWidget()
+                     << "vs targetContainer:" << targetContainer;
+            // Redirecionar para a aba ativa, não a Page que childAt encontrou
+            targetContainer = tabs->currentWidget();
+            qDebug() << "[DROP] Redirected to:" << targetContainer->objectName();
+            break;
+          }
+          p = p->parentWidget();
+        }
+      }
+    }
+
+    if (!targetContainer)
+      targetContainer = this;
+
+    if (m_controller) {
+      m_controller->undoStack()->push(
+          new AddWidgetCommand(this, newWidget, targetContainer));
+    } else {
+      // Fallback sem Undo
+      if (targetContainer == this) {
         addWidget(newWidget);
+      } else {
+        newWidget->setParent(targetContainer);
+        if (auto *tabs = qobject_cast<QTabWidget *>(targetContainer)) {
+          tabs->addTab(newWidget, type);
+        } else if (targetContainer->layout()) {
+          targetContainer->layout()->addWidget(newWidget);
+        }
+        newWidget->show();
       }
     }
 
@@ -188,42 +321,36 @@ void Canvas::dropEvent(QDropEvent *event) {
 }
 
 QWidget *Canvas::findContainerAtPos(const QPoint &pos) {
-  // Iterar pelos widgets filhos em ordem reversa (os de cima primeiro)
-  QList<QWidget *> children =
-      findChildren<QWidget *>(QString(), Qt::FindDirectChildrenOnly);
+  // Usar childAt para encontrar o widget mais profundo
+  QWidget *child = childAt(pos);
 
-  for (int i = children.size() - 1; i >= 0; --i) {
-    QWidget *child = children[i];
-    if (!child->isVisible())
-      continue;
+  // Subir na hierarquia até encontrar um container válido ou chegar no Canvas
+  while (child && child != this) {
+    QString showboxType = child->property("showbox_type").toString();
 
-    // Verificar se o ponto está dentro do widget
-    QRect childRect = child->geometry();
-    if (childRect.contains(pos)) {
-      // Verificar se é um container (tem layout)
-      QString showboxType = child->property("showbox_type").toString();
-      if (showboxType.contains("layout") || showboxType == "groupbox" ||
-          showboxType == "frame" || showboxType == "scrollarea") {
-        return child;
-      }
+    if (showboxType.contains("layout") || showboxType == "groupbox" ||
+        showboxType == "frame" || showboxType == "scrollarea" ||
+        showboxType == "tabs" || showboxType == "page") {
+      return child;
     }
+    child = child->parentWidget();
   }
 
   return nullptr;
 }
 
-void Canvas::highlightContainer(QWidget *container, bool highlight) {
+void Canvas::highlightContainer(QWidget *container, bool highlight, bool blue) {
   if (!container)
     return;
 
   if (highlight) {
     container->setProperty("drop_target", true);
+    QString color = blue ? "#00aaff" : "#00ff00";
     container->setStyleSheet(
-        container->styleSheet() +
-        " QWidget[drop_target=\"true\"] { border: 2px solid #00ff00; }");
+        QString("QWidget[drop_target=\"true\"] { border: 2px solid %1; }").arg(color));
   } else {
     container->setProperty("drop_target", false);
-    // Restaurar estilo original (a propriedade será removida no próximo update)
+    container->setStyleSheet(""); // Limpar estilo dinâmico
   }
   container->style()->polish(container);
 }

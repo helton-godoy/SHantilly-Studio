@@ -6,26 +6,26 @@
 COMMAND="$1"
 ARG="$2"
 
-if [ -z "$COMMAND" ]; then
-  echo "Usage: $0 <command> [args]"
-  echo "Commands:"
-  echo "  pr <number>   - Checkout and review a PR"
-  echo "  review        - Review current changes"
-  exit 1
+if [[ -z ${COMMAND} ]]; then
+	echo "Usage: $0 <command> [args]"
+	echo "Commands:"
+	echo "  pr <number>   - Checkout and review a PR"
+	echo "  review        - Review current changes"
+	exit 1
 fi
 
-if [ "$COMMAND" == "pr" ]; then
-    if [ -z "$ARG" ]; then
-        echo "Error: PR number required."
-        exit 1
-    fi
-    # Use opencode to handle PR
-    echo "Starting PR Agent for PR #$ARG..."
-    opencode pr "$ARG"
-elif [ "$COMMAND" == "review" ]; then
-    # General review using opencode
-    opencode --prompt "Review the current changes in the workspace for bugs and security issues." --model "openai/gpt-4o"
+if [[ ${COMMAND} == "pr" ]]; then
+	if [[ -z ${ARG} ]]; then
+		echo "Error: PR number required."
+		exit 1
+	fi
+	# Use opencode to handle PR
+	echo "Starting PR Agent for PR #${ARG}..."
+	opencode pr "${ARG}"
+elif [[ ${COMMAND} == "review" ]]; then
+	# General review using opencode
+	opencode --prompt "Review the current changes in the workspace for bugs and security issues." --model "openai/gpt-4o"
 else
-    # Fallback to generic opencode usage
-    opencode --prompt "$COMMAND $ARG"
+	# Fallback to generic opencode usage
+	opencode --prompt "${COMMAND} ${ARG}"
 fi

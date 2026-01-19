@@ -6,24 +6,42 @@
 #include "gui/Canvas.h"
 #include <QGroupBox>
 #include <QLayout>
+#include <QTabWidget>
 #include <QUndoCommand>
 #include <QWidget>
 
 class AddWidgetCommand : public QUndoCommand {
 public:
-  AddWidgetCommand(Canvas *canvas, QWidget *widget,
-                   QUndoCommand *parent = nullptr)
-      : QUndoCommand(parent), m_canvas(canvas), m_widget(widget) {
+  AddWidgetCommand(Canvas *canvas, QWidget *widget, QWidget *parent = nullptr,
+                   QUndoCommand *parentCmd = nullptr)
+      : QUndoCommand(parentCmd), m_canvas(canvas), m_widget(widget),
+        m_parent(parent) {
     setText("Add " + widget->objectName());
   }
 
   void undo() override { m_canvas->removeWidget(m_widget); }
 
-  void redo() override { m_canvas->addWidget(m_widget); }
+  void redo() override {
+    if (m_parent && m_parent != m_canvas) {
+      m_widget->setParent(m_parent);
+      if (auto *tabs = qobject_cast<QTabWidget *>(m_parent)) {
+        QString title = m_widget->property("title").toString();
+        if (title.isEmpty())
+          title = "Tab";
+        tabs->addTab(m_widget, title);
+      } else if (m_parent->layout()) {
+        m_parent->layout()->addWidget(m_widget);
+      }
+      m_widget->show();
+    } else {
+      m_canvas->addWidget(m_widget);
+    }
+  }
 
 private:
   Canvas *m_canvas;
   QWidget *m_widget;
+  QWidget *m_parent;
 };
 
 class DeleteWidgetCommand : public QUndoCommand {
@@ -51,12 +69,19 @@ public:
 
   void undo() override {
     for (const auto &info : m_widgetsInfo) {
-      m_canvas->addWidget(info.widget);
-      if (info.parent && info.parent->layout()) {
-        if (auto *box = qobject_cast<QBoxLayout *>(info.parent->layout())) {
-          box->insertWidget(info.index, info.widget);
-        } else {
-          info.parent->layout()->addWidget(info.widget);
+      if (!info.parent || info.parent == m_canvas) {
+        m_canvas->addWidget(info.widget);
+      } else {
+        info.widget->setParent(info.parent);
+        if (auto *tabs = qobject_cast<QTabWidget *>(info.parent)) {
+          tabs->insertTab(info.index, info.widget,
+                          info.widget->property("title").toString());
+        } else if (info.parent->layout()) {
+          if (auto *box = qobject_cast<QBoxLayout *>(info.parent->layout())) {
+            box->insertWidget(info.index, info.widget);
+          } else {
+            info.parent->layout()->addWidget(info.widget);
+          }
         }
       }
       info.widget->show();

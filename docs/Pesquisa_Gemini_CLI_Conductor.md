@@ -3,18 +3,22 @@
 ## Visão Geral
 
 ### Gemini CLI
+
 O **Gemini CLI** é uma ferramenta de linha de comando open-source desenvolvida pelo Google que permite interagir diretamente com modelos de IA Gemini através do terminal. Construído em Node.js, oferece um ambiente REPL (Read-Eval-Print Loop) interativo para desenvolvimento, depuração e automação de tarefas de codificação.
 
 **Características Principais:**
+
 - Suporte aos modelos Gemini 2.5 Pro com janela de contexto de 1M tokens
 - Limites gratuitos: 60 requisições por minuto, 1000 por dia
 - Integração com Model Context Protocol (MCP) para extensibilidade
 - Configuração flexível via variáveis de ambiente, argumentos de linha de comando e arquivos settings.json
 
 ### Sistema Conductor
+
 O **Conductor** é um framework de gerenciamento de projetos integrado ao Showbox Studio, projetado para profissionais de TI que necessitam criar interfaces visuais sem expertise avançada em desenvolvimento. Opera em conjunto com o Showbox (CLI/Engine) e Showbox-Studio (IDE Visual), seguindo princípios de desenvolvimento orientado a testes (TDD) e workflows estruturados.
 
 **Pilares do Ecossistema:**
+
 - **Showbox (Core):** Biblioteca C++17/Qt6 para widgets de alta fidelidade
 - **Showbox-Studio:** IDE visual para construção drag-and-drop de interfaces
 - **Conductor:** Sistema de workflow com tracking rigoroso de tarefas, checkpoints e verificações de qualidade
@@ -117,12 +121,14 @@ gemini "Analise as mudanças no último commit" --context git
 ## Limitações
 
 ### Gemini CLI
+
 - **Dependência de Rede:** Requer conexão estável com APIs do Google
 - **Limites de Uso:** Restrições de rate limiting (60/min, 1000/dia gratuito)
 - **Contexto Limitado:** Mesmo com 1M tokens, projetos muito grandes podem exceder
 - **Segurança:** Dados enviados para servidores Google (considerar compliance)
 
 ### Sistema Conductor
+
 - **Complexidade Inicial:** Curva de aprendizado para workflows rigorosos
 - **Dependência de Qt6:** Limitado a ecossistemas C++/Qt
 - **Overhead de Processo:** Múltiplas verificações podem retardar desenvolvimento rápido
@@ -130,14 +136,14 @@ gemini "Analise as mudanças no último commit" --context git
 
 ## Comparações
 
-| Aspecto | Gemini CLI | Sistema Conductor | Alternativa Tradicional |
-|---------|------------|-------------------|-------------------------|
-| **Abordagem** | IA Conversacional | Workflow Estruturado | Desenvolvimento Manual |
-| **Velocidade Inicial** | Rápida (geração instantânea) | Lenta (setup rigoroso) | Variável |
-| **Qualidade** | Dependente do prompt | Alta (TDD + revisões) | Dependente da experiência |
-| **Escalabilidade** | Limitada por APIs | Alta (modular) | Alta |
-| **Custo** | Gratuito (até limites) | Overhead de processo | Custo de desenvolvedores |
-| **Automação** | Excelente para código | Excelente para processos | Manual |
+| Aspecto                | Gemini CLI                   | Sistema Conductor        | Alternativa Tradicional   |
+| ---------------------- | ---------------------------- | ------------------------ | ------------------------- |
+| **Abordagem**          | IA Conversacional            | Workflow Estruturado     | Desenvolvimento Manual    |
+| **Velocidade Inicial** | Rápida (geração instantânea) | Lenta (setup rigoroso)   | Variável                  |
+| **Qualidade**          | Dependente do prompt         | Alta (TDD + revisões)    | Dependente da experiência |
+| **Escalabilidade**     | Limitada por APIs            | Alta (modular)           | Alta                      |
+| **Custo**              | Gratuito (até limites)       | Overhead de processo     | Custo de desenvolvedores  |
+| **Automação**          | Excelente para código        | Excelente para processos | Manual                    |
 
 ### Comparação com Alternativas
 
@@ -207,6 +213,7 @@ git notes add -m "Task: Real-time preview\\nTests: Generated with Gemini CLI\\nC
 2. **Cache Inteligente:** Use MCP servers para cache de contexto de projeto, reduzindo chamadas à API
 
 3. **Pipelines CI/CD:** Integre verificações automáticas do Conductor em pipelines:
+
    ```yaml
    # .github/workflows/ci.yml
    - name: Run Gemini Analysis
@@ -216,11 +223,13 @@ git notes add -m "Task: Real-time preview\\nTests: Generated with Gemini CLI\\nC
    ```
 
 4. **Templates de Prompt:** Crie templates específicos para o ecossistema Showbox:
+
    ```bash
    gemini --template showbox-widget "Crie um widget QPushButton personalizado seguindo padrões Qt6"
    ```
 
 5. **Monitoramento de Qualidade:** Use Gemini para análise contínua:
+
    ```bash
    # Script de monitoramento
    gemini analyze codebase --metrics complexity,maintainability --output reports/quality.json

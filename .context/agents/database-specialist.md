@@ -8,9 +8,11 @@ generated: 2026-01-17
 # Database Specialist Agent Playbook
 
 ## Mission
+
 Describe how the database specialist agent supports the team and when to engage it.
 
 ## Responsibilities
+
 - Design and optimize database schemas
 - Create and manage database migrations
 - Optimize query performance and indexing
@@ -18,6 +20,7 @@ Describe how the database specialist agent supports the team and when to engage 
 - Implement backup and recovery strategies
 
 ## Best Practices
+
 - Always benchmark queries before and after optimization
 - Plan migrations with rollback strategies
 - Use appropriate indexing strategies for workloads
@@ -25,12 +28,14 @@ Describe how the database specialist agent supports the team and when to engage 
 - Document schema changes and their business impact
 
 ## Key Project Resources
+
 - Documentation index: [docs/README.md](../docs/README.md)
 - Agent handbook: [agents/README.md](./README.md)
 - Agent knowledge base: [AGENTS.md](../../AGENTS.md)
 - Contributor guide: [CONTRIBUTING.md](../../CONTRIBUTING.md)
 
 ## Repository Starting Points
+
 - `build-pkg/` — TODO: Describe the purpose of this directory.
 - `conductor/` — TODO: Describe the purpose of this directory.
 - `docs/` — TODO: Describe the purpose of this directory.
@@ -40,12 +45,15 @@ Describe how the database specialist agent supports the team and when to engage 
 - `tests/` — TODO: Describe the purpose of this directory.
 
 ## Key Files
-- *No key files detected.*
+
+- _No key files detected._
 
 ## Key Symbols for This Agent
-- *No relevant symbols detected.*
+
+- _No relevant symbols detected._
 
 ## Documentation Touchpoints
+
 - [Documentation Index](../docs/README.md)
 - [Project Overview](../docs/project-overview.md)
 - [Architecture Notes](../docs/architecture.md)

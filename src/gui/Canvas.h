@@ -28,6 +28,8 @@ signals:
   void widgetSelected(QWidget *widget);
   void requestGrouping(const QString &containerType);
   void requestDelete();
+  void requestAddPage(QWidget *tabWidget);
+  void requestRemovePage(QWidget *tabWidget);
 
 protected:
   void dragEnterEvent(QDragEnterEvent *event) override;
@@ -44,7 +46,7 @@ private:
 
   // Suporte a drop em containers
   QWidget *findContainerAtPos(const QPoint &pos);
-  void highlightContainer(QWidget *container, bool highlight);
+  void highlightContainer(QWidget *container, bool highlight, bool blue = false);
 };
 
 #endif // CANVAS_H

@@ -102,21 +102,32 @@ check-deps:  ## Check for required development tools (Internal)
 check-lint:
 	@$(call CHECK_DEP,clang-format,clang-format)
 
+check-trunk:
+	@$(call WARN_DEP,trunk)
+
 check-docs:
 	@$(call CHECK_DEP,doxygen,doxygen)
 
 lint:  ## Run code linting (runs inside Docker)
 	$(call IN_DOCKER_WRAPPER,lint)
 
-lint_internal: check-lint ## Internal lint target
+lint_internal: check-lint check-trunk ## Internal lint target
 	@echo "Running lint check..."
+	@if command -v trunk >/dev/null 2>&1; then \
+		echo "Running trunk check..."; \
+		trunk check -a -y || true; \
+	fi
 	find src -name "*.h" -o -name "*.cpp" | xargs clang-format -n --verbose -style=file
 
 format:  ## Run code formatting (runs inside Docker)
 	$(call IN_DOCKER_WRAPPER,format)
 
-format_internal: check-lint ## Internal format target
+format_internal: check-lint check-trunk ## Internal format target
 	@echo "Formatting code..."
+	@if command -v trunk >/dev/null 2>&1; then \
+		echo "Running trunk fmt..."; \
+		trunk fmt -a || true; \
+	fi
 	find src -name "*.h" -o -name "*.cpp" | xargs clang-format -i -verbose -style=file
 
 docs:  ## Generate documentation (runs inside Docker)
@@ -147,7 +158,7 @@ test_internal: ## Internal test target
 
 pkg-appimage:  ## Build AppImage
 	@echo "Building AppImage..."
-	./packaging/appimage/create_appimage.sh
+	./packaging/start-pkg-appimage.sh
 
 # ============================================================================
 # Help

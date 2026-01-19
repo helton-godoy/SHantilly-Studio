@@ -1,4 +1,4 @@
-FROM debian:trixie-slim
+FROM debian:bookworm-slim
 
 # Evitar prompts interativos
 ENV DEBIAN_FRONTEND=noninteractive
@@ -24,7 +24,7 @@ RUN apt-get update -qq && apt-get install -qqy --no-install-recommends \
     libqt6opengl6 \
     libqt6widgets6 \
     libqt6gui6 \
-    libqt6core6t64 \
+    libqt6core6 \
     # Suporte a X11/GUI
     libxcb-cursor0 \
     libxcb-xinerama0 \

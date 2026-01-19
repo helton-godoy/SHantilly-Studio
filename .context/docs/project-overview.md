@@ -18,12 +18,15 @@ Summarize the problem this project solves and who benefits from it.
 - .d (21 files)
 
 ## Entry Points
-- *No entry points detected.*
+
+- _No entry points detected._
 
 ## Key Exports
-- *No major exports detected.*
+
+- _No major exports detected._
 
 ## File Structure & Code Organization
+
 - `AGENT_GUIDE.md/` — TODO: Describe the purpose of this directory.
 - `build-pkg/` — TODO: Describe the purpose of this directory.
 - `CMakeLists.txt/` — TODO: Describe the purpose of this directory.

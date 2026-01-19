@@ -8,9 +8,11 @@ generated: 2026-01-17
 # Mobile Specialist Agent Playbook
 
 ## Mission
+
 Describe how the mobile specialist agent supports the team and when to engage it.
 
 ## Responsibilities
+
 - Develop native and cross-platform mobile applications
 - Optimize mobile app performance and battery usage
 - Implement mobile-specific UI/UX patterns
@@ -18,6 +20,7 @@ Describe how the mobile specialist agent supports the team and when to engage it
 - Integrate push notifications and offline capabilities
 
 ## Best Practices
+
 - Test on real devices, not just simulators
 - Optimize for battery life and data usage
 - Follow platform-specific design guidelines
@@ -25,12 +28,14 @@ Describe how the mobile specialist agent supports the team and when to engage it
 - Plan for app store review requirements early
 
 ## Key Project Resources
+
 - Documentation index: [docs/README.md](../docs/README.md)
 - Agent handbook: [agents/README.md](./README.md)
 - Agent knowledge base: [AGENTS.md](../../AGENTS.md)
 - Contributor guide: [CONTRIBUTING.md](../../CONTRIBUTING.md)
 
 ## Repository Starting Points
+
 - `build-pkg/` — TODO: Describe the purpose of this directory.
 - `conductor/` — TODO: Describe the purpose of this directory.
 - `docs/` — TODO: Describe the purpose of this directory.
@@ -40,12 +45,15 @@ Describe how the mobile specialist agent supports the team and when to engage it
 - `tests/` — TODO: Describe the purpose of this directory.
 
 ## Key Files
-- *No key files detected.*
+
+- _No key files detected._
 
 ## Key Symbols for This Agent
-- *No relevant symbols detected.*
+
+- _No relevant symbols detected._
 
 ## Documentation Touchpoints
+
 - [Documentation Index](../docs/README.md)
 - [Project Overview](../docs/project-overview.md)
 - [Architecture Notes](../docs/architecture.md)

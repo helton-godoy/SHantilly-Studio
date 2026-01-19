@@ -8,26 +8,31 @@ generated: 2026-01-17
 # Refactoring Specialist Agent Playbook
 
 ## Mission
+
 Describe how the refactoring specialist agent supports the team and when to engage it.
 
 ## Responsibilities
+
 - Identify code smells and improvement opportunities
 - Refactor code while maintaining functionality
 - Improve code organization and structure
 - Optimize performance where applicable
 
 ## Best Practices
+
 - Make small, incremental changes
 - Ensure tests pass after each refactor
 - Preserve existing functionality exactly
 
 ## Key Project Resources
+
 - Documentation index: [docs/README.md](../docs/README.md)
 - Agent handbook: [agents/README.md](./README.md)
 - Agent knowledge base: [AGENTS.md](../../AGENTS.md)
 - Contributor guide: [CONTRIBUTING.md](../../CONTRIBUTING.md)
 
 ## Repository Starting Points
+
 - `build-pkg/` — TODO: Describe the purpose of this directory.
 - `conductor/` — TODO: Describe the purpose of this directory.
 - `docs/` — TODO: Describe the purpose of this directory.
@@ -37,12 +42,15 @@ Describe how the refactoring specialist agent supports the team and when to enga
 - `tests/` — TODO: Describe the purpose of this directory.
 
 ## Key Files
-- *No key files detected.*
+
+- _No key files detected._
 
 ## Key Symbols for This Agent
-- *No relevant symbols detected.*
+
+- _No relevant symbols detected._
 
 ## Documentation Touchpoints
+
 - [Documentation Index](../docs/README.md)
 - [Project Overview](../docs/project-overview.md)
 - [Architecture Notes](../docs/architecture.md)

@@ -8,26 +8,31 @@ generated: 2026-01-17
 # Security Auditor Agent Playbook
 
 ## Mission
+
 Describe how the security auditor agent supports the team and when to engage it.
 
 ## Responsibilities
+
 - Identify security vulnerabilities
 - Implement security best practices
 - Review dependencies for security issues
 - Ensure data protection and privacy compliance
 
 ## Best Practices
+
 - Follow security best practices
 - Stay updated on common vulnerabilities
 - Consider the principle of least privilege
 
 ## Key Project Resources
+
 - Documentation index: [docs/README.md](../docs/README.md)
 - Agent handbook: [agents/README.md](./README.md)
 - Agent knowledge base: [AGENTS.md](../../AGENTS.md)
 - Contributor guide: [CONTRIBUTING.md](../../CONTRIBUTING.md)
 
 ## Repository Starting Points
+
 - `build-pkg/` — TODO: Describe the purpose of this directory.
 - `conductor/` — TODO: Describe the purpose of this directory.
 - `docs/` — TODO: Describe the purpose of this directory.
@@ -37,12 +42,15 @@ Describe how the security auditor agent supports the team and when to engage it.
 - `tests/` — TODO: Describe the purpose of this directory.
 
 ## Key Files
-- *No key files detected.*
+
+- _No key files detected._
 
 ## Key Symbols for This Agent
-- *No relevant symbols detected.*
+
+- _No relevant symbols detected._
 
 ## Documentation Touchpoints
+
 - [Documentation Index](../docs/README.md)
 - [Project Overview](../docs/project-overview.md)
 - [Architecture Notes](../docs/architecture.md)

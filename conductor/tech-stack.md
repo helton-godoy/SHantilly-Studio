@@ -19,7 +19,7 @@
   - **Padrões de Design:**
     - **Builder Pattern:** (`IShowboxBuilder`) para desacoplar a lógica de parsing da criação de widgets, garantindo paridade entre CLI e Studio.
     - **Command Pattern:** Uso de `QUndoStack` e `QUndoCommand` para encapsular ações do usuário, permitindo rastreamento de histórico e reversibilidade (Undo/Redo).
-    - **Passive View:** Widgets em `libs/showbox-ui` devem ser "passivos", focando apenas na exibição e sinais, sem lógica de execução de shell.  - **Factory:** (`WidgetFactory`) para instanciação dinâmica de componentes.
+    - **Passive View:** Widgets em `libs/showbox-ui` devem ser "passivos", focando apenas na exibição e sinais, sem lógica de execução de shell. - **Factory:** (`WidgetFactory`) para instanciação dinâmica de componentes.
   - **Observer:** Uso nativo de Signals/Slots do Qt para comunicação entre componentes.
 
 ## Distribuição e Empacotamento

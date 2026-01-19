@@ -32,6 +32,8 @@ private:
   void addPropertyRow(const QMetaProperty &prop, const QVariant &value);
   void addLayoutPropertyRow(QWidget *widget);
   void addStylePropertyRows(QWidget *widget);
+  void addDynamicPropertyRow(QWidget *widget, const QString &name,
+                             const QString &label);
   void addColorButtonForRow(int row, const QString &name,
                             const QVariant &value);
 };

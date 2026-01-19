@@ -5,15 +5,15 @@
 
 TASK="$1"
 
-if [ -z "$TASK" ]; then
-  echo "Usage: $0 <task_description>"
-  exit 1
+if [[ -z ${TASK} ]]; then
+	echo "Usage: $0 <task_description>"
+	exit 1
 fi
 
 echo "Launching Autonomous Agent (Cline)..."
-echo "Task: $TASK"
+echo "Task: ${TASK}"
 
 # Use Cline in oneshot/yolo mode for maximum autonomy
 # --oneshot: runs until completion
 # --yolo: auto-approves commands
-cline "$TASK" --oneshot --yolo
+cline "${TASK}" --oneshot --yolo

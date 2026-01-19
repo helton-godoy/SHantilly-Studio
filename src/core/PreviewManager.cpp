@@ -24,7 +24,7 @@ void PreviewManager::runPreview(const QString &scriptContent) {
 
   // Assumes running from 'build' directory adjacent to sourcedir or usual cmake
   // build Try to find the executable in likely locations
-  QString executablePath = "../showbox/build/bin/poc_modern_cli";
+  QString executablePath = "../showbox/build/bin/showbox";
 
   // Verify absolute path resolution from current working directory
   QString absPath = QDir::current().absoluteFilePath(executablePath);

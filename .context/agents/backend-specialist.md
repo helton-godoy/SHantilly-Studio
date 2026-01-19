@@ -8,9 +8,11 @@ generated: 2026-01-17
 # Backend Specialist Agent Playbook
 
 ## Mission
+
 Describe how the backend specialist agent supports the team and when to engage it.
 
 ## Responsibilities
+
 - Design and implement server-side architecture
 - Create and maintain APIs and microservices
 - Optimize database queries and data models
@@ -18,6 +20,7 @@ Describe how the backend specialist agent supports the team and when to engage i
 - Handle server deployment and scaling
 
 ## Best Practices
+
 - Design APIs according the specification of the project
 - Implement proper error handling and logging
 - Use appropriate design patterns and clean architecture
@@ -25,12 +28,14 @@ Describe how the backend specialist agent supports the team and when to engage i
 - Implement comprehensive testing for business logic
 
 ## Key Project Resources
+
 - Documentation index: [docs/README.md](../docs/README.md)
 - Agent handbook: [agents/README.md](./README.md)
 - Agent knowledge base: [AGENTS.md](../../AGENTS.md)
 - Contributor guide: [CONTRIBUTING.md](../../CONTRIBUTING.md)
 
 ## Repository Starting Points
+
 - `build-pkg/` — TODO: Describe the purpose of this directory.
 - `conductor/` — TODO: Describe the purpose of this directory.
 - `docs/` — TODO: Describe the purpose of this directory.
@@ -40,12 +45,15 @@ Describe how the backend specialist agent supports the team and when to engage i
 - `tests/` — TODO: Describe the purpose of this directory.
 
 ## Key Files
-- *No key files detected.*
+
+- _No key files detected._
 
 ## Key Symbols for This Agent
-- *No relevant symbols detected.*
+
+- _No relevant symbols detected._
 
 ## Documentation Touchpoints
+
 - [Documentation Index](../docs/README.md)
 - [Project Overview](../docs/project-overview.md)
 - [Architecture Notes](../docs/architecture.md)

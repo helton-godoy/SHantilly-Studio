@@ -83,12 +83,16 @@ MainWindow::MainWindow(QWidget *parent)
           &StudioController::manageWidget);
   connect(m_canvas, &Canvas::widgetSelected, m_controller,
           &StudioController::selectWidget); // Novo
-  connect(m_canvas, &Canvas::widgetAdded, m_inspector,
-          &ObjectInspector::onWidgetAdded);
+  // NOTA: onWidgetAdded foi removido - updateHierarchy (via indexChanged) já
+  // reconstrói a árvore completa, evitando duplicação.
 
   connect(m_canvas, &Canvas::requestGrouping, this,
           &MainWindow::onGroupRequested);
   connect(m_canvas, &Canvas::requestDelete, this, &MainWindow::onDeleteClicked);
+  connect(m_canvas, &Canvas::requestAddPage, this,
+          &MainWindow::onAddPageRequested);
+  connect(m_canvas, &Canvas::requestRemovePage, this,
+          &MainWindow::onRemovePageRequested);
 
   connect(m_inspector, &ObjectInspector::requestGrouping, this,
           &MainWindow::onGroupRequested);
@@ -350,6 +354,32 @@ void MainWindow::onOpenClicked() {
   }
 }
 
+void MainWindow::onAddPageRequested(QWidget *tabs) {
+  if (!tabs)
+    return;
+  QString name =
+      QString("%1_page%2").arg(tabs->objectName()).arg(tabs->children().size());
+  QWidget *page = m_factory->createWidget("Page", name);
+  m_controller->undoStack()->push(new AddWidgetCommand(m_canvas, page, tabs));
+  m_inspector->updateHierarchy(m_canvas);
+  statusBar()->showMessage("Nova aba adicionada.");
+}
+
+void MainWindow::onRemovePageRequested(QWidget *tabs) {
+  if (auto *tabWidget = qobject_cast<QTabWidget *>(tabs)) {
+    QWidget *curr = tabWidget->currentWidget();
+    if (curr) {
+      if (tabWidget->count() <= 1) {
+        statusBar()->showMessage("Não é possível remover a última aba.");
+        return;
+      }
+      m_controller->undoStack()->push(new DeleteWidgetCommand(m_canvas, {curr}));
+      m_inspector->updateHierarchy(m_canvas);
+      statusBar()->showMessage("Aba removida.");
+    }
+  }
+}
+
 void MainWindow::createToolbox(int style) {
   // Remover toolbox atual se existir
   if (m_toolbox) {
@@ -377,20 +407,20 @@ void MainWindow::populateToolbox(AbstractToolbox *toolbox) {
   // 1. Spacers
   toolbox->addCategory("Spacers", {"HorizontalSpacer", "VerticalSpacer"});
 
-  // 2. Controles Básicos
-  toolbox->addCategory("Básico", {"Label", "PushButton", "CheckBox",
+  // 2. Controles Básicos (usando nomes CLI)
+  toolbox->addCategory("Básico", {"Label", "Button", "CheckBox",
                                   "RadioButton", "Separator"});
 
-  // 3. Entrada de Dados
-  toolbox->addCategory("Entrada", {"LineEdit", "TextEdit", "SpinBox", "Slider",
+  // 3. Entrada de Dados (usando nomes CLI)
+  toolbox->addCategory("Entrada", {"TextBox", "TextView", "SpinBox", "Slider",
                                    "ComboBox", "Calendar"});
 
   // 4. Dados & Visualização
   toolbox->addCategory("Dados", {"ListBox", "Table", "ProgressBar", "Chart"});
 
-  // 5. Containers
+  // 5. Containers (usando nomes CLI)
   toolbox->addCategory("Containers",
-                       {"GroupBox", "Frame", "TabWidget", "ScrollArea"});
+                       {"GroupBox", "Frame", "Tabs", "Page", "ScrollArea"});
 }
 
 void MainWindow::onToolboxStyleChanged(int style) {

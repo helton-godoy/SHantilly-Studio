@@ -8,10 +8,12 @@ generated: 2026-01-17
 List project-specific terminology, acronyms, domain entities, and user personas.
 
 ## Type Definitions
-- *No exported type definitions found.*
+
+- _No exported type definitions found._
 
 ## Enumerations
-- *No enums detected.*
+
+- _No enums detected._
 
 ## Core Terms
 
