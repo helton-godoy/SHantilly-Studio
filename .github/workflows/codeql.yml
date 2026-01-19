@@ -52,7 +52,7 @@ jobs:
         run: |
           cmake -B build -S SHantilly-Studio \
             -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/SHantilly-Studio/vcpkg/scripts/buildsystems/vcpkg.cmake \
-            -DSHOWBOX_ROOT=${{ github.workspace }}/SHantilly \
+            -DSHANTILLY_ROOT=${{ github.workspace }}/SHantilly \
             -DCMAKE_BUILD_TYPE=Release
 
       - name: Build

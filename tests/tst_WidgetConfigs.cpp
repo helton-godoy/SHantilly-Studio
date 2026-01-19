@@ -1,7 +1,7 @@
 #include <QtTest>
 #include "WidgetConfigs.h"
 
-using namespace Showbox::Models;
+using namespace Sbx::Models;
 
 class TestWidgetConfigs : public QObject {
     Q_OBJECT
@@ -106,18 +106,18 @@ void TestWidgetConfigs::testGroupBoxConfig() {
     GroupBoxConfig config;
     config.name = "group";
     config.title = "Settings";
-    config.layout.type = LayoutConfig::Grid;
+    config.layout.type = SbxLayoutConfig::Grid;
     
     QCOMPARE(config.title, QString("Settings"));
-    QCOMPARE(config.layout.type, LayoutConfig::Grid);
+    QCOMPARE(config.layout.type, SbxLayoutConfig::Grid);
     QVERIFY(config.isValid());
 }
 
 void TestWidgetConfigs::testFrameConfig() {
     FrameConfig config;
     config.name = "frame";
-    config.layout.type = LayoutConfig::HBox;
-    QCOMPARE(config.layout.type, LayoutConfig::HBox);
+    config.layout.type = SbxLayoutConfig::HBox;
+    QCOMPARE(config.layout.type, SbxLayoutConfig::HBox);
     QVERIFY(config.isValid());
 }
 

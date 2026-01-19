@@ -12,7 +12,7 @@ public:
   explicit ScriptGenerator();
 
   /**
-   * @brief Generates a Showbox CLI script from the given widget hierarchy.
+   * @brief Generates a SHantilly CLI script from the given widget hierarchy.
    * @param root The root widget (usually the content of the Canvas, or the
    * Window).
    * @return A QString containing the full shell script with Here-Doc.
@@ -29,11 +29,11 @@ private:
   void processWidget(QWidget *widget, QString &script);
 
   /**
-   * @brief Maps internal widget types/class names to Showbox CLI command types.
+   * @brief Maps internal widget types/class names to SHantilly CLI command types.
    * @param widget The widget to identify.
    * @return String representing the type (e.g., "label", "button").
    */
-  QString getShowboxType(QWidget *widget);
+  QString getSHantillyType(QWidget *widget);
 
   /**
    * @brief Extracts relevant properties for the 'add' command.

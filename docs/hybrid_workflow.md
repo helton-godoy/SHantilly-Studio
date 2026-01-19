@@ -1,6 +1,6 @@
 # Workflow Híbrido: "Executive & Swarm"
 
-Este documento define o padrão operacional para desenvolvimento de software no Showbox Studio, utilizando uma estratégia híbrida que combina a inteligência de alto nível do Agente Antigravity com a capacidade de execução rápida de agentes CLI especializados.
+Este documento define o padrão operacional para desenvolvimento de software no SHantilly Studio, utilizando uma estratégia híbrida que combina a inteligência de alto nível do Agente Antigravity com a capacidade de execução rápida de agentes CLI especializados.
 
 ## Papéis e Responsabilidades
 

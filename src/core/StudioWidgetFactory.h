@@ -12,65 +12,65 @@
 #include <QScrollArea>
 #include <QTableWidget>
 #include <QVBoxLayout>
-#include <ShowboxBuilder.h>
+#include <SHantillyBuilder.h>
 #include <WidgetConfigs.h>
 
 class StudioWidgetFactory : public IStudioWidgetFactory {
 public:
   QWidget *createWidget(const QString &type, const QString &name) override {
-    ShowboxBuilder builder;
+    SHantillyBuilder builder;
     QString t = type.toLower();
     QWidget *w = nullptr;
 
     if (t == "button" || t == "pushbutton") {
-      Showbox::Models::ButtonConfig cfg;
+      Sbx::Models::ButtonConfig cfg;
       cfg.name = name;
       cfg.text = "Button";
       w = builder.buildButton(cfg);
     } else if (t == "label") {
-      Showbox::Models::LabelConfig cfg;
+      Sbx::Models::LabelConfig cfg;
       cfg.name = name;
       cfg.text = "Label";
       w = builder.buildLabel(cfg);
     } else if (t == "checkbox") {
-      Showbox::Models::CheckBoxConfig cfg;
+      Sbx::Models::CheckBoxConfig cfg;
       cfg.name = name;
       cfg.text = "CheckBox";
       w = builder.buildCheckBox(cfg);
     } else if (t == "radiobutton") {
-      Showbox::Models::RadioButtonConfig cfg;
+      Sbx::Models::RadioButtonConfig cfg;
       cfg.name = name;
       cfg.text = "RadioButton";
       w = builder.buildRadioButton(cfg);
     } else if (t == "spinbox") {
-      Showbox::Models::SpinBoxConfig cfg;
+      Sbx::Models::SpinBoxConfig cfg;
       cfg.name = name;
       w = builder.buildSpinBox(cfg);
     } else if (t == "slider") {
-      Showbox::Models::SliderConfig cfg;
+      Sbx::Models::SliderConfig cfg;
       cfg.name = name;
       w = builder.buildSlider(cfg);
     } else if (t == "textbox" || t == "lineedit") {
-      Showbox::Models::LineEditConfig cfg;
+      Sbx::Models::LineEditConfig cfg;
       cfg.name = name;
       cfg.placeholder = "Type here...";
       w = builder.buildLineEdit(cfg);
     } else if (t == "textview" || t == "textedit") {
-      Showbox::Models::TextEditConfig cfg;
+      Sbx::Models::TextEditConfig cfg;
       cfg.name = name;
       cfg.text = "Edit me";
       w = builder.buildTextEdit(cfg);
     } else if (t == "groupbox") {
-      Showbox::Models::GroupBoxConfig cfg;
+      Sbx::Models::GroupBoxConfig cfg;
       cfg.name = name;
       cfg.title = "Group";
       w = builder.buildGroupBox(cfg);
     } else if (t == "frame") {
-      Showbox::Models::FrameConfig cfg;
+      Sbx::Models::FrameConfig cfg;
       cfg.name = name;
       w = builder.buildFrame(cfg);
     } else if (t == "tabs" || t == "tabwidget") {
-      Showbox::Models::TabWidgetConfig cfg;
+      Sbx::Models::TabWidgetConfig cfg;
       cfg.name = name;
       w = builder.buildTabWidget(cfg);
       
@@ -93,34 +93,34 @@ public:
       w->setProperty("SHantilly_type", "page");
       w->setProperty("title", "New Page"); // Propriedade para o nome da aba
     } else if (t == "combobox") {
-      Showbox::Models::ComboBoxConfig cfg;
+      Sbx::Models::ComboBoxConfig cfg;
       cfg.name = name;
       w = builder.buildComboBox(cfg);
     } else if (t == "listbox") {
-      Showbox::Models::ListConfig cfg;
+      Sbx::Models::ListConfig cfg;
       cfg.name = name;
       w = builder.buildList(cfg);
     } else if (t == "table") {
-      Showbox::Models::TableConfig cfg;
+      Sbx::Models::TableConfig cfg;
       cfg.name = name;
       cfg.headers = {"Col 1", "Col 2"};
       cfg.rows = {{"Data 1", "Data 2"}};
       w = builder.buildTable(cfg);
     } else if (t == "calendar") {
-      Showbox::Models::CalendarConfig cfg;
+      Sbx::Models::CalendarConfig cfg;
       cfg.name = name;
       w = builder.buildCalendar(cfg);
     } else if (t == "progressbar") {
-      Showbox::Models::ProgressBarConfig cfg;
+      Sbx::Models::ProgressBarConfig cfg;
       cfg.name = name;
       w = builder.buildProgressBar(cfg);
     } else if (t == "chart") {
-      Showbox::Models::ChartConfig cfg;
+      Sbx::Models::ChartConfig cfg;
       cfg.name = name;
       cfg.title = "Chart";
       w = builder.buildChart(cfg);
     } else if (t == "separator") {
-      Showbox::Models::SeparatorConfig cfg;
+      Sbx::Models::SeparatorConfig cfg;
       cfg.name = name;
       w = builder.buildSeparator(cfg);
     } else if (t == "scrollarea") {

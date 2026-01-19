@@ -4,22 +4,22 @@ set -e
 # Configurações de Caminhos
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="/workspace/SHantilly-Studio"
-SHOWBOX_ROOT="/workspace/SHantilly"
+SHANTILLY_ROOT="/workspace/SHantilly"
 BUILD_DIR="${PROJECT_ROOT}/build-pkg"
 DIST_DIR="${PROJECT_ROOT}/dist"
 APPDIR="${BUILD_DIR}/AppDir"
 
-echo "=== Showbox Studio AppImage Builder (Professional Edition) ==="
+echo "=== SHantilly Studio AppImage Builder (Professional Edition) ==="
 
 # 1. Preparar Diretórios
 rm -rf "${BUILD_DIR}" "${APPDIR}"
 mkdir -p "${BUILD_DIR}" "${DIST_DIR}"
 
 # 2. Compilar com CMake usando GNUInstallDirs e CMAKE_INSTALL_PREFIX=/usr
-echo "[1/6] Compiling Showbox Studio..."
+echo "[1/6] Compiling SHantilly Studio..."
 cd "${BUILD_DIR}"
 cmake "${PROJECT_ROOT}" \
-	-DSHOWBOX_ROOT="${SHOWBOX_ROOT}" \
+	-DSHANTILLY_ROOT="${SHANTILLY_ROOT}" \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=Release
 
@@ -60,9 +60,9 @@ echo "[5/6] Packaging with appimagetool manually..."
 # Forçamos o uso do runtime local
 ./appimagetool-x86_64.AppImage "${APPDIR}" \
 	--runtime-file runtime-x86_64 \
-	"Showbox_Studio-${LINUXDEPLOY_OUTPUT_VERSION}-x86_64.AppImage"
+	"SHantilly_Studio-${LINUXDEPLOY_OUTPUT_VERSION}-x86_64.AppImage"
 
 # 6. Mover resultado para pasta dist
-mv Showbox_Studio*.AppImage "${DIST_DIR}/"
+mv SHantilly_Studio*.AppImage "${DIST_DIR}/"
 
 echo "=== Success! Professional Package available in dist/ ==="

@@ -13,7 +13,7 @@ PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 WORKSPACE_ROOT="$(cd "${PROJECT_ROOT}/.." && pwd)"
 PROJECT_DIR_NAME="$(basename "${PROJECT_ROOT}")"
 
-echo "=== Showbox Studio Dev Environment ==="
+echo "=== SHantilly Studio Dev Environment ==="
 echo "Building Docker image..."
 docker build -t "${IMAGE_NAME}" -f "${DOCKERFILE_PATH}" "${PROJECT_ROOT}"
 

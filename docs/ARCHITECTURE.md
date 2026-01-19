@@ -1,4 +1,4 @@
-# Arquitetura do Showbox Studio
+# Arquitetura do SHantilly Studio
 
 ## Índice
 1. [Visão Geral](#visão-geral)
@@ -11,13 +11,13 @@
 ## Visão Geral
 
 ### Propósito do Projeto
-O Showbox Studio é um ambiente de desenvolvimento integrado (IDE) visual para criação de interfaces utilizando o framework Showbox. O projeto permite a edição visual de interfaces através de arrastar-e-soltar, edição de propriedades e geração automática de scripts Showbox CLI.
+O SHantilly Studio é um ambiente de desenvolvimento integrado (IDE) visual para criação de interfaces utilizando o framework SHantilly. O projeto permite a edição visual de interfaces através de arrastar-e-soltar, edição de propriedades e geração automática de scripts SHantilly CLI.
 
 ### Tecnologias Utilizadas
 - **C++17**: Linguagem principal
 - **Qt6**: Framework GUI (Widgets, Charts, Svg)
 - **CMake**: Sistema de build
-- **Showbox Core**: Biblioteca de UI reutilizada
+- **SHantilly Core**: Biblioteca de UI reutilizada
 - **JSON**: Formato de serialização de projetos
 
 ### Estrutura de Diretórios
@@ -105,7 +105,7 @@ classDiagram
     IStudioWidgetFactory <|.. StudioWidgetFactory
 
     StudioController --> QWidget : manages selection
-    StudioWidgetFactory --> ShowboxBuilder : uses
+    StudioWidgetFactory --> SHantillyBuilder : uses
     Canvas --> IStudioWidgetFactory : creates widgets
     PropertyEditor --> StudioController : updates properties
     ObjectInspector --> StudioController : updates selection
@@ -136,7 +136,7 @@ graph TD
     E --> G
 
     B --> H[StudioWidgetFactory]
-    H --> I[ShowboxBuilder]
+    H --> I[SHantillyBuilder]
 
     G --> J[QUndoStack]
     J --> K[StudioCommands]
@@ -145,7 +145,7 @@ graph TD
     B --> M[ProjectSerializer]
     B --> N[PreviewManager]
 
-    N --> O[Showbox CLI]
+    N --> O[SHantilly CLI]
     L --> O
 ```
 
@@ -211,7 +211,7 @@ sequenceDiagram
     participant MW as MainWindow
     participant SG as ScriptGenerator
     participant PM as PreviewManager
-    participant SB as Showbox CLI
+    participant SB as SHantilly CLI
 
     MW->>SG: generate(root widget)
     SG->>SG: processWidget hierarchy
@@ -264,7 +264,7 @@ sequenceDiagram
 **Dependências:** QWidget, QUndoStack
 
 ### StudioWidgetFactory
-**Responsabilidade:** Implementa a criação de widgets Showbox através do padrão Factory, utilizando ShowboxBuilder para garantir fidelidade visual.
+**Responsabilidade:** Implementa a criação de widgets SHantilly através do padrão Factory, utilizando SHantillyBuilder para garantir fidelidade visual.
 
 **Propriedades principais:** Nenhuma (stateless)
 
@@ -277,10 +277,10 @@ sequenceDiagram
 
 **Slots:** Nenhum
 
-**Dependências:** ShowboxBuilder, WidgetConfigs
+**Dependências:** SHantillyBuilder, WidgetConfigs
 
 ### ScriptGenerator
-**Responsabilidade:** Converte a hierarquia de widgets em script Showbox CLI válido, incluindo comandos add/set e callbacks.
+**Responsabilidade:** Converte a hierarquia de widgets em script SHantilly CLI válido, incluindo comandos add/set e callbacks.
 
 **Propriedades principais:**
 - `m_callbacks`: Mapa de callbacks por widget/evento
@@ -288,7 +288,7 @@ sequenceDiagram
 **Métodos principais:**
 - `generate()`: Gera script completo
 - `processWidget()`: Processa widget recursivamente
-- `getShowboxType()`: Mapeia tipos Qt para CLI
+- `getSHantillyType()`: Mapeia tipos Qt para CLI
 - `generateCallbacks()`: Cria funções callback
 
 **Signals:** Nenhum
@@ -313,7 +313,7 @@ sequenceDiagram
 **Dependências:** IStudioWidgetFactory, QJsonObject
 
 ### PreviewManager
-**Responsabilidade:** Executa preview do script gerado através do Showbox CLI, capturando saída e erros.
+**Responsabilidade:** Executa preview do script gerado através do SHantilly CLI, capturando saída e erros.
 
 **Propriedades principais:** Nenhuma
 
@@ -503,7 +503,7 @@ sequenceDiagram
 Utilizado para implementar undo/redo. Cada operação é encapsulada em um comando que sabe como executar e reverter a ação. Permite pilha de comandos (QUndoStack) e operações compostas.
 
 ### Factory Pattern (StudioWidgetFactory)
-Centraliza criação de widgets Showbox, isolando lógica de instanciação e garantindo configuração consistente através do ShowboxBuilder.
+Centraliza criação de widgets SHantilly, isolando lógica de instanciação e garantindo configuração consistente através do SHantillyBuilder.
 
 ### Observer Pattern (Signals/Slots)
 Qt Signals/Slots conectam componentes sem acoplamento forte:
@@ -514,8 +514,8 @@ Qt Signals/Slots conectam componentes sem acoplamento forte:
 ### Event Filter Pattern (StudioController)
 QObject::eventFilter intercepta eventos antes que cheguem aos widgets, permitindo controle de comportamento (ex: impedir cliques reais em modo design).
 
-### Builder Pattern (ShowboxBuilder)
-Utilizado pelo Showbox core para construir widgets complexos passo-a-passo, separando criação da lógica de negócio.
+### Builder Pattern (SHantillyBuilder)
+Utilizado pelo SHantilly core para construir widgets complexos passo-a-passo, separando criação da lógica de negócio.
 
 ### Abstract Factory (AbstractToolbox)
 Permite diferentes implementações de toolbox (Classic, Tree) intercambiáveis através de interface comum.

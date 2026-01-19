@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=SHantilly Studio
+Comment=Visual Editor for SHantilly Dialogs
+Exec=SHantilly-Studio
+Icon=SHantilly-Studio
+Categories=Development;IDE;GUIDesigner;
+Terminal=false

@@ -51,7 +51,7 @@ void tst_StudioIntegration::testWidgetCreation()
     QCOMPARE(btn->objectName(), "btn_login");
     
     // Verificar se é um botão real (ou wrapper)
-    // No ShowboxBuilder atual, ele retorna QWidgets configurados.
+    // No SHantillyBuilder atual, ele retorna QWidgets configurados.
     // O botão deve ter texto "Button" por padrão segundo a Factory
     
     // Nota: Dependendo da implementação do Builder, pode ser um QPushButton ou custom.

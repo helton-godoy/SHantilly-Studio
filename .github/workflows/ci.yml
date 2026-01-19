@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgl1-mesa-dev libx11-dev libxkbcommon-dev libfontconfig1-dev libdbus-1-dev libicu-dev xvfb
+          sudo apt-get install -y libgl1-mesa-dev libx11-dev libxkbcommon-dev libfontconfig1-dev libdbus-1-dev libicu-dev xvfb clang-format clang-tidy cppcheck lcov
 
       - name: Cache vcpkg
         uses: actions/cache@v4
@@ -45,19 +45,32 @@ jobs:
         with:
           vcpkgJsonGlob: 'SHantilly-Studio/vcpkg.json'
 
-      - name: Configure CMake
+      - name: Build, Test and Generate Coverage
+        working-directory: SHantilly-Studio
         run: |
-          cmake -B build -S SHantilly-Studio \
-            -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/SHantilly-Studio/vcpkg/scripts/buildsystems/vcpkg.cmake \
-            -DSHOWBOX_ROOT=${{ github.workspace }}/SHantilly \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+          xvfb-run make coverage_internal
 
-      - name: Build
-        run: cmake --build build -j$(nproc)
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: studio-coverage-report
+          path: SHantilly-Studio/coverage_report/
 
-      - name: Run Tests
-        if: always()
-        run: |
-          cd build
-          xvfb-run ctest --output-on-failure
+      - name: Run Clang-Tidy
+        working-directory: SHantilly-Studio
+        run: make tidy_internal
+
+      - name: Run Cppcheck
+        working-directory: SHantilly-Studio
+        run: make cppcheck_internal
+
+      - name: Run Trivy Vulnerability Scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: 'SHantilly-Studio'
+          hide-progress: false
+          format: 'table'
+          exit-code: '0'
+          ignore-unfixed: true
+          severity: 'CRITICAL,HIGH'

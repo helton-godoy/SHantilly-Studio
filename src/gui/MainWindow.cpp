@@ -30,10 +30,10 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), m_dockToolbox(nullptr), m_toolbox(nullptr),
       m_toolboxStyle(0) {
-  setWindowTitle("Showbox Studio");
+  setWindowTitle("SHantilly Studio");
 
   // Carregar preferência de estilo do toolbox
-  QSettings settings("Showbox", "ShowboxStudio");
+  QSettings settings("SHantilly", "SHantillyStudio");
   m_toolboxStyle = settings.value("toolboxStyle", 0).toInt();
   resize(1200, 800);
 
@@ -249,7 +249,7 @@ void MainWindow::createSampleWidgets() {
   // Teste de criação via Factory - Ainda útil para ver algo na tela ao iniciar
   QWidget *w1 = m_factory->createWidget("Label", "lbl_welcome");
   if (w1) {
-    w1->setProperty("text", "<h1>Bem-vindo ao Showbox Studio</h1>");
+    w1->setProperty("text", "<h1>Bem-vindo ao SHantilly Studio</h1>");
     m_canvas->addWidget(w1);
     m_controller->manageWidget(w1);
   }
@@ -315,7 +315,7 @@ void MainWindow::onRunClicked() {
 
 void MainWindow::onSaveClicked() {
   QString fileName = QFileDialog::getSaveFileName(
-      this, "Save Project", "", "Showbox Project (*.sbxproj)");
+      this, "Save Project", "", "SHantilly Project (*.sbxproj)");
   if (fileName.isEmpty())
     return;
 
@@ -332,7 +332,7 @@ void MainWindow::onSaveClicked() {
 
 void MainWindow::onOpenClicked() {
   QString fileName = QFileDialog::getOpenFileName(
-      this, "Open Project", "", "Showbox Project (*.sbxproj)");
+      this, "Open Project", "", "SHantilly Project (*.sbxproj)");
   if (fileName.isEmpty())
     return;
 
@@ -431,7 +431,7 @@ void MainWindow::onToolboxStyleChanged(int style) {
   createToolbox(style);
 
   // Salvar preferência
-  QSettings settings("Showbox", "ShowboxStudio");
+  QSettings settings("SHantilly", "SHantillyStudio");
   settings.setValue("toolboxStyle", style);
 
   QString styleName = (style == 0) ? "Classic" : "Tree";
