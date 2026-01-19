@@ -1,0 +1,64 @@
+name: CodeQL Analysis
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      matrix:
+        language: [ 'cpp' ]
+    steps:
+      - name: Checkout Studio
+        uses: actions/checkout@v4
+        with:
+          path: SHantilly-Studio
+          fetch-depth: 0
+
+      - name: Checkout Core (Dependency)
+        uses: actions/checkout@v4
+        with:
+          repository: helton-godoy/SHantilly
+          path: SHantilly
+          fetch-depth: 0
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgl1-mesa-dev libx11-dev libxkbcommon-dev libfontconfig1-dev libdbus-1-dev libicu-dev
+
+      - name: Setup vcpkg
+        uses: lukka/run-vcpkg@v11
+        with:
+          vcpkgJsonGlob: 'SHantilly-Studio/vcpkg.json'
+
+      - name: Configure CMake
+        run: |
+          cmake -B build -S SHantilly-Studio \
+            -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/SHantilly-Studio/vcpkg/scripts/buildsystems/vcpkg.cmake \
+            -DSHOWBOX_ROOT=${{ github.workspace }}/SHantilly \
+            -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build -j$(nproc)
+
+      - name: Perform CodeQL analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "security"
