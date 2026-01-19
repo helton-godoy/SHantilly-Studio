@@ -1,0 +1,24 @@
+name: Solicitar Funcionalidade
+description: Sugira uma ideia para o Studio
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Sua sugestão está relacionada a um problema?
+      description: Uma descrição clara e concisa do problema. Ex. É difícil alinhar widgets manualmente...
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Descreva a solução que você gostaria
+      description: Ex. Adicionar ferramenta de alinhamento automático na barra de ferramentas.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexto adicional
+      description: Adicione qualquer outro contexto, mockups ou capturas de tela aqui.

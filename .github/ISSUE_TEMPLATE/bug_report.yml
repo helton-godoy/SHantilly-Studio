@@ -1,0 +1,39 @@
+name: Relatar um Bug
+description: Crie um relatório para nos ajudar a melhorar o SHantilly-Studio
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por dedicar um tempo para preencher este relatório de bug!
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: O que aconteceu?
+      description: Também nos diga o que você esperava que acontecesse.
+      placeholder: Digite aqui...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Como reproduzir?
+      description: Passos para reproduzir o comportamento.
+      placeholder: |
+        1. Abra o projeto X
+        2. Arraste o widget Y
+        3. Veja o erro
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Qual versão do Studio?
+      placeholder: e.g. v0.1.0 dev
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs Relevantes
+      description: Cole aqui logs ou mensagens de erro.
+      render: shell

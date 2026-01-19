@@ -45,6 +45,11 @@ jobs:
         with:
           vcpkgJsonGlob: 'SHantilly-Studio/vcpkg.json'
 
+      - name: Run Trunk Check
+        uses: trunk-io/trunk-action@v1
+        with:
+          arguments: --working-directory SHantilly-Studio
+
       - name: Build, Test and Generate Coverage
         working-directory: SHantilly-Studio
         run: |
@@ -74,3 +79,11 @@ jobs:
           exit-code: '0'
           ignore-unfixed: true
           severity: 'CRITICAL,HIGH'
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          projectBaseDir: SHantilly-Studio
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
