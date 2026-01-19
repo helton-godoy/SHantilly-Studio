@@ -21,20 +21,20 @@ jobs:
         language: [ 'cpp' ]
     steps:
       - name: Checkout Studio
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           path: SHantilly-Studio
           fetch-depth: 0
 
       - name: Checkout Core (Dependency)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: helton-godoy/SHantilly
           path: SHantilly
           fetch-depth: 0
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
+        uses: github/codeql-action/init@v4
         with:
           languages: ${{ matrix.language }}
 
@@ -59,6 +59,6 @@ jobs:
         run: cmake --build build -j$(nproc)
 
       - name: Perform CodeQL analysis
-        uses: github/codeql-action/analyze@v3
+        uses: github/codeql-action/analyze@v4
         with:
           category: "security"
