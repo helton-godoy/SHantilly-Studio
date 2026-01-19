@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Studio
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           path: SHantilly-Studio
 
       - name: Checkout Core (Dependency)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: helton-godoy/SHantilly
           path: SHantilly
@@ -25,7 +25,7 @@ jobs:
           sudo apt-get install -y libgl1-mesa-dev libx11-dev libxkbcommon-dev libfontconfig1-dev libdbus-1-dev libicu-dev build-essential
 
       - name: Cache vcpkg
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             ${{ github.workspace }}/SHantilly-Studio/vcpkg
@@ -51,7 +51,7 @@ jobs:
           cpack -G DEB
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: shantilly-studio-deb
           path: build/*.deb
