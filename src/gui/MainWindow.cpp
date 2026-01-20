@@ -1,6 +1,8 @@
 #include "MainWindow.h"
 
 #include <QActionGroup>
+#include <QCoreApplication>
+#include <QDir>
 #include <QDockWidget>
 #include <QFile>
 #include <QFileDialog>
@@ -34,8 +36,8 @@ MainWindow::MainWindow(QWidget* parent)
     setWindowTitle("SHantilly Studio");
 
     // Carregar preferência de estilo do toolbox
-    QSettings settings("SHantilly", "SHantillyStudio");
-    m_toolboxStyle = settings.value("toolboxStyle", 0).toInt();
+    QSettings settings("shantilly", "shantilly-studio");
+    m_toolboxStyle = settings.value("toolboxstyle", 0).toInt();
     resize(1200, 800);
 
     m_factory = new StudioWidgetFactory();
@@ -68,6 +70,8 @@ MainWindow::MainWindow(QWidget* parent)
     QMenu* editMenu = menuBar()->addMenu("&Edit");
     editMenu->addAction(m_controller->undoStack()->createUndoAction(this));
     editMenu->addAction(m_controller->undoStack()->createRedoAction(this));
+    editMenu->addSeparator();
+    editMenu->addAction("&Preferences...", this, &MainWindow::onPreferencesClicked);
 
     // Sincronizar seleção: Canvas -> Inspector & Property Editor & Action Editor
     connect(m_controller, &StudioController::widgetSelected, m_inspector,
@@ -292,7 +296,20 @@ void MainWindow::onRunClicked() {
         dock->show();
 
     // Run via Manager
-    m_previewManager->runPreview(script);
+    QSettings settings("shantilly", "shantilly-studio");
+    QString executablePath = settings.value("shantillypath").toString();
+
+    // If path is not set, prompt the user
+    if (executablePath.isEmpty() || !QFile::exists(executablePath)) {
+        onPreferencesClicked();
+        executablePath = settings.value("shantillypath").toString();
+        if (executablePath.isEmpty()) {
+            statusBar()->showMessage("Execução cancelada: Executável não configurado.");
+            return;
+        }
+    }
+
+    m_previewManager->runPreview(script, executablePath);
 }
 
 void MainWindow::onSaveClicked() {
@@ -409,9 +426,29 @@ void MainWindow::onToolboxStyleChanged(int style) {
     createToolbox(style);
 
     // Salvar preferência
-    QSettings settings("SHantilly", "SHantillyStudio");
-    settings.setValue("toolboxStyle", style);
+    QSettings settings("shantilly", "shantilly-studio");
+    settings.setValue("toolboxstyle", style);
 
     QString styleName = (style == 0) ? "Classic" : "Tree";
     statusBar()->showMessage("Estilo do Toolbox alterado para: " + styleName);
+}
+
+void MainWindow::onPreferencesClicked() {
+    QSettings settings("shantilly", "shantilly-studio");
+    QString currentPath = settings.value("shantillypath").toString();
+
+    if (currentPath.isEmpty()) {
+        // Try to find it in the build directory as a default suggestion
+        QDir buildDir(QCoreApplication::applicationDirPath()); 
+        // Example: build/bin -> ../../../SHantilly/build/bin
+        // Ideally we don't guess too hard, just let the user pick.
+    }
+
+    QString fileName = QFileDialog::getOpenFileName(
+        this, "Select SHantilly Executable", currentPath, "Executables (*)");
+    
+    if (!fileName.isEmpty()) {
+        settings.setValue("shantillypath", fileName);
+        statusBar()->showMessage("SHantilly path configured: " + fileName);
+    }
 }

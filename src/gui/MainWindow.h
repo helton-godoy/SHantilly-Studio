@@ -32,6 +32,7 @@ private slots:
     void onToolboxStyleChanged(int style);
     void onAddPageRequested(QWidget* tabs);
     void onRemovePageRequested(QWidget* tabs);
+    void onPreferencesClicked();
 
 private:
     void setupUI();
