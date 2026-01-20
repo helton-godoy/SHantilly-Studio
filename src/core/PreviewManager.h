@@ -8,7 +8,7 @@ class PreviewManager : public QObject {
     Q_OBJECT
 public:
     explicit PreviewManager(QObject* parent = nullptr);
-    void runPreview(const QString& scriptContent);
+    void runPreview(const QString& scriptContent, const QString& executablePath);
 
 signals:
     void previewOutput(const QString& output);
