@@ -37,7 +37,7 @@ set(CMAKE_AUTORCC ON)
 # Configuração do caminho do SHantilly Core
 if(NOT SHANTILLY_ROOT)
   get_filename_component(SHANTILLY_ROOT
-                         "${CMAKE_CURRENT_SOURCE_DIR}/../SHantilly" ABSOLUTE)
+                         "${CMAKE_CURRENT_SOURCE_DIR}/../shantilly" ABSOLUTE)
 endif()
 message(STATUS "Using SHANTILLY_ROOT: ${SHANTILLY_ROOT}")
 
