@@ -10,6 +10,7 @@
 - [ ] Refatoração
 
 ## Checklist
+
 - [ ] Meus testes passaram localmente
 - [ ] Verifiquei visualmente as mudanças na interface
 - [ ] Executei o linter (`make lint`)

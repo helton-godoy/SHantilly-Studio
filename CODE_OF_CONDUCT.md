@@ -4,8 +4,8 @@ Consulte o [Código de Conduta do SHantilly](https://github.com/helton-godoy/SHa
 
 ## Resumo
 
-*   Seja respeitoso e inclusivo.
-*   Aceite críticas construtivas.
-*   Foque no melhor para a comunidade.
+* Seja respeitoso e inclusivo.
+* Aceite críticas construtivas.
+* Foque no melhor para a comunidade.
 
-Reporte violações para contact@shantilly.org.
+Reporte violações para <contact@shantilly.org>.

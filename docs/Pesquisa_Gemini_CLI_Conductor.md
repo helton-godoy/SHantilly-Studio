@@ -238,6 +238,7 @@ git notes add -m "Task: Real-time preview\\nTests: Generated with Gemini CLI\\nC
 6. **Fallback Strategies:** Quando limites de API forem atingidos, fallback para ferramentas locais como clang-tidy
 
 7. **Integração com Versionamento:** Use git hooks para análise automática de commits:
+
    ```bash
    # .git/hooks/pre-commit
    gemini analyze --diff HEAD~1 --fail-on-issues
