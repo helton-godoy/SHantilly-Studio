@@ -15,7 +15,7 @@ CMAKE := cmake
 MAKE := make
 NPROC := $(shell nproc)
 BUILD_DIR := build
-TARGET_BIN := SHantilly-studio
+TARGET_BIN := shantilly-studio
 VCPKG_TOOLCHAIN := $(HOME)/vcpkg/scripts/buildsystems/vcpkg.cmake
 
 # Check for vcpkg toolchain

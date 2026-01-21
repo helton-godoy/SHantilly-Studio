@@ -9,7 +9,7 @@
 PreviewManager::PreviewManager(QObject* parent) : QObject(parent) {
 }
 
-void PreviewManager::runPreview(const QString& scriptContent) {
+void PreviewManager::runPreview(const QString& scriptContent, const QString& executablePath) {
     QTemporaryFile tempFile;
     if (!tempFile.open()) {
         emit previewError("Failed to create temporary file for preview.");
@@ -24,21 +24,20 @@ void PreviewManager::runPreview(const QString& scriptContent) {
 
     QProcess* process = new QProcess(this);
 
-    // Assumes running from 'build' directory adjacent to sourcedir or usual cmake
-    // build Try to find the executable in likely locations
-    QString executablePath = "../SHantilly/build/bin/SHantilly";
+    // Use the provided executable path
+    QString absPath = executablePath;
+    if (absPath.isEmpty()) {
+         // Fallback default for development convenience
+         absPath = "../SHantilly/build/bin/shantilly";
+    }
 
-    // Verify absolute path resolution from current working directory
-    QString absPath = QDir::current().absoluteFilePath(executablePath);
+    // Verify absolute path resolution from current working directory just in case relative path is provided
+    if (QFileInfo(absPath).isRelative()) {
+        absPath = QDir::current().absoluteFilePath(absPath);
+    }
 
     if (!QFile::exists(absPath)) {
-        // Fallback: try to find relative to the application dir if not running from
-        // build root
-        QDir appDir(QCoreApplication::applicationDirPath());
-        // build/bin -> ../../../SHantilly/build/bin (approximate guess based on
-        // typical nesting) Let's rely on the user running from 'build' as per
-        // instructions for now, but log path.
-        emit previewError("Executable not found at: " + absPath);
+        emit previewError("Executable not found at: " + absPath + "\nPlease configure the SHantilly executable path in Edit -> Preferences.");
         QFile::remove(tempPath);
         process->deleteLater();
         return;
@@ -65,5 +64,6 @@ void PreviewManager::runPreview(const QString& scriptContent) {
 
     // poc_modern_cli reads from stdin
     process->setStandardInputFile(tempPath);
-    process->start(absPath, QStringList() << "--keep-open");
+    // Remove --keep-open as it is not supported by the main shantilly executable
+    process->start(absPath, QStringList());
 }
