@@ -13,13 +13,13 @@ jobs:
       VCPKG_BINARY_SOURCES: 'clear;nuget,GitHub,readwrite'
     steps:
       - name: Checkout Studio
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           path: SHantilly-Studio
           fetch-depth: 0
 
       - name: Checkout Core (Dependency)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: helton-godoy/SHantilly
           path: SHantilly
@@ -31,7 +31,7 @@ jobs:
           sudo apt-get install -y libgl1-mesa-dev libx11-dev libxkbcommon-dev libfontconfig1-dev libdbus-1-dev libicu-dev xvfb clang-format clang-tidy cppcheck lcov
 
       - name: Cache vcpkg
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             ${{ github.workspace }}/SHantilly-Studio/vcpkg
@@ -56,7 +56,7 @@ jobs:
           xvfb-run make coverage_internal
 
       - name: Upload Coverage Report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: studio-coverage-report
           path: SHantilly-Studio/coverage_report/
